@@ -12,12 +12,13 @@
     "lint": "turbo run lint",
     "format": "prettier --write \"**/*.{ts,tsx,md}\"",
     "home:dev": "",
-    "setup": "pnpm i && cd "
+    "setup": "pnpm i && docker compose up -d && cp .env.example .env && cp firebase-config.example.json firebase-config.json && cp firebase-service.example.json ./apps/regis/firebase-service.json && npx prisma migrate dev --schema apps/regis/prisma/schema.prisma && npx prisma generate --schema apps/regis/prisma/schema.prisma"
   },
   "devDependencies": {
     "eslint-config-custom": "workspace:*",
     "prettier": "latest",
-    "turbo": "latest"
+    "turbo": "latest",
+    "prisma": "4.4.0"
   },
   "engines": {
     "node": ">=14.0.0"
