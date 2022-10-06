@@ -37,7 +37,7 @@ services:
       - DB_USER=${POSTGRES_USERNAME}
       - DB_PASSWORD=${POSTGRES_PASSWORD}
       - DB_HOST=postgres
-      - DB_NAME=${DB_NAME}
+      - DB_NAME=${POSTGRES_DB_NAME}
       - POOL_MODE=transaction
       - ADMIN_USERS=postgres,${POSTGRES_USERNAME}
     ports:
