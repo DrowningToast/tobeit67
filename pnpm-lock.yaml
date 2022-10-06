@@ -12,35 +12,6 @@ importers:
       prettier: 2.7.1
       turbo: 1.5.5
 
-  apps/docs:
-    specifiers:
-      '@babel/core': ^7.0.0
-      '@types/node': ^17.0.12
-      '@types/react': 18.0.17
-      eslint: 7.32.0
-      eslint-config-custom: workspace:*
-      next: 12.3.1
-      next-transpile-modules: 9.0.0
-      react: 18.2.0
-      react-dom: 18.2.0
-      tsconfig: workspace:*
-      typescript: ^4.5.3
-      ui: workspace:*
-    dependencies:
-      next: 12.3.1_6tziyx3dehkoeijunclpkpolha
-      react: 18.2.0
-      react-dom: 18.2.0_react@18.2.0
-      ui: link:../../packages/ui
-    devDependencies:
-      '@babel/core': 7.19.3
-      '@types/node': 17.0.45
-      '@types/react': 18.0.17
-      eslint: 7.32.0
-      eslint-config-custom: link:../../packages/eslint-config-custom
-      next-transpile-modules: 9.0.0
-      tsconfig: link:../../packages/tsconfig
-      typescript: 4.8.4
-
   apps/home:
     specifiers:
       '@apollo/client': ^3.7.0
@@ -177,35 +148,6 @@ importers:
       ts-loader: 9.4.1_qqxisngxjbp7lstdk7boexbu3e
       ts-node: 10.9.1_k2jc2lb6qrtdc3lulqxjwnbwoi
       tsconfig-paths: 4.1.0
-      typescript: 4.8.4
-
-  apps/web:
-    specifiers:
-      '@babel/core': ^7.0.0
-      '@types/node': ^17.0.12
-      '@types/react': 18.0.17
-      eslint: 7.32.0
-      eslint-config-custom: workspace:*
-      next: 12.3.1
-      next-transpile-modules: 9.0.0
-      react: 18.2.0
-      react-dom: 18.2.0
-      tsconfig: workspace:*
-      typescript: ^4.5.3
-      ui: workspace:*
-    dependencies:
-      next: 12.3.1_6tziyx3dehkoeijunclpkpolha
-      react: 18.2.0
-      react-dom: 18.2.0_react@18.2.0
-      ui: link:../../packages/ui
-    devDependencies:
-      '@babel/core': 7.19.3
-      '@types/node': 17.0.45
-      '@types/react': 18.0.17
-      eslint: 7.32.0
-      eslint-config-custom: link:../../packages/eslint-config-custom
-      next-transpile-modules: 9.0.0
-      tsconfig: link:../../packages/tsconfig
       typescript: 4.8.4
 
   packages/eslint-config-custom:
@@ -3954,14 +3896,6 @@ packages:
       '@types/react': 18.0.21
     dev: true
 
-  /@types/react/18.0.17:
-    resolution: {integrity: sha512-38ETy4tL+rn4uQQi7mB81G7V1g0u2ryquNmsVIOKUAEIDK+3CUjZ6rSRpdvS99dNBnkLFL83qfmtLacGOTIhwQ==}
-    dependencies:
-      '@types/prop-types': 15.7.5
-      '@types/scheduler': 0.16.2
-      csstype: 3.1.1
-    dev: true
-
   /@types/react/18.0.21:
     resolution: {integrity: sha512-7QUCOxvFgnD5Jk8ZKlUAhVcRj7GuJRjnjjiY/IUBWKgOlnvDvTMLD4RTF7NPyVmbRhNrbomZiOepg7M/2Kj1mA==}
     dependencies:
@@ -7700,6 +7634,7 @@ packages:
     dependencies:
       enhanced-resolve: 5.10.0
       escalade: 3.1.1
+    dev: false
 
   /next/12.3.1_6tziyx3dehkoeijunclpkpolha:
     resolution: {integrity: sha512-l7bvmSeIwX5lp07WtIiP9u2ytZMv7jIeB8iacR28PuUEFG5j0HGAPnMqyG5kbZNBG2H7tRsrQ4HCjuMOPnANZw==}
