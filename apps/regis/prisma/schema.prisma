@@ -22,6 +22,6 @@ model user {
   lastname  String
   year      Int
   province  String
-  phonenum  String
+  phoneNum  String
   role      Role   @default(CAMPER)
 }

@@ -13,6 +13,8 @@ import { UsersModule } from './users/users.module';
       driver: ApolloDriver,
       debug: process.env.NODE_ENV === 'development',
       playground: process.env.NODE_ENV === 'development',
+      autoSchemaFile: true,
+      sortSchema: true,
     }),
     UsersModule,
   ],
