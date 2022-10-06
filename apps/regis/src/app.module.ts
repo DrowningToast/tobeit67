@@ -6,24 +6,27 @@ import {
   RequestMethod,
 } from '@nestjs/common';
 import { GraphQLModule } from '@nestjs/graphql';
-import { PreauthMiddleware } from '../middleware/preauth.middleware.js';
+import { PreauthMiddleware } from './middleware/preauth.middleware.js';
 import { AppController } from './app.controller.js';
 import { AppService } from './app.service';
-import { UsersModule } from './users/users.module';
-import { UsersService } from './users/users.service.js';
+
+import { join } from 'path';
+import { UserModule } from './user/user.module';
+
+console.log(process.env.NODE_ENV);
 
 @Module({
   imports: [
     GraphQLModule.forRoot<ApolloDriverConfig>({
       driver: ApolloDriver,
       debug: process.env.NODE_ENV === 'development',
-      playground: process.env.NODE_ENV === 'development',
-      autoSchemaFile: true,
-      sortSchema: true,
+      playground: true,
+      autoSchemaFile: join(process.cwd(), 'src/schema.gql'),
     }),
+    UserModule,
   ],
   controllers: [AppController],
-  providers: [AppService, UsersService],
+  providers: [AppService],
 })
 export class AppModule implements NestModule {
   configure(consumer: MiddlewareConsumer) {

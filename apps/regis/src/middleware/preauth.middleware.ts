@@ -2,9 +2,9 @@ import { Injectable, NestMiddleware } from '@nestjs/common';
 import { Request, Response } from 'express';
 import firebase, { auth } from 'firebase-admin';
 import { App, AppOptions } from 'firebase-admin/app';
-import { prismaClient } from 'src/main';
+import { prismaClient } from '../main';
 
-import serviceAccount from '../../../firebase-service.json';
+import serviceAccount from './firebase-service.json';
 
 console.log(serviceAccount);
 

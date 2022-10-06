@@ -1,0 +1,24 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+"""Camper and Staff user information"""
+type User {
+  id: Int!
+  email: String!
+  firstName: String!
+  lastName: String!
+  year: Int!
+  province: String!
+  phoneNum: String!
+  role: Role!
+}
+
+enum Role {
+  CAMPER
+  STAFF
+}
+
+type Query {
+  users: [User!]!
+}

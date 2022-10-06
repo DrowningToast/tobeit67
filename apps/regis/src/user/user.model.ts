@@ -9,22 +9,20 @@ registerEnumType(Role, {
   name: 'Role',
 });
 
-@ObjectType()
+@ObjectType({ description: 'Camper and Staff user information' })
 export class User {
   @Field((type) => Int)
   id: number;
 
   @Field()
   email: string;
-
   @Field()
   firstName: string;
-
   @Field()
   lastName: string;
 
-  @Field()
-  year: string;
+  @Field((type) => Int)
+  year: number;
 
   @Field()
   province: string;
