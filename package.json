@@ -11,7 +11,8 @@
     "dev": "turbo run dev --parallel",
     "lint": "turbo run lint",
     "format": "prettier --write \"**/*.{ts,tsx,md}\"",
-    "home:dev": ""
+    "home:dev": "",
+    "setup": "pnpm i && cd "
   },
   "devDependencies": {
     "eslint-config-custom": "workspace:*",
