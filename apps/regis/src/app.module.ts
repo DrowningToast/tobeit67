@@ -1,14 +1,19 @@
 import { ApolloDriver, ApolloDriverConfig } from '@nestjs/apollo';
-import { Module } from '@nestjs/common';
+import {
+  MiddlewareConsumer,
+  Module,
+  NestModule,
+  RequestMethod,
+} from '@nestjs/common';
 import { GraphQLModule } from '@nestjs/graphql';
+import { PreauthMiddleware } from '../middleware/preauth.middleware.js';
 import { AppController } from './app.controller.js';
 import { AppService } from './app.service';
-import { CatModule } from './cat/cat.module';
 import { UsersModule } from './users/users.module';
+import { UsersService } from './users/users.service.js';
 
 @Module({
   imports: [
-    CatModule,
     GraphQLModule.forRoot<ApolloDriverConfig>({
       driver: ApolloDriver,
       debug: process.env.NODE_ENV === 'development',
@@ -16,9 +21,15 @@ import { UsersModule } from './users/users.module';
       autoSchemaFile: true,
       sortSchema: true,
     }),
-    UsersModule,
   ],
   controllers: [AppController],
-  providers: [AppService],
+  providers: [AppService, UsersService],
 })
-export class AppModule {}
+export class AppModule implements NestModule {
+  configure(consumer: MiddlewareConsumer) {
+    consumer.apply(PreauthMiddleware).forRoutes({
+      path: '*',
+      method: RequestMethod.ALL,
+    });
+  }
+}

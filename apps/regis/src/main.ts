@@ -1,5 +1,6 @@
 import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
+import { PrismaClient } from '@prisma/client';
 
 declare const module: any;
 
@@ -13,3 +14,5 @@ async function bootstrap() {
   }
 }
 bootstrap();
+
+export const prismaClient = new PrismaClient();

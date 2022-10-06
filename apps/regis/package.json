@@ -31,6 +31,7 @@
     "apollo-server-express": "^3.10.2",
     "dotenv": "^16.0.3",
     "find-up": "^6.3.0",
+    "firebase-admin": "^11.0.1",
     "graphql": "^16.6.0",
     "mongoose": "^6.6.5",
     "prisma": "^4.4.0",
