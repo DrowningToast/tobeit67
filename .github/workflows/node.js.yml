@@ -1,6 +1,13 @@
 name: pnpm build
 on:
-  push:
+  push :
+    branches:
+    - production
+    - dev
+  pull_request:
+    branches:
+    - production
+    - dev
 jobs:
   build:
     runs-on: ubuntu-20.04
