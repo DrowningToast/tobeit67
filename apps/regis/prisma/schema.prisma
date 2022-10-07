@@ -15,13 +15,25 @@ enum Role {
   STAFF
 }
 
+enum Grade {
+  M4
+  M5
+  M6
+  P1
+  P2
+  P3
+  OTHER
+}
+
 model user {
-  id        Int    @id @default(autoincrement())
-  email     String @unique
+  id        Int     @id @default(autoincrement())
+  email     String  @unique
   firstname String
   lastname  String
-  year      Int
+  grade     Grade
   province  String
   phoneNum  String
-  role      Role   @default(CAMPER)
+  role      Role    @default(CAMPER)
+  emailSent Boolean @default(false)
+  onsite    Boolean @default(false)
 }

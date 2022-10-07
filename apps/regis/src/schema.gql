@@ -6,12 +6,26 @@
 type User {
   id: Int!
   email: String!
-  firstName: String!
-  lastName: String!
-  year: Int!
+  firstname: String!
+  lastname: String!
+  grade: Grade!
   province: String!
   phoneNum: String!
+
+  """CAMPER | STAFF"""
   role: Role!
+  emailSent: Boolean!
+  onsite: Boolean!
+}
+
+enum Grade {
+  M4
+  M5
+  M6
+  P1
+  P2
+  P3
+  OTHER
 }
 
 enum Role {
@@ -20,5 +34,18 @@ enum Role {
 }
 
 type Query {
-  users: [User!]!
+  users(id: Int!): [User!]!
+}
+
+type Mutation {
+  create(userInput: UserInput!): User!
+}
+
+input UserInput {
+  email: String!
+  firstname: String!
+  lastname: String!
+  grade: Grade!
+  province: String!
+  phoneNum: String!
 }
