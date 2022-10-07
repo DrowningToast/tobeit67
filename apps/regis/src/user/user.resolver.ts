@@ -6,8 +6,10 @@ import { UserService } from './user.service';
 export class UserResolver {
   constructor(private userService: UserService) {}
 
-  @Query((returns) => [User])
-  users(@Args({ name: 'id', type: () => Int }) id: number): Promise<User[]> {
+  @Query((returns) => [User], { nullable: true })
+  users(
+    @Args({ name: 'id', type: () => Int, nullable: true }) id: number,
+  ): Promise<User[]> {
     if (id) {
     } else {
       return this.userService.findAll();

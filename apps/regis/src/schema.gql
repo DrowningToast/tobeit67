@@ -34,7 +34,7 @@ enum Role {
 }
 
 type Query {
-  users(id: Int!): [User!]!
+  users(id: Int): [User!]
 }
 
 type Mutation {
