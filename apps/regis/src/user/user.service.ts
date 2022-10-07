@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { prismaClient } from 'src/main';
-import { User, UserInput } from './user.model';
+import { User, UserDelete, UserInput } from './user.model';
 
 @Injectable()
 export class UserService {
@@ -10,6 +10,18 @@ export class UserService {
         id,
       },
     });
+
+    return queryUser;
+  }
+
+  async findOne(user: Partial<User>): Promise<User[]> {
+    const queryUser = await prismaClient.user.findMany({
+      where: {
+        ...user,
+      },
+    });
+
+    console.log(queryUser);
 
     return queryUser;
   }
@@ -32,5 +44,26 @@ export class UserService {
     });
 
     return user;
+  }
+
+  async edit(user: Partial<UserInput>): Promise<User> {
+    const queryUser = await prismaClient.user.update({
+      where: {
+        ...user,
+      },
+      data: {
+        ...user,
+      },
+    });
+  }
+
+  async remove(user: Partial<UserDelete>): Promise<User> {
+    const queryUser = await prismaClient.user.delete({
+      where: {
+        ...user,
+      },
+    });
+
+    return queryUser;
   }
 }
