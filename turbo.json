@@ -12,5 +12,16 @@
       "cache": false
     }
   },
-  "globalDependencies": [".env"]
+  "globalDependencies": [
+    ".env",
+    "$airtableKey",
+    "$airtableMainBase",
+    "$apiKey",
+    "$authDomain",
+    "$projectId",
+    "$storageBucket",
+    "$messagingSenderId",
+    "$appId",
+    "$measurementId"
+  ]
 }

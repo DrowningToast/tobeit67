@@ -12,8 +12,12 @@
     "lint": "turbo run lint",
     "format": "prettier --write \"**/*.{ts,tsx,md}\"",
     "home:dev": "",
-    "setup:mac": "pnpm i && cp .env.example .env && docker compose up -d  && cp firebase-config.example.json firebase-config.json && cp firebase-service.example.json ./apps/regis/firebase-service.json && npx prisma migrate dev --schema apps/regis/prisma/schema.prisma && npx prisma generate --schema apps/regis/prisma/schema.prisma",
-    "setup:window": "pnpm i && copy .env.example .env && docker compose up -d  && copy firebase-config.example.json firebase-config.json && npx prisma migrate dev --schema apps/regis/prisma/schema.prisma && npx prisma generate --schema apps/regis/prisma/schema.prisma"
+    "presetup": "cp .env.example .env.template",
+    "setup": "pnpm i && pnpm run setup:env && docker compose up -d && pnpm run db:migrate && pnpm run db:generate",
+    "setup:env": "cp .env.template .env && pnpm run update:env",
+    "update:env": "cp .env packages/airtable-api/.env && cp .env apps/regis/.env && cp .env packages/firebase-auth-api/.env",
+    "db:migrate": "npx prisma migrate dev --schema apps/regis/prisma/schema.prisma",
+    "db:generate": "npx prisma generate --schema apps/regis/prisma/schema.prisma"
   },
   "devDependencies": {
     "eslint-config-custom": "workspace:*",

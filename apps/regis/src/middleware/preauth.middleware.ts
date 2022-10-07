@@ -4,17 +4,22 @@ import firebase, { auth } from 'firebase-admin';
 import { App, AppOptions } from 'firebase-admin/app';
 import { prismaClient } from '../main';
 
-import serviceAccount from './firebase-service.json';
-
-console.log(serviceAccount);
-
 @Injectable()
 export class PreauthMiddleware implements NestMiddleware {
   private defaultApp: App;
 
   constructor() {
     this.defaultApp = firebase.initializeApp({
-      ...serviceAccount,
+      projectId: process.env.projectId,
+      type: process.env.type,
+      private_key_id: process.env.private_key_id,
+      private_key: process.env.private_key,
+      client_email: process.env.client_email,
+      client_id: process.env.client_id,
+      auth_uri: process.env.auth_uri,
+      token_uri: process.env.token_uri,
+      auth_provider_x509_cert_url: process.env.auth_provider_x509_cert_url,
+      client_x509_cert_url: process.env.client_x509_cert_url,
     } as AppOptions);
   }
 
