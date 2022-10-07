@@ -2,20 +2,24 @@
 # THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
 # ------------------------------------------------------
 
+type Query {
+  users(user: User): [Users!]
+}
+
 """Camper and Staff user information"""
-type User {
-  id: Int!
-  email: String!
-  firstname: String!
-  lastname: String!
-  grade: Grade!
-  province: String!
-  phoneNum: String!
+type Users {
+  id: Int
+  email: String
+  firstname: String
+  lastname: String
+  grade: Grade
+  province: String
+  phoneNum: String
 
   """CAMPER | STAFF"""
-  role: Role!
-  emailSent: Boolean!
-  onsite: Boolean!
+  role: Role
+  emailSent: Boolean
+  onsite: Boolean
 }
 
 enum Grade {
@@ -33,12 +37,27 @@ enum Role {
   STAFF
 }
 
-type Query {
-  users(id: Int): [User!]
+input User {
+  id: Int
+  email: String
+  firstname: String
+  lastname: String
+  grade: Grade
+  province: String
+  phoneNum: String
+
+  """CAMPER | STAFF"""
+  role: Role
+  emailSent: Boolean
+  onsite: Boolean
 }
 
 type Mutation {
-  create(userInput: UserInput!): User!
+  insert_user(userInput: UserInput!): Users!
+  edit_user(target: User!, update: UserEdit!): Users!
+
+  """Require at least one of the args"""
+  remove_user(user: UserDelete!): Users!
 }
 
 input UserInput {
@@ -48,4 +67,20 @@ input UserInput {
   grade: Grade!
   province: String!
   phoneNum: String!
+}
+
+input UserEdit {
+  id: Int
+  firstname: String
+  lastname: String
+  grade: Grade
+  province: String
+  phoneNum: String
+  emailSent: Boolean
+  onsite: Boolean
+}
+
+input UserDelete {
+  id: Int
+  email: String!
 }

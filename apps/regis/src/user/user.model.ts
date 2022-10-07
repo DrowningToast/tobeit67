@@ -30,28 +30,32 @@ registerEnumType(Grade, {
   name: 'Grade',
 });
 
-@ObjectType({ description: 'Camper and Staff user information' })
+@ObjectType('Users', {
+  description: 'Camper and Staff user information',
+  isAbstract: true,
+})
+@InputType('User', { isAbstract: true })
 export class User {
-  @Field((type) => Int)
+  @Field((type) => Int, { nullable: true })
   id: number;
 
-  @Field()
+  @Field({ nullable: true })
   email: string;
-  @Field()
+  @Field({ nullable: true })
   firstname: string;
-  @Field()
+  @Field({ nullable: true })
   lastname: string;
-  @Field((type) => Grade)
+  @Field((type) => Grade, { nullable: true })
   grade: 'M4' | 'M5' | 'M6' | 'P1' | 'P2' | 'P3' | 'OTHER';
-  @Field()
+  @Field({ nullable: true })
   province: string;
-  @Field()
+  @Field({ nullable: true })
   phoneNum: string;
-  @Field((type) => Role, { description: 'CAMPER | STAFF' })
+  @Field((type) => Role, { description: 'CAMPER | STAFF', nullable: true })
   role: 'CAMPER' | 'STAFF';
-  @Field()
+  @Field({ nullable: true })
   emailSent: boolean;
-  @Field()
+  @Field({ nullable: true })
   onsite: boolean;
 }
 
@@ -69,4 +73,34 @@ export class UserInput {
   province: string;
   @Field()
   phoneNum: string;
+}
+
+@InputType()
+export class UserEdit {
+  @Field((type) => Int, { nullable: true })
+  id: number;
+
+  @Field({ nullable: true })
+  firstname: string;
+  @Field({ nullable: true })
+  lastname: string;
+  @Field((type) => Grade, { nullable: true })
+  grade: 'M4' | 'M5' | 'M6' | 'P1' | 'P2' | 'P3' | 'OTHER';
+  @Field({ nullable: true })
+  province: string;
+  @Field({ nullable: true })
+  phoneNum: string;
+
+  @Field({ nullable: true })
+  emailSent: boolean;
+  @Field({ nullable: true })
+  onsite: boolean;
+}
+
+@InputType()
+export class UserDelete {
+  @Field((type) => Int, { nullable: true })
+  id: number;
+  @Field()
+  email: string;
 }
