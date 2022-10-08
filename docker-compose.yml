@@ -46,3 +46,27 @@ services:
       - ./pb-bouncer:/etc/pgbouncer
     depends_on:
       - postgres
+
+  cms:
+    container_name: tobeit-cms
+    build:
+      context: apps/cms
+      dockerfile: apps/cms/Dockerfile
+    restart: unless-stopped
+    env_file:
+      - .env
+    environment:
+      - DATABASE_CLIENT=postgres
+      - DATABASE_HOST=postgres
+      - DATABASE_PORT=${POSTGRES_SERVER_PORT}
+      - DATABASE_NAME=${POSTGRES_CMS_DB_NAME}
+      - DATABASE_USERNAME=${POSTGRES_DB_NAME}
+      - DATABASE_PASSWORD=${POSTGRES_PASSWORD}
+      - DATABASE_SSL=false
+      - HOST=${HOST}
+    ports:
+      - 1337:1337
+    volumes:
+      - ./strapi:/etc/strapi
+    depends_on:
+      - postgres
