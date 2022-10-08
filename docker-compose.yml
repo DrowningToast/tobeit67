@@ -46,3 +46,12 @@ services:
       - ./pb-bouncer:/etc/pgbouncer
     depends_on:
       - postgres
+
+  cms:
+    container_name: tobeit-cms
+    image: strapi/strapi
+    restart: unless-stopped
+    ports:
+      - 5000:1337
+    volumes:
+      - ./strapi:/etc/strapi
