@@ -1,5 +1,4 @@
 import dotenv from "dotenv";
-// import { Ijobs } from "./types/Ijobs";
 dotenv.config({});
 
 import Airtable from "airtable";
