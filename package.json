@@ -9,7 +9,7 @@
   "scripts": {
     "prebuild": "turbo run build",
     "build": "npm i -g pnpm && pnpm config set auto-install-peers true && turbo run build",
-    "dev": "docker-compose -f docker-compose.dev.yml up -d && turbo run dev --parallel",
+    "dev": "pnpm run compose:dev && turbo run dev --parallel",
     "dev:home": "turbo run dev --filter=home",
     "dev:cms": "turbo run dev --filter=cms",
     "dev:regis": "turbo run dev --filter=regis",
