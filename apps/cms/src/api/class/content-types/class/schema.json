@@ -1,0 +1,54 @@
+{
+  "kind": "collectionType",
+  "collectionName": "classes",
+  "info": {
+    "singularName": "class",
+    "pluralName": "classes",
+    "displayName": "Class",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "description": {
+      "type": "string"
+    },
+    "teacher": {
+      "type": "string"
+    },
+    "class_slot": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::class-slot.class-slot",
+      "inversedBy": "classes"
+    },
+    "classId": {
+      "type": "uid"
+    },
+    "thumbnail": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "maxStudent": {
+      "type": "biginteger"
+    },
+    "topic": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::topic.topic",
+      "inversedBy": "classes"
+    }
+  }
+}

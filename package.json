@@ -8,7 +8,12 @@
   ],
   "scripts": {
     "build": "turbo run build",
-    "dev": "turbo run dev --parallel",
+    "dev": "docker-compose -f docker-compose.dev.yml up -d && turbo run dev --parallel",
+    "dev:home": "turbo run dev --filter=home",
+    "dev:cms": "turbo run dev --filter=cms",
+    "dev:regis": "turbo run dev --filter=regis",
+    "compose:dev": "docker-compose -f docker-compose.dev.yml up -d",
+    "compose:prod": "docker-compose -f docker-compose.yml up -d --build",
     "lint": "turbo run lint",
     "format": "prettier --write \"**/*.{ts,tsx,md}\"",
     "home:dev": "",

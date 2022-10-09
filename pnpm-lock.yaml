@@ -184,7 +184,6 @@ importers:
       dotenv: ^16.0.1
       encoding: ^0.1.13
       find-up: ^6.3.0
-      tsconfig: workspace:*
       typescript: ^4.8.2
     dependencies:
       '@types/node': 18.7.13
@@ -192,7 +191,6 @@ importers:
       dotenv: 16.0.3
       encoding: 0.1.13
       find-up: 6.3.0
-      tsconfig: link:../tsconfig
       typescript: 4.8.4
 
   packages/firebase-auth-api:
@@ -200,7 +198,6 @@ importers:
       '@types/node': ^18.7.13
       '@types/react': ^17.0.37
       axios: ^0.27.2
-      dotenv: ^16.0.3
       firebase: ^9.9.3
       jotai: ^1.8.1
       next: 12.2.5
@@ -212,7 +209,6 @@ importers:
       '@types/node': 18.8.2
       '@types/react': 17.0.50
       axios: 0.27.2
-      dotenv: 16.0.3
       firebase: 9.10.0
       jotai: 1.8.4_react@18.2.0
       next: 12.2.5_biqbaboplfbrettd7655fr4n2y

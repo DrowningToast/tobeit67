@@ -21,7 +21,6 @@
     "dotenv": "^16.0.1",
     "encoding": "^0.1.13",
     "find-up": "^6.3.0",
-    "tsconfig": "workspace:*",
     "typescript": "^4.8.2"
   }
 }
