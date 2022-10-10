@@ -12,7 +12,7 @@ const Middle = () => {
     >
       <img
         src="/assets/wave-about.svg"
-        className="absolute top-0 -translate-y-full"
+        className="-translate-y-[99%] w-[101%]"
       />
       <article className="grid place-items-center px-8 my-12">
         <div
