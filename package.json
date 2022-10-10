@@ -21,7 +21,7 @@
     "presetup": "cp .env.example .env.template",
     "setup": "pnpm i && pnpm run setup:env && docker compose up -d && pnpm run db:migrate && pnpm run db:generate",
     "setup:env": "cp .env.template .env && pnpm run update:env",
-    "update:env": "cp .env packages/airtable-api/.env && cp .env apps/regis/.env && cp .env packages/firebase-auth-api/.env && cp .env apps/cms/.env",
+    "update:env": "cp .env apps/regis/.env && cp .env packages/firebase-auth-api/.env && cp .env apps/cms/.env",
     "db:migrate": "npx prisma migrate dev --schema apps/regis/prisma/schema.prisma",
     "db:generate": "npx prisma generate --schema apps/regis/prisma/schema.prisma"
   },
