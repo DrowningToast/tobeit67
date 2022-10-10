@@ -26,7 +26,7 @@ const Hero = () => {
       <img className="mt-6 z-20 md:hidden" src="/assets/octopus.svg" />
       <img
         src="/assets/octopus-lg.svg"
-        className="z-20 md:row-start-2 md:row-span-3 md:w-full md:scale-150 md:transform md:-translate-y-36"
+        className="z-20 md:row-start-2 md:row-span-3 md:w-full md:scale-125 md:transform md:-translate-y-36 hidden md:block"
       />
     </section>
   );
