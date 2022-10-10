@@ -19,7 +19,7 @@
     "format": "prettier --write \"**/*.{ts,tsx,md}\"",
     "home:dev": "",
     "presetup": "cp .env.example .env.template",
-    "setup": "pnpm i && pnpm run setup:env && docker compose up -d && pnpm run db:migrate && pnpm run db:generate",
+    "setup": "pnpm i && pnpm run setup:env && docker compose up -d && pnpm run db:migrate && pnpm run db:generate && pnpm run compose:prod",
     "setup:env": "cp .env.template .env && pnpm run update:env",
     "update:env": "cp .env apps/regis/.env && cp .env packages/firebase-auth-api/.env && cp .env apps/cms/.env",
     "db:migrate": "npx prisma migrate dev --schema apps/regis/prisma/schema.prisma",
