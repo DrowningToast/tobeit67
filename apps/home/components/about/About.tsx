@@ -1,5 +1,5 @@
 import Image from "next/image";
-import Agenda from "../Agenda/Agenda";
+import Agenda from "../agenda/Agenda";
 import Compilation from "../carousel/Carousel";
 
 const Middle = () => {
