@@ -22,6 +22,7 @@
     "@mantine/notifications": "^5.5.4",
     "@mantine/nprogress": "^5.5.4",
     "@mantine/rte": "^5.5.4",
+    "@svgr/webpack": "^6.4.0",
     "dayjs": "^1.11.5",
     "firebase": "^9.10.0",
     "framer-motion": "^7.5.2",
