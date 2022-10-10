@@ -4,17 +4,12 @@ import Compilation from "../carousel/Carousel";
 
 const Middle = () => {
   return (
-    <div
-      //   style={{
-      //     background: "linear-gradient(180deg, #73DBDD 25.31%, #26888A 73.23%)",
-      //   }}
-      className="relative bg-gradient-to-b from-[#73DBDD] to-[#26888A]"
-    >
+    <div className="relative flex flex-col justify-start bg-gradient-to-b from-[#73DBDD] to-[#26888A]">
       <img
         src="/assets/wave-about.svg"
         className="-translate-y-[99%] w-[101%]"
       />
-      <article className="grid place-items-center px-8 my-12">
+      <article className="grid place-items-center px-8 mt-0 mb-12">
         <div
           style={{
             background:
@@ -22,7 +17,9 @@ const Middle = () => {
           }}
           className="w-full p-6 rounded-[40px] grid grid-cols-2 gap-y-4"
         >
-          <h1 className="font-chonburi text-4xl self-center">About</h1>
+          <h1 className="font-chonburi text-4xl self-center text-black">
+            About
+          </h1>
           <div className="w-full flex justify-end">
             <div className="w-24">
               <Image
@@ -34,16 +31,12 @@ const Middle = () => {
               />
             </div>
           </div>
-          <div className="col-span-2 font-noto flex flex-col gap-y-2">
+          <div className="col-span-2 font-noto flex flex-col gap-y-2 text-black">
+            <p>ToBeIT'67 เสริมความคิด ติดความรู้ ก้าวเข้าสู่ เด็กไอที</p>
             <p>
-              พบกันอีกครั้งกับงาน ToBeIT'67 เสริมความคิด ติดความรู้ ก้าวเข้าสู่
-              เด็กไอที 💫
-            </p>
-            <p>
-              ขอเชิญชวนน้องๆ ที่มีความสนใจทางด้านเทคโนโลยีสารสนเทศ
-              พบปะกับโลกประสบการณ์ทางด้านไอที
-              พร้อมกับทักษะด้านไอทีอีกมากมายในค่ายนี้นับไม่ถ้วน
-              กิจกรรมมีตลอดทั้งออนไลน์และออนไซต์
+              กิจกรรมที่จะพาน้องๆ
+              ผ่านกิจกรรมการเรียนรู้ผ่านบนโลกออนไลน์และภายในคณะไอที
+              เพื่อเสริมความรู้วิชาการเทคโนโลยีสารสนเทศให้แก่ ส้งคม
             </p>
           </div>
           <div className="w-20 place-self-center mt-16">
