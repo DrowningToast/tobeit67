@@ -1,23 +1,20 @@
 import { Carousel } from "@mantine/carousel";
-import Image from 'next/image';
-
+import Image from "next/image";
 
 const carouselPictures = [
   {
-    src: '/assets/carousel/P6180043.png',
+    src: "/assets/carousel/P6180043.png",
   },
   {
-    src: '/assets/carousel/IMG_0326.png',
+    src: "/assets/carousel/IMG_0326.png",
   },
   {
-    src: '/assets/carousel/P6180043.png',
+    src: "/assets/carousel/P6180043.png",
   },
   {
-    src: '/assets/carousel/P6180343.JPG',
-  }
-]
-
-
+    src: "/assets/carousel/P6180343.JPG",
+  },
+];
 
 const Compilation: React.FC = () => {
   return (
@@ -32,12 +29,11 @@ const Compilation: React.FC = () => {
         withIndicators={true}
       >
         {carouselPictures.map((picture, index) => (
-          <Carousel.Slide className='rounded-xl w-full'>
+          <Carousel.Slide key={index} className="rounded-xl w-full">
             <Image
               {...picture}
-              layout='responsive'
-              className='rounded-xl w-full'
-              key={index}
+              layout="responsive"
+              className="rounded-xl w-full"
               width={4608}
               height={3456}
             />
