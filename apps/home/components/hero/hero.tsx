@@ -6,7 +6,7 @@ const Hero = () => {
   const opacity = useTransform(scrollY, [0, 300], [0.35, 0.8]);
 
   return (
-    <section className="overflow-x-hidden overflow-y-hidden bg-gradient-to-t from-[#007577] via-[#007577] to-[#FB8763] w-full flex flex-col md:grid md:grid-cols-2 justify-center gap-y-4 px-8 md:px-32 pt-36 md:pt-52 relative">
+    <section className="overflow-x-hidden overflow-y-hidden bg-gradient-to-t from-[#007577] via-[#007577] to-[#FB8763] w-full flex flex-col md:grid md:grid-cols-2 justify-center gap-y-4 px-8 md:px-32 pt-36 md:pt-52 md:mb-12 relative">
       {/* Title */}
       <img
         className="self-end md:col-start-2"
@@ -62,7 +62,7 @@ const Hero = () => {
       <img className="mt-6 z-20 md:hidden" src="/assets/octopus.svg" />
       <img
         src="/assets/octopus-lg.svg"
-        className="z-20 md:row-start-2 md:row-span-3 md:w-full md:scale-150 md:transform md:-translate-y-36 hidden md:block"
+        className="z-20 md:row-start-1 md:row-span-4 md:w-full md:scale-125 md:transform md:translate-y-2 hidden md:block"
       />
     </section>
   );

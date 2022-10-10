@@ -7,7 +7,7 @@ const Middle = () => {
     <div className="relative flex flex-col justify-start bg-gradient-to-b from-[#73DBDD] to-[#26888A]">
       <img
         src="/assets/wave-about.svg"
-        className="-translate-y-[99%] w-[101%] md:absolute md:top-0 md:inset-x-0"
+        className="-translate-y-[74.5%] w-[101%] md:absolute md:top-0 md:inset-x-0 md:scale-y-50"
       />
       <article className="grid place-items-center px-8 md:px-36 mt-0 mb-12">
         <div
@@ -15,12 +15,12 @@ const Middle = () => {
             background:
               "linear-gradient(177.91deg, #FFFFFF 28.67%, rgba(255, 255, 255, 0) 83.46%)",
           }}
-          className="w-full p-6 md:px-16 md:py-12 rounded-[40px] grid grid-cols-2 gap-y-4"
+          className="w-full p-6 md:px-20 md:py-12 rounded-[40px] grid grid-cols-2 gap-y-4 md:mt-12"
         >
           <h1 className="font-chonburi text-4xl md:text-7xl self-center text-black">
             About
           </h1>
-          <div className="w-full flex justify-end md:row-span-2 md:w-full md:grid md:place-items-center md:justify-center">
+          <div className="w-full flex justify-end md:row-span-2 md:w-full md:grid md:place-items-center md:justify-end">
             <div className="w-24 md:w-72">
               <Image
                 src="/assets/tobe-logo.svg"
