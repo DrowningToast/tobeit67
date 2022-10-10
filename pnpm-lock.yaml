@@ -35,6 +35,7 @@ importers:
       '@babel/core': ^7.0.0
       '@emotion/react': ^11.10.4
       '@emotion/styled': ^11.10.4
+      '@mantine/carousel': ^5.5.4
       '@mantine/core': ^5.5.4
       '@mantine/dates': ^5.5.4
       '@mantine/dropzone': ^5.5.4
@@ -68,6 +69,7 @@ importers:
       '@babel/core': 7.19.3
       '@emotion/react': 11.10.4_bjroym7kxlcs2vvwnej4p3gzwu
       '@emotion/styled': 11.10.4_ogudqqhlstsi7uge4lir7ff3ty
+      '@mantine/carousel': 5.5.4_jr5hk3qlxrljdeagyy4sst4fqu
       '@mantine/core': 5.5.4_46jyd4tz2lts7aqjdwe2gnr2n4
       '@mantine/dates': 5.5.4_77mcgelljxyonuixz5lsq6z3im
       '@mantine/dropzone': 5.5.4_peoatue7sckyfiogasz7flkvpm
@@ -4320,6 +4322,21 @@ packages:
 
   /@leichtgewicht/ip-codec/2.0.4:
     resolution: {integrity: sha512-Hcv+nVC0kZnQ3tD9GVu5xSMR4VVYOteQIr/hwFPVEvPdlXqgGEuRjiheChHgdM+JyqdgNcmzZOX/tnl0JOiI7A==}
+    dev: false
+
+  /@mantine/carousel/5.5.4_jr5hk3qlxrljdeagyy4sst4fqu:
+    resolution: {integrity: sha512-mwTp0OP+rx3XkkE974kPxRFCOsINwTk3oQC9E9cAaow5VXB2BlEeCgtreqsx9isRaIM0rNyLC6n/gGAv7UeGvw==}
+    peerDependencies:
+      '@mantine/core': 5.5.4
+      '@mantine/hooks': 5.5.4
+      embla-carousel-react: ^7.0.0
+      react: '>=16.8.0'
+    dependencies:
+      '@mantine/core': 5.5.4_46jyd4tz2lts7aqjdwe2gnr2n4
+      '@mantine/hooks': 5.5.4_react@18.2.0
+      '@mantine/utils': 5.5.4_react@18.2.0
+      embla-carousel-react: 7.0.3_react@18.2.0
+      react: 18.2.0
     dev: false
 
   /@mantine/core/5.5.4_46jyd4tz2lts7aqjdwe2gnr2n4:
@@ -9196,6 +9213,19 @@ packages:
       inherits: 2.0.4
       minimalistic-assert: 1.0.1
       minimalistic-crypto-utils: 1.0.1
+    dev: false
+
+  /embla-carousel-react/7.0.3_react@18.2.0:
+    resolution: {integrity: sha512-nvgAAmoFuXyCPuH2rSTnSdaTSMwFX/ilXDlfMCCDfdaj4X3u25+x8lMC1bINuk+4G2Hm6SOlrZ1eGkYdBg5HAg==}
+    peerDependencies:
+      react: ^18.1.0
+    dependencies:
+      embla-carousel: 7.0.3
+      react: 18.2.0
+    dev: false
+
+  /embla-carousel/7.0.3:
+    resolution: {integrity: sha512-Zo8E/qNb8J7n/jcfQxPrfdARlTgsMvmcXshn3J/2oxWVLwL/3N4cAhuqLQiud/oCjZzl+A8maCJDe2PDVlc/cA==}
     dev: false
 
   /emittery/0.10.2:

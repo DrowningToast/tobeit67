@@ -15,6 +15,11 @@ module.exports = {
         "sea-serpent": "#4BC7CF",
         "water-blue": "#007577",
       },
+      fontFamily: {
+        noto: '"Noto Sans Thai"',
+        kanit: '"Kanit"',
+        chonburi: '"Chonburi"',
+      },
     },
   },
   plugins: [],
