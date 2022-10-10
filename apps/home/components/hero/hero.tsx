@@ -1,14 +1,40 @@
+import { motion } from "framer-motion";
+
 const Hero = () => {
   return (
-    <section className="bg-gradient-to-t from-[#007577] via-[#007577] to-[#FB8763] w-full flex flex-col md:grid md:grid-cols-2 justify-center gap-y-4 px-8 md:px-32 pt-36 md:pt-52 relative">
+    <section className="overflow-x-hidden bg-gradient-to-t from-[#007577] via-[#007577] to-[#FB8763] w-full flex flex-col md:grid md:grid-cols-2 justify-center gap-y-4 px-8 md:px-32 pt-36 md:pt-52 relative">
       {/* Title */}
       <img
         className="self-end md:col-start-2"
         src="/assets/tobeit67.svg"
         alt="ToBeIT'67"
       />
-      {/* Clouds */}
-      <img
+      {/* Clouds A */}
+      <motion.img
+        animate={{
+          x: ["0%", "100%"],
+          y: 0,
+          transition: {
+            ease: "linear",
+            duration: 60,
+            repeat: Infinity,
+          },
+        }}
+        src="/assets/clouds.svg"
+        alt="clouds svg"
+        className="absolute top-0 inset-x-0 md:w-full"
+      />
+      {/* Clouds A */}
+      <motion.img
+        animate={{
+          x: ["-100%", "0%"],
+          y: 0,
+          transition: {
+            ease: "linear",
+            duration: 60,
+            repeat: Infinity,
+          },
+        }}
         src="/assets/clouds.svg"
         alt="clouds svg"
         className="absolute top-0 inset-x-0 md:w-full"
