@@ -21,11 +21,11 @@ const Middle = () => {
             About
           </h1>
           <div className="w-full flex justify-end md:row-span-2 md:w-full md:grid md:place-items-center md:justify-end">
-            <div className="w-24 md:w-72">
+            <div className="w-24 md:w-96">
               <Image
                 src="/assets/tobe-logo.svg"
-                width={75}
-                height={75}
+                width={150}
+                height={150}
                 layout="responsive"
               />
             </div>
