@@ -29,7 +29,7 @@ const Compilation: React.FC = () => {
         withIndicators={true}
       >
         {carouselPictures.map((picture, index) => (
-          <Carousel.Slide key={index} className="rounded-xl w-full" key={index}>
+          <Carousel.Slide key={index} className="rounded-xl w-full">
             <Image
               {...picture}
               layout="responsive"
