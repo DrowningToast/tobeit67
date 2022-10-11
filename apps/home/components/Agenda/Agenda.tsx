@@ -46,14 +46,14 @@ const Agenda = () => {
         Agenda
       </h1>
       <Timeline
-        color="fresh-salmon"
-        active={1}
+        color="orange"
         bulletSize={30}
+        active={2}
         lineWidth={4}
         classNames={{
           itemTitle: `font-noto font-bold text-lg text-white md:mb-10`,
           item: `flex flex-col gap-y-2 py-1 md:translate-x-1/2`,
-          itemBullet: `border-fresh-salmon border-4`,
+          itemBullet: ``,
         }}
       >
         {events.map((event, index) => {
