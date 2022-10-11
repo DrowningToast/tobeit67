@@ -64,7 +64,7 @@ services:
       - DATABASE_SSL=false
       - HOST=${HOST}
     ports:
-      - 5000:5000
+      - 1337:1337
     volumes:
       - ./strapi:/etc/strapi
     depends_on:

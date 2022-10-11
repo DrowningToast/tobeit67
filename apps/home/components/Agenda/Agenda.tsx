@@ -41,7 +41,7 @@ const events = [
 
 const Agenda = () => {
   return (
-    <div className="px-8 pb-12">
+    <div className="px-8 pb-48">
       <h1 className="font-chonburi text-3xl text-center text-radial my-8">
         Agenda
       </h1>
