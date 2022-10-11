@@ -15,14 +15,14 @@ type Props = {
 const BlogPage: NextPage<Props> = ({ data }) => {
   return (
     <div className='bg-[#4BB0B1] min-h-screen w-full'>
-      <div className="container mx-auto flex flex-col items-center justify-center min-h-screen gap-8">
+      <div className="container mx-auto flex flex-col items-center justify-center min-h-screen gap-8 py-12">
         <h2 className='font-noto text-6xl font-bold text-fresh-salmon drop-shadow'>เนื้อหาเพิ่มเติม</h2>
 
-        <>
+        <div className='w-full flex flex-col gap-4 items-center'>
           {data.map((blog, index) => (
             <BlogCard {...blog} key={index} />
           ))}
-        </>
+        </div>
       </div>
     </div>
   )
@@ -50,6 +50,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
           title: 'ช่วยพี่ด้วยยยยยย',
           author: 'IT20 พี่ซันนนนนนนนน'
         },
+        
       ]
     }
   }
