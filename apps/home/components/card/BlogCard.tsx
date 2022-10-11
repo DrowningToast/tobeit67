@@ -9,9 +9,9 @@ type Props = {
 
 const BlogCard: React.FC<Props> = ({ author, title, description, picture }) => {
   return (
-    <div className='flex flex-row gap-2 w-3/5'>
+    <div className='flex flex-row gap-2 w-3/5 drop-shadow-md'>
       <Image
-        className='mx-auto'
+        className='mx-auto select-none'
         src={picture}
         radius='md'
         sx={{ maxWidth: 220 }}

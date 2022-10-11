@@ -34,14 +34,25 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
       data: [
         {
           picture: '/assets/carousel/IMG_0326.png',
+          description: 'วอดชูทไอดู​ พี่จะตายห่าแล้วครับน้อน ๆ ช่วยพี่ด้วย',
+          title: 'ช่วยพี่ด้วยยยยยย',
+          author: 'IT20 พี่ซันนนนนนนนน'
+        },
+        {
+          picture: '/assets/carousel/IMG_0326.png',
           description: 'รอเล็ม อิพซั่ม โคตรโหด โคตรอันตราย แบบสุดๆ นะโมนั้นมันโก้จริงๆ กินลิโพก็โก้ได้เช่นกัน อันนยองฮาโซโย ชางบินอปป้า ออกตอกเค',
           title: 'ช่วยพี่ด้วยยยยยย',
           author: 'IT20 พี่ซันนนนนนนนน'
-        }
+        },
+        {
+          picture: '/assets/carousel/IMG_0326.png',
+          description: 'รอเล็ม อิพซั่ม โคตรโหด โคตรอันตราย แบบสุดๆ นะโมนั้นมันโก้จริงๆ กินลิโพก็โก้ได้เช่นกัน อันนยองฮาโซโย ชางบินอปป้า ออกตอกเค',
+          title: 'ช่วยพี่ด้วยยยยยย',
+          author: 'IT20 พี่ซันนนนนนนนน'
+        },
       ]
     }
   }
 }
-
 
 export default BlogPage
