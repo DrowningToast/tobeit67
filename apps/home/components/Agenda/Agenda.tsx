@@ -41,8 +41,8 @@ const events = [
 
 const Agenda = () => {
   return (
-    <div className="px-8 pb-48">
-      <h1 className="font-chonburi text-3xl text-center text-radial my-8">
+    <div className="px-8 pb-48 md:mx-auto">
+      <h1 className="font-chonburi text-3xl md:text-5xl text-center text-radial my-8">
         Agenda
       </h1>
       <Timeline
@@ -51,15 +51,21 @@ const Agenda = () => {
         bulletSize={30}
         lineWidth={4}
         classNames={{
-          itemTitle: "font-noto font-bold text-lg text-white",
-          item: "flex flex-col gap-y-2 py-1",
-          itemBullet: "border-fresh-salmon border-4",
+          itemTitle: `font-noto font-bold text-lg text-white md:mb-10`,
+          item: `flex flex-col gap-y-2 py-1 md:translate-x-1/2`,
+          itemBullet: `border-fresh-salmon border-4`,
         }}
       >
         {events.map((event, index) => {
           return (
             <Timeline.Item key={index} title={event.date}>
-              <div className="bg-white  rounded-full text-center font-chonburi font-bold py-1 text-fresh-salmon text-sm">
+              <div
+                className={`${
+                  index % 2 === 0
+                    ? "md:-translate-x-full md:-left-4"
+                    : "md:left-4"
+                } md:absolute md:w-[400px] md:max-w-none max-w-sm md:top-8 bg-white rounded-full text-center font-chonburi font-bold py-1 text-fresh-salmon text-sm md:text-xl`}
+              >
                 {event.title}
               </div>
             </Timeline.Item>
