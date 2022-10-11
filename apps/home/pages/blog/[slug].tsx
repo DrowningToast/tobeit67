@@ -1,5 +1,7 @@
 import { GetServerSideProps, NextPage } from 'next'
 import ReactMarkdown from 'react-markdown'
+import { client } from '../../gql/gql-client'
+import { gql } from '@apollo/client'
 
 type Props = {
   title: string,
@@ -21,7 +23,7 @@ const BlogSlugPage: NextPage<Props> = (props) => {
       >
         <h2 className='font-noto text-6xl font-bold text-fresh-salmon drop-shadow'></h2>
 
-        <div style={{ all: 'revert' }}>
+        <div className='prose lg:prose-xl'>
           <ReactMarkdown>
             {content}
           </ReactMarkdown>
@@ -32,13 +34,35 @@ const BlogSlugPage: NextPage<Props> = (props) => {
 }
 
 export const getServerSideProps: GetServerSideProps<Props> = async (context) => {
+  const query = gql`
+  {
+    blogs {
+      data {
+        attributes {
+          title
+          publishedAt
+          author
+          description
+          content
+        }
+      }
+    }
+  }
+  `
+
+  const data = await client.query({
+    query: query
+  })
+
+  console.log(data);
+  
   return {
     props: {
       picture: '/assets/carousel/IMG_0326.png',
       description: 'รอเล็ม อิพซั่ม โคตรโหด โคตรอันตราย แบบสุดๆ นะโมนั้นมันโก้จริงๆ กินลิโพก็โก้ได้เช่นกัน อันนยองฮาโซโย ชางบินอปป้า ออกตอกเค',
       title: 'ช่วยพี่ด้วยยยยยย',
       author: 'IT20 พี่ซันนนนนนนนน',
-      content: '## AWESOME This is really getting interesting'
+      content: '## AWESOME \n\nThis is really getting interesting'
     },
   }
 }
