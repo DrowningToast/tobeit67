@@ -6,12 +6,12 @@ const RegisHero = () => {
       <img
         src="/assets/wave-regis.svg"
         alt="wave regis svg"
-        className="absolute top-0 transform -translate-y-[99%] md:-translate-y-[75%] md:scale-y-50"
+        className="absolute top-0 transform md:w-full -translate-y-[99%] md:-translate-y-[74.9%] md:scale-y-50"
       />
       <h1 className="font-chonburi text-3xl md:text-6xl text-center text-radial my-6 md:col-span-3">
         ลงทะเบียน
       </h1>
-      <div className="md:grid md:grid-cols-3 md:px-56">
+      <div className="md:grid md:grid-cols-3 md:px-56 sm:px-32">
         <div className="flex flex-col justify-center items-center font-chonburi md:col-start-1">
           <h3 className="text-2xl md:text-3xl">รอบ</h3>
           <h2 className="text-4xl md:text-6xl">Online</h2>

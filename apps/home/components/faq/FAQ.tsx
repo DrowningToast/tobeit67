@@ -19,7 +19,7 @@ const FAQ = () => {
       <img
         src="/assets/wave-faq.svg"
         alt="wave faq svg"
-        className="absolute top-0 transform -translate-y-[99%] md:-translate-y-[74.5%] md:scale-y-50 left-0"
+        className="absolute top-0 transform md:w-full -translate-y-[99%] md:-translate-y-[74.5%] md:scale-y-50 left-0"
       />
       <h1 className="font-chonburi text-5xl text-white text-center">FAQ</h1>
       <div className="flex flex-col text-xs gap-y-8 md:gap-y-24">
