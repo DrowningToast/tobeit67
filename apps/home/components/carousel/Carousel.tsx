@@ -10,7 +10,7 @@ const carouselPictures = [
     src: '/assets/carousel/IMG_0326.png',
   },
   {
-    src: '/assets/carousel/P6180043.png',
+    src: '/assets/carousel/IMG_7392.png',
   },
   {
     src: '/assets/carousel/P6180343.JPG',
@@ -32,14 +32,15 @@ const Compilation: React.FC = () => {
         withIndicators={true}
       >
         {carouselPictures.map((picture, index) => (
-          <Carousel.Slide className='rounded-xl w-full'>
+          <Carousel.Slide className='rounded-xl w-full' key={index}>
             <Image
               {...picture}
               layout='responsive'
               className='rounded-xl w-full'
-              key={index}
               width={4608}
               height={3456}
+              quality={75}
+              loading='eager'
             />
           </Carousel.Slide>
         ))}
