@@ -15,6 +15,9 @@ const nextConfig = {
       'localhost',
       'apitobeit.it.kmitl.ac.th'
     ]
+  },
+  eslint: {
+    ignoreDuringBuilds: true
   }
 };
 
