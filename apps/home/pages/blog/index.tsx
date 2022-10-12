@@ -76,7 +76,7 @@ const BlogPage: NextPage<Props> = ({ data, totalPages, currentPage }) => {
   return (
     <div className='bg-[#4BB0B1] min-h-screen w-full'>
       <div className="container mx-auto flex flex-col items-center justify-center min-h-screen gap-8 py-12">
-        <h2 className='font-noto text-3xl md:text-6xl font-bold text-fresh-salmon drop-shadow'>เนื้อหาเพิ่มเติม</h2>
+        <h2 className='font-noto text-3xl md:text-6xl font-bold text-white drop-shadow'>เนื้อหาเพิ่มเติม</h2>
 
         <div className='w-full flex flex-col gap-4 items-center'>
           {data.map((blog, index) => (

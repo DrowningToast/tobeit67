@@ -9,8 +9,6 @@ type Props = {
   picture: string,
 }
 
-
-
 const BlogCard: React.FC<Props> = ({
   author, title, description, picture, id }) => {
 
