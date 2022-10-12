@@ -13,6 +13,9 @@ RUN pnpm i
 # Bundle app source
 COPY . .
 
+# Migrate
+RUN pnpm run db:generate
+
 # Creates a "dist" folder with the production build
 RUN pnpm build
 
