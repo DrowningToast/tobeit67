@@ -1,0 +1,37 @@
+{
+  "kind": "collectionType",
+  "collectionName": "class_slots",
+  "info": {
+    "singularName": "class-slot",
+    "pluralName": "class-slots",
+    "displayName": "ClassSlot"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "callsign": {
+      "type": "string",
+      "required": true,
+      "unique": true
+    },
+    "start": {
+      "type": "datetime"
+    },
+    "end": {
+      "type": "datetime"
+    },
+    "slotId": {
+      "type": "uid",
+      "targetField": "callsign",
+      "required": true
+    },
+    "classes": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::class.class",
+      "mappedBy": "class_slot"
+    }
+  }
+}

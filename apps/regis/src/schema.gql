@@ -1,0 +1,86 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type Query {
+  users(user: User): [Users!]
+}
+
+"""Camper and Staff user information"""
+type Users {
+  id: Int
+  email: String
+  firstname: String
+  lastname: String
+  grade: Grade
+  province: String
+  phoneNum: String
+
+  """CAMPER | STAFF"""
+  role: Role
+  emailSent: Boolean
+  onsite: Boolean
+}
+
+enum Grade {
+  M4
+  M5
+  M6
+  P1
+  P2
+  P3
+  OTHER
+}
+
+enum Role {
+  CAMPER
+  STAFF
+}
+
+input User {
+  id: Int
+  email: String
+  firstname: String
+  lastname: String
+  grade: Grade
+  province: String
+  phoneNum: String
+
+  """CAMPER | STAFF"""
+  role: Role
+  emailSent: Boolean
+  onsite: Boolean
+}
+
+type Mutation {
+  insert_user(userInput: UserInput!): Users!
+  edit_user(target: User!, update: UserEdit!): Users!
+
+  """Require at least one of the args"""
+  remove_user(user: UserDelete!): Users!
+}
+
+input UserInput {
+  email: String!
+  firstname: String!
+  lastname: String!
+  grade: Grade!
+  province: String!
+  phoneNum: String!
+}
+
+input UserEdit {
+  id: Int
+  firstname: String
+  lastname: String
+  grade: Grade
+  province: String
+  phoneNum: String
+  emailSent: Boolean
+  onsite: Boolean
+}
+
+input UserDelete {
+  id: Int
+  email: String!
+}

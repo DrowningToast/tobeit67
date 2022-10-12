@@ -1,0 +1,71 @@
+version: "3"
+
+services:
+  uptime-kuma:
+    image: louislam/uptime-kuma:1
+    container_name: tobeit-uptime-kuma
+    volumes:
+      - ./uptime-kuma-data:/app/data
+    ports:
+      - 4001:3001
+    restart: always
+    depends_on:
+      - postgres
+      - pgbouncer
+
+  postgres:
+    container_name: tobeit-postgres
+    image: postgres:14.5-alpine
+    restart: always
+    env_file:
+      - .env
+    environment:
+      - POSTGRES_USER=${POSTGRES_USERNAME}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+    ports:
+      - 5432:5432
+    volumes:
+      - ./pg-db:/var/lib/postgresql/data
+
+  pgbouncer:
+    container_name: tobeit-pgbouncer
+    image: edoburu/pgbouncer
+    restart: always
+    env_file:
+      - .env
+    environment:
+      - DB_USER=${POSTGRES_USERNAME}
+      - DB_PASSWORD=${POSTGRES_PASSWORD}
+      - DB_HOST=postgres
+      - DB_NAME=${POSTGRES_DB_NAME}
+      - POOL_MODE=transaction
+      - ADMIN_USERS=postgres,${POSTGRES_USERNAME}
+    ports:
+      - 6432:6432
+    volumes:
+      - ./pb-bouncer:/etc/pgbouncer
+    depends_on:
+      - postgres
+
+  cms:
+    container_name: tobeit-cms
+    build:
+      context: ./apps/cms
+    restart: unless-stopped
+    env_file:
+      - .env
+    environment:
+      - DATABASE_CLIENT=postgres
+      - DATABASE_HOST=postgres
+      - DATABASE_PORT=${POSTGRES_SERVER_PORT}
+      - DATABASE_NAME=${POSTGRES_CMS_DB_NAME}
+      - DATABASE_USERNAME=${POSTGRES_DB_NAME}
+      - DATABASE_PASSWORD=${POSTGRES_PASSWORD}
+      - DATABASE_SSL=false
+      - HOST=${HOST}
+    ports:
+      - 1337:1337
+    volumes:
+      - ./strapi:/etc/strapi
+    depends_on:
+      - postgres

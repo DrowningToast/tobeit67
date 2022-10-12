@@ -7,20 +7,34 @@
     "packages/*"
   ],
   "scripts": {
-    "build": "turbo run build",
-    "dev": "turbo run dev --parallel",
+    "prebuild": "turbo run build",
+    "build": "npm i -g pnpm && pnpm config set auto-install-peers true && turbo run build",
+    "dev": "pnpm run compose:dev && turbo run dev --parallel",
+    "dev:home": "turbo run dev --filter=home",
+    "dev:cms": "turbo run dev --filter=cms",
+    "dev:regis": "turbo run dev --filter=regis",
+    "compose:dev": "docker-compose -f docker-compose.dev.yml up -d",
+    "compose:prod": "docker-compose -f docker-compose.yml up -d --build",
     "lint": "turbo run lint",
     "format": "prettier --write \"**/*.{ts,tsx,md}\"",
-    "home:dev": ""
+    "home:dev": "",
+    "presetup": "cp .env.example .env.template",
+    "setup": "pnpm i && pnpm run setup:env && docker compose up -d && pnpm run db:migrate && pnpm run db:generate && pnpm run compose:prod",
+    "setup:env": "cp .env.template .env && pnpm run update:env",
+    "update:env": "cp .env apps/regis/.env && cp .env packages/firebase-auth-api/.env && cp .env apps/cms/.env",
+    "db:migrate": "npx prisma migrate dev --schema apps/regis/prisma/schema.prisma",
+    "db:generate": "npx prisma generate --schema apps/regis/prisma/schema.prisma"
   },
   "devDependencies": {
-    "eslint-config-custom": "workspace:*",
     "prettier": "latest",
+    "prisma": "4.4.0",
     "turbo": "latest"
   },
   "engines": {
     "node": ">=14.0.0"
   },
-  "dependencies": {},
+  "dependencies": {
+    "yarn": "^1.22.19"
+  },
   "packageManager": "pnpm@7.13.2"
 }
