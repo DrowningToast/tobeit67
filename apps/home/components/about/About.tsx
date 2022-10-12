@@ -9,7 +9,7 @@ const Middle = () => {
         src="/assets/wave-about.svg"
         className="-translate-y-[74.5%] w-[101%] md:absolute md:top-0 md:inset-x-0 md:scale-y-50"
       />
-      <article className="grid place-items-center px-8 md:px-36 mt-0 mb-12">
+      <article className="grid place-items-center px-8 md:px-20 xl:px-36 mt-0 mb-12">
         <div
           style={{
             background:
@@ -21,7 +21,7 @@ const Middle = () => {
             About
           </h1>
           <div className="w-full flex justify-end md:row-span-2 md:w-full md:grid md:place-items-center md:justify-end">
-            <div className="w-24 md:w-96">
+            <div className="w-24 md:w-64 xl:w-96">
               <Image
                 src="/assets/tobe-logo.svg"
                 width={150}

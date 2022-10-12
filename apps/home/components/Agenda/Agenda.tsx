@@ -89,7 +89,7 @@ const Agenda = () => {
                   index % 2 === 0
                     ? "md:-translate-x-full md:-left-6 md:top-0"
                     : "md:left-6 md:top-8"
-                } md:absolute md:w-[450px] md:max-w-none max-w-sm px-8 bg-white rounded-full text-center font-chonburi font-bold py-1 text-fresh-salmon text-sm md:text-xl`}
+                } md:absolute md:w-[360px] lg:w-[450px] md:max-w-none max-w-sm px-8 bg-white rounded-full text-center font-chonburi font-bold py-1 text-fresh-salmon text-sm md:text-xl`}
               >
                 {event.title}
               </div>
