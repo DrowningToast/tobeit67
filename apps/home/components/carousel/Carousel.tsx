@@ -9,10 +9,16 @@ const carouselPictures = [
     src: "/assets/carousel/IMG_0326.png",
   },
   {
-    src: "/assets/carousel/P6180043.png",
+    src: "/assets/carousel/IMG_7392.png",
   },
   {
     src: "/assets/carousel/P6180343.JPG",
+  },
+  {
+    src: "/assets/carousel/IMG_7357.png",
+  },
+  {
+    src: "/assets/carousel/P6180299.JPG",
   },
 ];
 
