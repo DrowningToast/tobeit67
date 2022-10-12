@@ -10,6 +10,12 @@ const nextConfig = {
   //   return config;
   // },
   output: "standalone",
+  images: {
+    domains: [
+      'localhost',
+      'apitobeit.it.kmitl.ac.th'
+    ]
+  }
 };
 
 module.exports = nextConfig;

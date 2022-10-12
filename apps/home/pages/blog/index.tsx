@@ -4,6 +4,10 @@ import Link from 'next/link'
 import BlogCard from '../../components/card/BlogCard'
 import { client } from '../../gql/gql-client'
 
+const endpoint = process.env.NODE_ENV === 'development'
+  ? process.env.NEXT_PUBLIC_CMS_DEV
+  : process.env.NEXT_PUBLIC_CMD_PROD
+
 const query = (page: number | string) => gql`
 {
   blogs(pagination: {page: ${page}, pageSize:3}, sort: "id:desc") {
@@ -103,12 +107,12 @@ export const getServerSideProps: GetServerSideProps<Props> = async ({ query: req
   const returnData: any[] = data.blogs.data.map((blog: any) => {
     const propsData = blog.attributes
 
-    let picture = null
+    let picture = '/assets/carousel/IMG_0326.png'
 
     if (propsData.thumbnail.data) {
-      picture = propsData.thumbnail.data.attributes.url
+      picture = endpoint + propsData.thumbnail.data.attributes.url
     }
-
+    
     return {
       id: blog.id,
       picture,
