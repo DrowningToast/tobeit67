@@ -1,9 +1,10 @@
 import { ApolloClient, InMemoryCache } from '@apollo/client'
 
-console.log(process.env.NEXT_PUBLIC_CMS_DEV);
-
+const endpoint = process.env.NODE_ENV === 'development'
+    ? process.env.NEXT_PUBLIC_CMS_DEV
+    : process.env.NEXT_PUBLIC_CMD_PROD
 
 export const client = new ApolloClient({
-    uri: process.env.CMS_DEV,
+    uri: endpoint + '/graphql',
     cache: new InMemoryCache()
 })
