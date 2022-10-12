@@ -22,7 +22,7 @@ const FAQ = () => {
         className="absolute top-0 transform md:w-full -translate-y-[99%] md:-translate-y-[74.5%] md:scale-y-50 left-0"
       />
       <h1 className="font-chonburi text-5xl text-white text-center">FAQ</h1>
-      <div className="flex flex-col text-xs gap-y-8 md:gap-y-24">
+      <div className="flex flex-col text-xs gap-y-8 md:gap-y-24 text-white">
         {pairs.map((pair, index) => {
           return (
             <div
