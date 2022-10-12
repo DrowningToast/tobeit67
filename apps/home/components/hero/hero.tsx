@@ -51,7 +51,7 @@ const Hero = () => {
       />
       <motion.button
         animate={{
-          scale: [1, 1.1, 1],
+          scale: [1, 1.025, 1],
           transition: {
             type: "spring",
             repeat: Infinity,
