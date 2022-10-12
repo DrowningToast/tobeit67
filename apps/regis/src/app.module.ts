@@ -20,7 +20,7 @@ console.log(process.env.NODE_ENV);
     GraphQLModule.forRoot<ApolloDriverConfig>({
       driver: ApolloDriver,
       debug: process.env.NODE_ENV === 'development',
-      playground: true,
+      playground: process.env.NODE_ENV === 'development',
       autoSchemaFile: join(process.cwd(), 'src/schema.gql'),
     }),
     UserModule,
