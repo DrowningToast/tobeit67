@@ -43,6 +43,7 @@ const Compilation: React.FC = () => {
               className="rounded-xl w-full"
               width={4608}
               height={3456}
+              priority
             />
           </Carousel.Slide>
         ))}
