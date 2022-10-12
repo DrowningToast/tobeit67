@@ -56,7 +56,6 @@ const Agenda = () => {
 
   const activeIndex = useMemo(() => {
     return events.reduce((prev, current) => {
-      console.log(today >= current.time);
       if (today >= current.time) {
         return prev + 1;
       } else {
