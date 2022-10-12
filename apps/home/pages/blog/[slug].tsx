@@ -1,7 +1,23 @@
 import { GetServerSideProps, NextPage } from 'next'
 import ReactMarkdown from 'react-markdown'
 import { client } from '../../gql/gql-client'
-import { gql } from '@apollo/client'
+import { gql, useQuery } from '@apollo/client'
+
+const query = gql`
+{
+  blog(id: 1) {
+    data {
+      attributes {
+        title
+        publishedAt
+        author
+        description
+        content
+      }
+    }
+  }
+}
+`
 
 type Props = {
   title: string,
@@ -13,6 +29,13 @@ type Props = {
 
 const BlogSlugPage: NextPage<Props> = (props) => {
   const { picture, author, content } = props
+
+  const { data, loading, error } = useQuery(query)
+
+  if (loading) return <p>Loading</p>
+  if (error) return <p>Error</p>
+
+  console.log(data);
 
   return (
     <div
@@ -34,28 +57,16 @@ const BlogSlugPage: NextPage<Props> = (props) => {
 }
 
 export const getServerSideProps: GetServerSideProps<Props> = async (context) => {
-  const query = gql`
-  {
-    blogs {
-      data {
-        attributes {
-          title
-          publishedAt
-          author
-          description
-          content
-        }
-      }
-    }
+  try {
+    const data = await client.query({
+      query
+    })
+
+    console.log(data);
+  } catch (err) {
+    console.log(err);
   }
-  `
 
-  const data = await client.query({
-    query: query
-  })
-
-  console.log(data);
-  
   return {
     props: {
       picture: '/assets/carousel/IMG_0326.png',

@@ -4,7 +4,6 @@ console.log(process.env.NEXT_PUBLIC_CMS_DEV);
 
 
 export const client = new ApolloClient({
-    uri: process.env.NODE_ENV == 'development'
-        ? process.env.CMS_DEV : process.env.CMS_PROD,
+    uri: process.env.CMS_DEV,
     cache: new InMemoryCache()
 })
