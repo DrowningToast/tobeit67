@@ -2,13 +2,13 @@ import Link from "next/link";
 
 const RegisHero = () => {
   return (
-    <div className="relative bg-gradient-to-b from-[#006B6C] to-[#051D1E] pb-32 md:pb-64">
+    <div className="relative bg-gradient-to-b from-[#006B6C] to-[#051D1E] pb-32 md:pb-64" id='register'>
       <img
         src="/assets/wave-regis.svg"
         alt="wave regis svg"
         className="absolute top-0 transform md:w-full -translate-y-[99%] md:-translate-y-[74.9%] md:scale-y-50"
       />
-      <h1 className="font-chonburi text-3xl md:text-6xl text-center text-radial my-6 md:col-span-3">
+      <h1 className="font-chonburi text-3xl md:text-6xl text-center text-white my-6 md:col-span-3">
         ลงทะเบียน
       </h1>
       <div className="lg:grid lg:grid-cols-3 md:px-56 sm:px-32">

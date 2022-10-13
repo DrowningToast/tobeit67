@@ -85,7 +85,7 @@ const BlogPage: NextPage<Props> = ({ data, totalPages, currentPage }) => {
                 <BlogCard {...blog} key={index} />
               ))}
             </div>
-            <ul className='font-bold text-white font-chonburi flex flex-row gap-1'>
+            <ul className='font-bold text-white font-chonburi flex flex-row gap-1 items-center'>
               {pagination}
             </ul>
           </>
