@@ -26,5 +26,7 @@ jobs:
         cache: 'pnpm'
     - name: Install dependencies
       run: pnpm install
+    - name: Generate Schema
+      run: pnpm run db:generate
     - name: Build the project
       run: pnpm build
