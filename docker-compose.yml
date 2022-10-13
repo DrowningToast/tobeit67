@@ -69,3 +69,48 @@ services:
       - ./strapi:/etc/strapi
     depends_on:
       - postgres
+
+  regis:
+    container_name: tobeit_backend
+    build:
+      context: ./apps/regis
+    restart: unless-stopped
+    env_file:
+      - .env
+    environment:
+      - POSTGRES_SERVER_URL=${POSTGRES_SERVER_URL}
+      - POSTGRES_SERVER_PORT=${POSTGRES_SERVER_PORT}
+      - POSTGRES_DB_NAME=${POSTGRES_DB_NAME}
+      - POSTGRES_DB_CMS_NAME=${POSTGRES_DB_CMS_NAME}
+      - POSTGRES_USERNAME=${POSTGRES_USERNAME}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+      - DATABASE_URL=${DATABASE_URL}
+      - POSTGRES_CMS_DB_NAME=${POSTGRES_CMS_DB_NAME}
+      - type=${service_account}
+      - project_id=${tobeit67}
+      - private_key_id=${private_key_id}
+      - private_key=${private_key}
+      - client_email=${client_email}
+      - client_id=${client_id}
+      - auth_uri=${auth_uri}
+      - token_uri=${token_uri}
+      - auth_provider_x509_cert_url=${auth_provider_x509_cert_url}
+      - client_x509_cert_url=${client_x509_cert_url}
+    volumes:
+      - ./regis:/etc/regis
+    ports:
+      - 4000:4000
+    depends_on:
+      - postgres
+      - pgbouncer
+
+  proxy:
+    image: "jc21/nginx-proxy-manager:latest"
+    restart: unless-stopped
+    ports:
+      - "80:80"
+      - "81:81"
+      - "443:443"
+    volumes:
+      - ./data:/data
+      - ./letsencrypt:/etc/letsencrypt
