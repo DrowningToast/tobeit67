@@ -11,7 +11,7 @@ const BlogBanner = () => {
       <h1 className="text-white font-chonburi text-4xl text-center md:text-7xl ">
         Challenger Deep
       </h1>
-      <Link href="/blogs">
+      <Link href="/blog">
         <button className="inline-block p-2 md:px-12 md:py-6 mx-32 md:w-80 md:mx-auto text-xl md:text-4xl font-chonburi text-glossy-coral bg-white rounded-full shadow-xl">
           ไปอ่านเพิ่ม
         </button>

@@ -47,7 +47,7 @@ type Blog = {
 }
 
 type Props = {
-  data: Blog[],
+  data: Blog[] | null,
   totalPages: number,
   currentPage: number
 }
@@ -78,14 +78,22 @@ const BlogPage: NextPage<Props> = ({ data, totalPages, currentPage }) => {
       <div className="container mx-auto flex flex-col items-center justify-center min-h-screen gap-8 py-12">
         <h2 className='font-noto text-3xl md:text-6xl font-bold text-white drop-shadow'>เนื้อหาเพิ่มเติม</h2>
 
-        <div className='w-full flex flex-col gap-4 items-center'>
-          {data.map((blog, index) => (
-            <BlogCard {...blog} key={index} />
-          ))}
-        </div>
-        <ul className='font-bold text-white font-chonburi flex flex-row items-center gap-2'>
-          {pagination}
-        </ul>
+        {data ? (
+          <>
+            <div className='w-full flex flex-col gap-4 items-center'>
+              {data.map((blog, index) => (
+                <BlogCard {...blog} key={index} />
+              ))}
+            </div>
+            <ul className='font-bold text-white font-chonburi flex flex-row gap-1'>
+              {pagination}
+            </ul>
+          </>
+        ) : (
+          <div className='text-white font-noto text-xl'>
+            <p>ตอนนี้ยังไม่มี Blog</p>
+          </div>
+        )}
       </div>
     </div>
   )
@@ -100,7 +108,11 @@ export const getServerSideProps: GetServerSideProps<Props> = async ({ query: req
 
   if (data.blogs.data.length == 0) {
     return {
-      notFound: true
+      props: {
+        data: null,
+        totalPages: data.blogs.meta.pagination.pageCount,
+        currentPage: Number(page)
+      }
     }
   }
 
