@@ -19,6 +19,12 @@
       "relation": "oneToMany",
       "target": "api::class.class",
       "mappedBy": "topic"
+    },
+    "blogs": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::blog.blog",
+      "inversedBy": "topics"
     }
   }
 }
