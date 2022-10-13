@@ -48,7 +48,7 @@ type Blog = {
 };
 
 type Props = {
-  data: Blog[];
+  data: Blog[] | null;
   totalPages: number;
   currentPage: number;
 };
@@ -59,8 +59,8 @@ const BlogPage: NextPage<Props> = ({ data, totalPages, currentPage }) => {
   for (let i = 1; i <= totalPages; i++) {
     if (i == currentPage) {
       pagination.push(
-        <li className="underline cursor-pointer">
-          <a>{i}</a>
+        <li className="underline cursor-pointer px-3 py-1 rounded-full bg-fresh-salmon">
+          {i}
         </li>
       );
     } else {
@@ -81,14 +81,22 @@ const BlogPage: NextPage<Props> = ({ data, totalPages, currentPage }) => {
           เนื้อหาเพิ่มเติม
         </h2>
 
-        <div className="w-full flex flex-col gap-4 items-center">
-          {data.map((blog, index) => (
-            <BlogCard {...blog} key={index} />
-          ))}
-        </div>
-        <ul className="font-bold text-white font-chonburi flex flex-row gap-1">
-          {pagination}
-        </ul>
+        {data ? (
+          <>
+            <div className="w-full flex flex-col gap-4 items-center">
+              {data.map((blog, index) => (
+                <BlogCard {...blog} key={index} />
+              ))}
+            </div>
+            <ul className="font-bold text-white font-chonburi flex flex-row gap-1 items-center">
+              {pagination}
+            </ul>
+          </>
+        ) : (
+          <div className="text-white font-noto text-xl">
+            <p>ตอนนี้ยังไม่มี Blog</p>
+          </div>
+        )}
       </div>
     </div>
   );
@@ -105,7 +113,11 @@ export const getServerSideProps: GetServerSideProps<Props> = async ({
 
   if (data.blogs.data.length == 0) {
     return {
-      notFound: true,
+      props: {
+        data: null,
+        totalPages: data.blogs.meta.pagination.pageCount,
+        currentPage: Number(page),
+      },
     };
   }
 
