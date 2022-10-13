@@ -2,6 +2,8 @@ import { GetServerSideProps, NextPage } from 'next'
 import ReactMarkdown from 'react-markdown'
 import { client } from '../../gql/gql-client'
 import { gql } from '@apollo/client'
+import { ChevronLeft } from 'tabler-icons-react'
+import Link from 'next/link'
 
 type Props = {
   title: string,
@@ -16,10 +18,17 @@ const BlogSlugPage: NextPage<Props> = (props) => {
 
   return (
     <div className={'bg-white min-h-screen w-full'}>
-      <div className="p-4 lg:pt-8 container lg:w-3/5 mx-auto flex flex-col items-start justify-start min-h-screen gap-8">
-        <div className='w-full'>
-          <h3 className='text-2xl font-bold'>{title}</h3>
-          <h6>โดย {author}</h6>
+      <div className="p-4 lg:pt-8 container lg:w-3/5 mx-auto flex flex-col items-start justify-start min-h-screen gap-4">
+        <div className='w-full flex flex-row items-center'>
+          <Link passHref href='/blog'>
+            <a>
+              <ChevronLeft size={38} strokeWidth={1} />
+            </a>
+          </Link>
+          <div className='max-w-full'>
+            <h3 className='text-2xl font-bold'>{title}</h3>
+            <h6>โดย {author}</h6>
+          </div>
         </div>
         <hr className='border-black w-full mx-auto' />
         <div className='prose lg:prose-xl'>
