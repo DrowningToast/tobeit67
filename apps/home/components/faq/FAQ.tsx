@@ -8,14 +8,14 @@ const pairs = [
     answer: "ไลฟ์ออนไลน์ตั้งแต่เวลา 09:00-16:00 น.",
   },
   {
-    question: "จะมีวีดิโอให้ดูย้อนหลังไหม?",
-    answer: "วีดีโอย้อนหลังจะอยู่ในกลุ่ม Facebook ToBeIT’67",
+    question: "จะมีวิดีโอให้ดูย้อนหลังไหม?",
+    answer: "วิดีโอย้อนหลังจะอยู่ในกลุ่ม Facebook ToBeIT’67",
   },
 ];
 
 const FAQ = () => {
   return (
-    <section className="bg-gradient-to-b from-[#333333] to-[#0C0C0C] py-16 flex flex-col gap-y-8 px-8 pt-32 relative">
+    <section className="bg-gradient-to-b from-[#333333] to-[#0C0C0C] py-16 flex flex-col gap-y-8 px-8 pt-32 relative" id='faq'>
       <img
         src="/assets/wave-faq.svg"
         alt="wave faq svg"

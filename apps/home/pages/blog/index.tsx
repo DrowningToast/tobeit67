@@ -58,8 +58,8 @@ const BlogPage: NextPage<Props> = ({ data, totalPages, currentPage }) => {
   for (let i = 1; i <= totalPages; i++) {
     if (i == currentPage) {
       pagination.push(
-        <li className='underline cursor-pointer'>
-          <a>{i}</a>
+        <li className='underline cursor-pointer px-3 py-1 rounded-full bg-fresh-salmon'>
+          {i}
         </li>
       )
     } else {
@@ -85,7 +85,7 @@ const BlogPage: NextPage<Props> = ({ data, totalPages, currentPage }) => {
                 <BlogCard {...blog} key={index} />
               ))}
             </div>
-            <ul className='font-bold text-white font-chonburi flex flex-row gap-1'>
+            <ul className='font-bold text-white font-chonburi flex flex-row gap-1 items-center'>
               {pagination}
             </ul>
           </>

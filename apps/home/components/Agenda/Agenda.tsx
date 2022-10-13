@@ -65,8 +65,8 @@ const Agenda = () => {
   }, []);
 
   return (
-    <div className="px-8 pb-48 md:mx-auto md:mb-32">
-      <h1 className="font-chonburi text-3xl md:text-5xl text-center text-radial my-8">
+    <div className="px-8 pb-48 md:mx-auto md:mb-32" id='agenda'>
+      <h1 className="font-chonburi text-3xl md:text-5xl text-center text-white my-8">
         Agenda
       </h1>
       <Timeline

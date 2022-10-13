@@ -4,7 +4,9 @@ import Compilation from "../carousel/Carousel";
 
 const Middle = () => {
   return (
-    <div className="relative flex flex-col justify-start items-center bg-gradient-to-b from-[#73DBDD] to-[#26888A]">
+    <div
+      id='about'
+      className="relative flex flex-col justify-start items-center bg-gradient-to-b from-[#73DBDD] to-[#26888A]">
       <img
         src="/assets/wave-about.svg"
         className="-translate-y-[74.5%] w-[101%] md:absolute md:top-0 md:inset-x-0 md:scale-y-50"
@@ -35,7 +37,7 @@ const Middle = () => {
             <p>
               กิจกรรมที่จะพาน้องๆ
               ผ่านกิจกรรมการเรียนรู้ผ่านบนโลกออนไลน์และภายในคณะไอที
-              เพื่อเสริมความรู้วิชาการเทคโนโลยีสารสนเทศให้แก่ ส้งคม
+              เพื่อเสริมความรู้วิชาการเทคโนโลยีสารสนเทศให้แก่ สังคม
             </p>
             <p className="hidden md:inline">
               ขอเชิญชวนน้องๆ ที่มีความสนใจทางด้านเทคโนโลยีสารสนเทศ
