@@ -20,6 +20,12 @@ module.exports = {
         kanit: '"Kanit"',
         chonburi: '"Chonburi"',
       },
+      backgroundImage: {
+        'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
+      },
+      textColor: {
+        'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
+      }
     },
   },
   plugins: [

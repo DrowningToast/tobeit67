@@ -44,7 +44,3 @@ yarn-error.log*
 # Firebase
 firebase-service.json
 firebase-config.json
-
-# package-lock.json
-# yarn.lock
-# pnpm-lock.yaml

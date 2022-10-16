@@ -10,6 +10,7 @@ body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  scroll-behavior: smooth;
 }
 
 a {
@@ -33,7 +34,7 @@ a {
 
 .text-radial {
   background: radial-gradient(
-      133.82% 374.35% at 58.51% 0%,
+      133.82% 400.35% at 65.51% 0%,
       #fb8763 25%,
       #fc6f68 44.02%,
       #4bc7cf 100%

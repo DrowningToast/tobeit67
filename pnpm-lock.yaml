@@ -72,6 +72,7 @@ importers:
       react-dom: 18.2.0
       react-markdown: ^8.0.3
       sass: ^1.55.0
+      tabler-icons-react: ^1.55.0
       tailwindcss: ^3.1.8
       tsconfig: ^7.0.0
       typescript: 4.8.4
@@ -104,6 +105,7 @@ importers:
       react-dom: 18.2.0_react@18.2.0
       react-markdown: 8.0.3_iapumuv4e6jcjznwuxpf4tt22e
       sass: 1.55.0
+      tabler-icons-react: 1.55.0_react@18.2.0
       tsconfig: 7.0.0
     devDependencies:
       '@types/node': 17.0.45
@@ -17578,6 +17580,14 @@ packages:
       string-width: 4.2.3
       strip-ansi: 6.0.1
     dev: true
+
+  /tabler-icons-react/1.55.0_react@18.2.0:
+    resolution: {integrity: sha512-+5zz2mQ2wl5658tMtK4mxUCFdF7TyPiPqLAvCUHHOeltZWukExE3aftY04HDMcap8skob/UFbzSzVhifCCMeUQ==}
+    peerDependencies:
+      react: '>= 16.8.0'
+    dependencies:
+      react: 18.2.0
+    dev: false
 
   /tailwindcss/3.1.8_postcss@8.4.17:
     resolution: {integrity: sha512-YSneUCZSFDYMwk+TGq8qYFdCA3yfBRdBlS7txSq0LUmzyeqRe3a8fBQzbz9M3WS/iFT4BNf/nmw9mEzrnSaC0g==}

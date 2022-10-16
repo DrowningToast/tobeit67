@@ -18,7 +18,12 @@ const nextConfig = {
   },
   eslint: {
     ignoreDuringBuilds: true
-  }
+  },
+  rewrites: [
+    {
+      
+    }
+  ]
 };
 
 module.exports = nextConfig;
