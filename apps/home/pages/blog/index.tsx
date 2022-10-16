@@ -49,6 +49,7 @@ type Blog = {
 
 type Props = {
   data: Blog[] | null;
+
   totalPages: number;
   currentPage: number;
 };
@@ -80,7 +81,6 @@ const BlogPage: NextPage<Props> = ({ data, totalPages, currentPage }) => {
         <h2 className="font-noto text-3xl md:text-6xl font-bold text-white drop-shadow">
           เนื้อหาเพิ่มเติม
         </h2>
-
         {data ? (
           <>
             <div className="w-full flex flex-col gap-4 items-center">
