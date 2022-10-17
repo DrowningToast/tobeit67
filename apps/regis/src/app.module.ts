@@ -14,14 +14,12 @@ import { join } from 'path';
 import { UserModule } from './user/user.module';
 import { QuizModule } from './quiz/quiz.module';
 
-console.log(process.env.NODE_ENV);
-
 @Module({
   imports: [
     GraphQLModule.forRoot<ApolloDriverConfig>({
       driver: ApolloDriver,
-      debug: process.env.NODE_ENV === 'development',
-      playground: process.env.NODE_ENV === 'development',
+      debug: process.env.NODE_ENV == 'development',
+      playground: process.env.NODE_ENV == 'development',
       autoSchemaFile: join(process.cwd(), 'src/schema.gql'),
     }),
     UserModule,
