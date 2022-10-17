@@ -18,7 +18,9 @@ type Users {
 
   """CAMPER | STAFF"""
   role: Role
-  emailSent: Boolean
+  score: Int!
+  remainingAttempt: Int!
+  scorePercent: Float!
   onsite: Boolean
 }
 
@@ -48,7 +50,9 @@ input User {
 
   """CAMPER | STAFF"""
   role: Role
-  emailSent: Boolean
+  score: Int = 0
+  remainingAttempt: Int = 3
+  scorePercent: Float = 0
   onsite: Boolean
 }
 

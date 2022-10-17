@@ -12,6 +12,7 @@ import { AppService } from './app.service';
 
 import { join } from 'path';
 import { UserModule } from './user/user.module';
+import { QuizModule } from './quiz/quiz.module';
 
 console.log(process.env.NODE_ENV);
 
@@ -24,6 +25,7 @@ console.log(process.env.NODE_ENV);
       autoSchemaFile: join(process.cwd(), 'src/schema.gql'),
     }),
     UserModule,
+    QuizModule,
   ],
   controllers: [AppController],
   providers: [AppService],

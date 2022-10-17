@@ -1,6 +1,7 @@
 import {
   ArgsType,
   Field,
+  Float,
   InputType,
   Int,
   ObjectType,
@@ -53,8 +54,12 @@ export class User {
   phoneNum: string;
   @Field((type) => Role, { description: 'CAMPER | STAFF', nullable: true })
   role: 'CAMPER' | 'STAFF';
-  @Field({ nullable: true })
-  emailSent: boolean;
+  @Field((type) => Int, { defaultValue: 0 })
+  score: number;
+  @Field((type) => Int, { defaultValue: 3 })
+  remainingAttempt: number;
+  @Field((type) => Float, { defaultValue: 0 })
+  scorePercent: number;
   @Field({ nullable: true })
   onsite: boolean;
 }
