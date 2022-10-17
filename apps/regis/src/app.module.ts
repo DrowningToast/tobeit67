@@ -15,8 +15,6 @@ import { join } from 'path';
 import { UserModule } from './user/user.module';
 import { QuizModule } from './quiz/quiz.module';
 
-console.log(process.env.NODE_ENV);
-
 @Module({
   imports: [
     GraphQLModule.forRoot<ApolloDriverConfig>({
