@@ -4,6 +4,7 @@
 
 type Query {
   users(user: User): [Users!]
+  quiz(quiz: Quiz): [Quizzes!]
 }
 
 """Camper and Staff user information"""
@@ -54,6 +55,25 @@ input User {
   remainingAttempt: Int = 3
   scorePercent: Float = 0
   onsite: Boolean
+}
+
+"""Quiz"""
+type Quizzes {
+  id: Int
+  question: String
+  choiceA: String
+  choiceB: String
+  choiceC: String
+  choiceD: String
+}
+
+input Quiz {
+  id: Int
+  question: String
+  choiceA: String
+  choiceB: String
+  choiceC: String
+  choiceD: String
 }
 
 type Mutation {
