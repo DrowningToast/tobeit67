@@ -1,4 +1,5 @@
 import { motion, useScroll, useTransform } from "framer-motion";
+import Link from "next/link";
 
 const Hero = () => {
   const { scrollY } = useScroll();
@@ -49,19 +50,26 @@ const Hero = () => {
         alt="clouds svg"
         className="absolute top-6 md:top-0 inset-x-0 md:w-full"
       />
-      <motion.button
-        animate={{
-          scale: [1, 1.025, 1],
-          transition: {
-            type: "spring",
-            repeat: Infinity,
-            repeatDelay: 0.1,
-          },
-        }}
-        className="md:col-start-2 md:py-3 md:mx-14 bg-glossy-coral font-kanit font-bold text-center inline-block w-full md:w-auto py-2 rounded-full shadow-2xl text-white text-lg tracking-widest"
+      <Link
+        passHref
+        target="_blank"
+        href="https://airtable.com/shrbQ9EDBNvCa0Ypr"
       >
-        ไปลงทะเบียน!
-      </motion.button>
+        <motion.button
+          animate={{
+            scale: [1, 1.025, 1],
+            transition: {
+              type: "spring",
+              repeat: Infinity,
+              repeatDelay: 0.1,
+            },
+          }}
+          className="md:col-start-2 md:py-3 md:mx-14 bg-glossy-coral font-kanit font-bold text-center inline-block w-full md:w-auto py-2 rounded-full shadow-2xl text-white text-lg tracking-widest"
+        >
+          <a>ไปลงทะเบียนออนไซต์!</a>
+        </motion.button>
+      </Link>
+
       <a
         href="#onsite"
         className="md:col-start-2 opacity-70 underline text-white text-center font-noto cursor-pointer"
