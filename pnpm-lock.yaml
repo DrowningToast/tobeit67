@@ -58,6 +58,7 @@ importers:
       '@types/node': ^17.0.45
       '@types/react': 18.0.21
       '@types/react-dom': ^18.0.6
+      airtable-api: workspace:^1.0.0
       autoprefixer: ^10.4.12
       dayjs: ^1.11.5
       embla-carousel-react: ^7.0.3
@@ -94,6 +95,7 @@ importers:
       '@mantine/rte': 5.5.4_peoatue7sckyfiogasz7flkvpm
       '@svgr/webpack': 6.4.0
       '@tailwindcss/typography': 0.5.7_tailwindcss@3.1.8
+      airtable-api: link:../../packages/airtable-api
       dayjs: 1.11.5
       embla-carousel-react: 7.0.3_react@18.2.0
       firebase: 9.10.0
@@ -208,6 +210,16 @@ importers:
       typescript: 4.8.4
       webpack: 5.74.0
       webpack-node-externals: 3.0.0
+
+  packages/airtable-api:
+    specifiers:
+      airtable: ^0.11.5
+      tsconfig: ^7.0.0
+      typescript: ^4.8.4
+    dependencies:
+      airtable: 0.11.5
+      tsconfig: 7.0.0
+      typescript: 4.8.4
 
   packages/firebase-auth-api:
     specifiers:
@@ -7249,6 +7261,10 @@ packages:
       event-target-shim: 5.0.1
     dev: false
 
+  /abortcontroller-polyfill/1.7.5:
+    resolution: {integrity: sha512-JMJ5soJWP18htbbxJjG7bG6yuI6pRhgJ0scHHTfkUjf6wjP912xZWvM+A4sJK3gqd9E8fcPbDnOefbA9Th/FIQ==}
+    dev: false
+
   /accepts/1.3.8:
     resolution: {integrity: sha512-PYAthTa2m2VKxuvSD3DPC/Gy+U+sOA1LAuT8mkmRuvw+NACSaeXEQ+NHcVF7rONl6qcaxV3Uuemwawk+7+SJLw==}
     engines: {node: '>= 0.6'}
@@ -7324,6 +7340,19 @@ packages:
     dependencies:
       clean-stack: 2.2.0
       indent-string: 4.0.0
+    dev: false
+
+  /airtable/0.11.5:
+    resolution: {integrity: sha512-/fqPA5BZTn5K0J636CfVuyGdNyV6t5RbBDPUBASlb/mlWSJj8WcF9O7/R+BuAlGMsSiKqR9dll99srcQcLEQjg==}
+    engines: {node: '>=8.0.0'}
+    dependencies:
+      '@types/node': 10.17.60
+      abort-controller: 3.0.0
+      abortcontroller-polyfill: 1.7.5
+      lodash: 4.17.21
+      node-fetch: 2.6.7
+    transitivePeerDependencies:
+      - encoding
     dev: false
 
   /ajv-formats/2.1.1_ajv@8.11.0:

@@ -25,6 +25,7 @@
     "@mantine/rte": "^5.5.4",
     "@svgr/webpack": "^6.4.0",
     "@tailwindcss/typography": "^0.5.7",
+    "airtable-api": "workspace:^1.0.0",
     "dayjs": "^1.11.5",
     "embla-carousel-react": "^7.0.3",
     "firebase": "^9.10.0",
