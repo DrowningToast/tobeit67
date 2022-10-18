@@ -72,8 +72,7 @@ const AuthUpdater: FC<Props> = ({ callback }) => {
           setInfo(null);
         }
       } else {
-        // setProfile(null);
-        console.log("LMAO");
+        setProfile(null);
         setInfo(null);
       }
       if (callback) await callback(user);

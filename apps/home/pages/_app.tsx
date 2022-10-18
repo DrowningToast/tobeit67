@@ -1,15 +1,22 @@
 import "../styles/globals.scss";
 import type { AppProps } from "next/app";
-import { MantineProvider } from "@mantine/core";
+import { MantineProvider, Modal } from "@mantine/core";
 import { ApolloProvider } from "@apollo/client";
 import { client } from "../gql/gql-client";
-import { AuthUpdater } from "firebase-auth-api";
-import validateRegistration from "../components/auth/validateRegistration";
+
+import { useAtom } from "jotai";
+import {
+  AuthUpdater,
+  firebaseReady,
+  firebaseUserAtom,
+} from "../components/firebase";
 
 function MyApp({ Component, pageProps }: AppProps) {
+  const [ready] = useAtom(firebaseReady);
+  const [user] = useAtom(firebaseUserAtom);
+
   return (
     <>
-      <AuthUpdater callback={validateRegistration} />
       <ApolloProvider client={client}>
         <MantineProvider
           theme={{
@@ -23,6 +30,7 @@ function MyApp({ Component, pageProps }: AppProps) {
           }}
         >
           {/* @ts-ignore */}
+          <AuthUpdater />
           <Component {...pageProps} />
         </MantineProvider>
       </ApolloProvider>

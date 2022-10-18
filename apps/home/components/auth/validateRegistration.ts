@@ -10,8 +10,6 @@ const vaildateRegistration = async (user: User | null) => {
 
   if (!user) return false;
 
-  console.log(data);
-
   return data.find((record) => record.fields["Email"] === user.email) && true;
 };
 

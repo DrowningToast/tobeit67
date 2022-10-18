@@ -7,7 +7,7 @@ import RegisHero from "../components/regis/RegisHero";
 import { NextSeo } from "next-seo";
 import Head from "next/head";
 import Navbar from "../components/navbar/Navbar";
-import { ConditionalRedirect } from "firebase-auth-api";
+import { ConditionalRedirect } from "../components/firebase";
 
 const Home: NextPage = () => {
   return (

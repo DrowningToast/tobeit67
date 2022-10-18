@@ -1,7 +1,6 @@
 import { motion, useScroll, useTransform } from "framer-motion";
 import Link from "next/link";
-import { signinWithGooglePopUp } from "firebase-auth-api";
-import vaildateRegistration from "../auth/validateRegistration";
+import { signinWithGooglePopUp } from "../firebase";
 
 const Hero = () => {
   const { scrollY } = useScroll();
@@ -74,7 +73,7 @@ const Hero = () => {
         </Link>
 
         <motion.button
-          onClick={() => signinWithGooglePopUp}
+          onClick={() => signinWithGooglePopUp()}
           animate={{
             scale: [1, 1.025, 1],
             transition: {

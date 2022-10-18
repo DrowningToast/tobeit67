@@ -45,3 +45,8 @@ yarn-error.log*
 firebase-service.json
 firebase-config.json
 token.txt
+
+# DB
+database.sqlite
+data/database.sqlite
+apps/regis/src/schema.gql

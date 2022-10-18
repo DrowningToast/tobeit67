@@ -5,7 +5,7 @@ const tokenRefresher = () => {
       postMessage("Refresh ID Token");
       refresh();
       // Every 10 mins
-    }, 10000);
+    }, 600000);
   };
 
   //@ts-ignore

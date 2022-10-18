@@ -1,4 +1,4 @@
-import { SignOutFC } from "firebase-auth-api";
+import { SignOutFC } from "../components/firebase";
 
 const Signout = () => {
   return <SignOutFC />;
