@@ -4,7 +4,7 @@
 
 type Query {
   users(user: User): [Users!]
-  quizzes(quiz: Quiz): [Quizzes!]
+  quizzes(userId: Int): [Quizzes!]
 }
 
 """Camper and Staff user information"""
@@ -65,15 +65,7 @@ type Quizzes {
   choiceB: String
   choiceC: String
   choiceD: String
-}
-
-input Quiz {
-  id: Int
-  question: String
-  choiceA: String
-  choiceB: String
-  choiceC: String
-  choiceD: String
+  correct: String
 }
 
 type Mutation {
@@ -114,6 +106,8 @@ input UserDelete {
 type QuizResult {
   userId: Int
   score: Int
+  scorePercent: Float
+  remainingAttempt: Int
 }
 
 input SubmitQuizInput {

@@ -1,4 +1,4 @@
-import { ArgsType, Field, InputType, Int, ObjectType } from '@nestjs/graphql';
+import { ArgsType, Field, Float, InputType, Int, ObjectType } from '@nestjs/graphql';
 
 @InputType('submitAnswer')
 @ObjectType()
@@ -33,6 +33,9 @@ export class Quiz {
 
   @Field(_type => String, { nullable: true })
   choiceD: string;
+
+  @Field(_type => String, { nullable: true })
+  correct: string;
 }
 
 @InputType({ isAbstract: true })
@@ -54,4 +57,10 @@ export class QuizResult {
 
   @Field((_type) => Int, { nullable: true })
   score: number
+
+  @Field((_type) => Float, { nullable: true })
+  scorePercent: number
+
+  @Field(_type => Int, { nullable: true })
+  remainingAttempt: number
 }

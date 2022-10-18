@@ -14,14 +14,12 @@ export class UserService {
     return queryUser;
   }
 
-  async findOne(user: Partial<User>): Promise<User[]> {
-    const queryUser = await prismaClient.user.findMany({
+  async findOne(user: Partial<User>): Promise<User> {
+    const queryUser = await prismaClient.user.findUnique({
       where: {
         ...user,
       },
     });
-
-    console.log(queryUser);
 
     return queryUser;
   }
@@ -46,7 +44,7 @@ export class UserService {
     return user;
   }
 
-  async edit(user: Partial<User>, update: Partial<UserEdit>): Promise<User> {
+  async edit(user: Partial<User>, update: Partial<User>): Promise<User> {
     const queryUser = await prismaClient.user.update({
       where: {
         ...user,

@@ -1,12 +1,8 @@
-import { Injectable } from '@nestjs/common';
+import { ForbiddenException, Injectable, NotFoundException } from '@nestjs/common';
 import { gql } from 'apollo-server-express';
-// import { cmsClient } from 'src/cms-gql/cms-gql-client';
-import { Quiz } from './quiz.model';
-
-class User {
-  userId: number
-  score: number
-}
+import { cmsClient } from 'src/cms-gql/cms-gql-client';
+import { UserService } from 'src/user/user.service';
+import { Answer, Quiz, QuizResult } from './quiz.model';
 
 class Question {
   question: string
@@ -17,63 +13,131 @@ class Question {
   correct: 'A' | 'B' | 'C' | 'D'
 }
 
+const updateScoreQuery = gql`
+query {
+  quizzes {
+    meta {
+      pagination {
+        total
+      }
+    }
+  }
+}`
+
 @Injectable()
 export class QuizService {
-  constructor() { }
+  constructor(private readonly userService: UserService) { }
 
-  userList: User[] = [
-    { userId: 1, score: 0 }
-  ]
-
-  quiz = [
-
-  ]
-
-  async getQuiz(): Promise<Quiz[]> {
+  async getQuiz(getAnswer: boolean = false): Promise<Quiz[]> {
     const query = gql`
     query {
       quizzes {
        data {
+        id
         attributes {
           question
           choiceA
           choiceB
           choiceC
           choiceD
+          ${getAnswer ? 'correct' : ''}
           }
         }
       }
     }
     `
 
-    // const { data } = await cmsClient.query({ query })
+    const { data } = await cmsClient.query({ query })
 
-    // const finalData = data.quizzes.data.map((data) => data.attributes)
+    const finalData = data.quizzes.data.map((data) => ({
+      ...data.attributes,
+      id: Number(data.id)
+    }))
 
-    // console.log(finalData);
-
-    return [
-      {
-        id: 1,
-        "question": "早上好中国，现在我有冰淇淋淇淋。ประโยคนี้ใครเป็นคนพูด",
-        "choiceA": "Zhong Xina",
-        "choiceB": "John Cena",
-        "choiceC": "The Wok",
-        "choiceD": "The Rock",
-      }
-    ]
+    return finalData
   }
 
-  async updateScore(userId: number, score: number) {
-    const user = this.userList.find((user) => user.userId === userId)
 
-    user.score = score
+  async startQuiz(userId: number) {
+    const user = await this.userService.findOne({ id: userId })
 
-    this.userList = [
-      ...this.userList,
-      user
-    ]
+    if (!user) {
+      throw new NotFoundException(`User with userId:${userId} not found.`)
+    }
 
-    return user
+    if (user.remainingAttempt == 0) {
+      throw new ForbiddenException('You have no attempt left.')
+    }
+
+    return await this.getQuiz()
+  }
+
+  async checkAnswer(answer: Answer[]) {
+    const questions: Quiz[] = await this.getQuiz(true)
+
+    let totalScore = 0
+
+    answer.forEach((answer) => {
+      const question = questions.find((quiz) => answer.id === quiz.id)
+
+      if (!question) {
+        return
+      }
+
+      switch (question.correct) {
+        case 'A':
+          if (answer.answer == question.choiceA) {
+            totalScore += 1
+          }
+        case 'B':
+          if (answer.answer == question.choiceB) {
+            totalScore += 1
+          }
+        case 'C':
+          if (answer.answer == question.choiceC) {
+            totalScore += 1
+          }
+        case 'D':
+          if (answer.answer == question.choiceD) {
+            totalScore += 1
+          }
+      }
+    })
+
+    return totalScore
+  }
+
+  async updateScore(userId: number, score: number): Promise<QuizResult> {
+    const user = await this.userService.findOne({ id: userId })
+
+    const { data } = await cmsClient.query({ query: updateScoreQuery })
+
+    const totalQuestions = data.quizzes.meta.pagination.total as number
+
+    if (!user) {
+      throw new NotFoundException(`User with userId:${userId} not found.`)
+    }
+
+    if (user.remainingAttempt == 0) {
+      throw new ForbiddenException('You have no attempt left.')
+    }
+
+    let scorePercent = score / totalQuestions
+
+    if (user.score > score) {
+      scorePercent = user.score / totalQuestions
+      score = user.score
+    }
+
+    const updatedUser = await this.userService.edit({ id: user.id }, {
+      score, scorePercent, remainingAttempt: user.remainingAttempt - 1
+    })
+
+    return {
+      userId: updatedUser.id,
+      score: updatedUser.score,
+      scorePercent,
+      remainingAttempt: updatedUser.remainingAttempt
+    }
   }
 }
