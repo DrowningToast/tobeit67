@@ -4,7 +4,7 @@
 
 type Query {
   users(user: User): [Users!]
-  quiz(quiz: Quiz): [Quizzes!]
+  quizzes(quiz: Quiz): [Quizzes!]
 }
 
 """Camper and Staff user information"""
@@ -82,6 +82,7 @@ type Mutation {
 
   """Require at least one of the args"""
   remove_user(user: UserDelete!): Users!
+  submit_quiz(answer: SubmitQuizInput!): QuizResult!
 }
 
 input UserInput {
@@ -107,4 +108,20 @@ input UserEdit {
 input UserDelete {
   id: Int
   email: String!
+}
+
+"""Quiz Result"""
+type QuizResult {
+  userId: Int
+  score: Int
+}
+
+input SubmitQuizInput {
+  userId: Float!
+  answer: [submitAnswer!]
+}
+
+input submitAnswer {
+  id: Int!
+  answer: String!
 }
