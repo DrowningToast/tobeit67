@@ -2,7 +2,10 @@ import Link from "next/link";
 
 const RegisHero = () => {
   return (
-    <div className="relative bg-gradient-to-b from-[#006B6C] to-[#051D1E] pb-32 md:pb-64" id='register'>
+    <div
+      className="relative bg-gradient-to-b from-[#006B6C] to-[#051D1E] pb-32 md:pb-64"
+      id="register"
+    >
       <img
         src="/assets/wave-regis.svg"
         alt="wave regis svg"
@@ -21,7 +24,7 @@ const RegisHero = () => {
             href={"https://airtable.com/shryx5STWug0e8WsD"}
           >
             <a target={"_blank"}>
-              <button className="text-fresh-salmon bg-white py-4 px-8 md:py-6 md:px-16 text-3xl md:text-4xl rounded-full my-4 md:my-8">
+              <button className="text-fresh-salmon border-8 border-white py-4 px-8 md:py-6 md:px-16 text-3xl rounded-full my-4 md:my-8">
                 ลงทะเบียน!
               </button>
             </a>
@@ -31,9 +34,17 @@ const RegisHero = () => {
         <div className="flex flex-col justify-center items-center font-chonburi">
           <h3 className="text-2xl lg:text-3xl text-white">รอบ</h3>
           <h2 className="text-4xl lg:text-6xl text-white">Onsite</h2>
-          <button className="text-fresh-salmon border-8 border-white py-4 px-8 md:py-6 md:px-16 text-3xl rounded-full my-4 md:my-8">
-            Coming Soon
-          </button>
+          <Link
+            passHref
+            href="https://airtable.com/shrbQ9EDBNvCa0Ypr"
+            target="_blank"
+          >
+            <a>
+              <button className="text-fresh-salmon bg-white py-4 px-8 md:py-6 md:px-16 text-3xl md:text-4xl rounded-full my-4 md:my-8">
+                สมัครเลย!
+              </button>
+            </a>
+          </Link>
         </div>
       </div>
     </div>
