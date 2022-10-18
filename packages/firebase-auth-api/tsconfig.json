@@ -18,7 +18,8 @@
     "paths": {
       "@jotai/*": ["jotai/*"],
       "@webworkers/*": ["webworkers/*"]
-    }
+    },
+    "target": "ES6"
   },
   "include": ["./src"],
   "exclude": ["dist", "build", "**/node_modules", "node_modules", ".pnpm"]

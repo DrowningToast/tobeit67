@@ -62,6 +62,7 @@ importers:
       dayjs: ^1.11.5
       embla-carousel-react: ^7.0.3
       firebase: ^9.10.0
+      firebase-auth-api: workspace:^1.0.0
       framer-motion: ^7.5.2
       graphql: ^16.6.0
       next: 12.3.1
@@ -96,6 +97,7 @@ importers:
       dayjs: 1.11.5
       embla-carousel-react: 7.0.3_react@18.2.0
       firebase: 9.10.0
+      firebase-auth-api: link:../../packages/firebase-auth-api
       framer-motion: 7.5.2_biqbaboplfbrettd7655fr4n2y
       graphql: 16.6.0
       next: 12.3.1_ru2bdujs5wv7zrmz55pdteej2m
