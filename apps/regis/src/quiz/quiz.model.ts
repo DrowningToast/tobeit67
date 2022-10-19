@@ -15,7 +15,7 @@ export class Answer {
   isAbstract: true
 })
 @InputType('Quiz', { isAbstract: true })
-export class Quiz {
+export class QuizOutput {
   @Field(_type => Int, { nullable: true })
   id: number;
 
@@ -33,9 +33,6 @@ export class Quiz {
 
   @Field(_type => String, { nullable: true })
   choiceD: string;
-
-  @Field(_type => String, { nullable: true })
-  correct: string;
 }
 
 @InputType({ isAbstract: true })

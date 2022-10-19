@@ -1,16 +1,16 @@
 import { Resolver, Query, Args, Mutation, Int } from '@nestjs/graphql';
-import { Answer, Quiz, QuizResult, SubmitQuizInput } from './quiz.model';
+import { Answer, QuizOutput, QuizResult, SubmitQuizInput } from './quiz.model';
 import { QuizService } from './quiz.service';
 
-@Resolver((_of) => Quiz)
+@Resolver((_of) => QuizOutput)
 export class QuizResolver {
   constructor(private readonly quizService: QuizService) { }
 
-  @Query(() => [Quiz], { nullable: true })
+  @Query(() => [QuizOutput], { nullable: true })
   async quizzes(
     @Args({ name: 'userId', type: () => Int, nullable: true })
     userId: number
-  ): Promise<Quiz[]> {
+  ): Promise<QuizOutput[]> {
     return await this.quizService.startQuiz(userId)
   }
 
