@@ -65,7 +65,6 @@ type Quizzes {
   choiceB: String
   choiceC: String
   choiceD: String
-  correct: String
 }
 
 type Mutation {

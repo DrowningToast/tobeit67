@@ -2,16 +2,7 @@ import { ForbiddenException, Injectable, NotFoundException } from '@nestjs/commo
 import { gql } from 'apollo-server-express';
 import { cmsClient } from 'src/cms-gql/cms-gql-client';
 import { UserService } from 'src/user/user.service';
-import { Answer, Quiz, QuizResult } from './quiz.model';
-
-class Question {
-  question: string
-  choiceA: string
-  choiceB: string
-  choiceC: string
-  choiceD: string
-  correct: 'A' | 'B' | 'C' | 'D'
-}
+import { Answer, QuizResult } from './quiz.model';
 
 const updateScoreQuery = gql`
 query {
@@ -23,6 +14,16 @@ query {
     }
   }
 }`
+
+class Quiz {
+  id: number
+  question: string
+  choiceA: string
+  choiceB: string
+  choiceC: string
+  choiceD: string
+  correct: 'A' | 'B' | 'C' | 'D'
+}
 
 @Injectable()
 export class QuizService {
