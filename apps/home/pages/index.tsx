@@ -7,7 +7,8 @@ import RegisHero from "../components/regis/RegisHero";
 import { NextSeo } from "next-seo";
 import Head from "next/head";
 import Navbar from "../components/navbar/Navbar";
-import { ConditionalRedirect } from "../components/firebase";
+import { ConditionalRedirect, firebaseUserAtom } from "../components/firebase";
+import { useAtom } from "jotai";
 
 const Home: NextPage = () => {
   return (
@@ -34,13 +35,6 @@ const Home: NextPage = () => {
             },
           ],
         }}
-      />
-      {/* Redirect on login */}
-      <ConditionalRedirect
-        cb={(user, ready) => {
-          return user && ready;
-        }}
-        path="/quiz"
       />
       <div>
         <Navbar />

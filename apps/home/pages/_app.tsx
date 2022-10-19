@@ -29,8 +29,8 @@ function MyApp({ Component, pageProps }: AppProps) {
             },
           }}
         >
-          {/* @ts-ignore */}
           <AuthUpdater />
+          {/* @ts-ignore */}
           <Component {...pageProps} />
         </MantineProvider>
       </ApolloProvider>

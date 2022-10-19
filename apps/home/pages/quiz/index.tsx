@@ -5,6 +5,8 @@ import { useEffect, useMemo, useState } from "react";
 import { useAtom } from "jotai";
 import { useRouter } from "next/router";
 import { firebaseReady, firebaseUserAtom } from "../../components/firebase";
+import QuizNavbar from "../../components/quiz/QuizNavbar";
+import Link from "next/link";
 
 const Quiz: NextPage = () => {
   // When validation is check
@@ -14,32 +16,12 @@ const Quiz: NextPage = () => {
   // Check if user exists in airtable
   const [validData, setValidData] = useState(true);
 
-  // useMemo(async () => {
-  //   if (!user && !ready) return true;
-  //   if (!user && ready) return false;
-
-  //   let result = false;
-
-  //   const emails = await MainBase.table<{
-  //     Email: string;
-  //   }>("Camper-Register")
-  //     .select({
-  //       fields: ["Email"],
-  //       filterByFormula: `Email = "${user?.email}"`,
-  //     })
-  //     .all();
-
-  //   result = emails.find((record) => record.fields.Email === user?.email)
-  //     ? true
-  //     : false;
-
-  //   return result;
-  // }, [user, ready]);
-
   // Fetch to find out remaining attempt
   // TODO
 
   const router = useRouter();
+
+  console.log(`${user} ${ready} ${!validData || !ready}`);
 
   useEffect(() => {
     if (!user) return;
@@ -70,8 +52,16 @@ const Quiz: NextPage = () => {
   }, [validData, ready]);
 
   return (
-    <section className="relative min-h-screen">
-      <LoadingOverlay visible={!(ready && validData)} overlayBlur={2} />
+    <section className="relative min-h-screen bg-water-blue">
+      <LoadingOverlay visible={!validData || !ready || !user} overlayBlur={2} />
+      <QuizNavbar />
+      <div className="p-4 flex flex-col">
+        <Link passHref href="/">
+          <a className="text-gray-300 underline font-noto justify-self-start">
+            กลับ
+          </a>
+        </Link>
+      </div>
       <div>hello world</div>
     </section>
   );
