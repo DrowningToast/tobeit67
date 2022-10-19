@@ -10,7 +10,7 @@ export class PreauthMiddleware implements NestMiddleware {
 
   constructor() {
     this.defaultApp = firebase.initializeApp({
-      projectId: process.env.projectId,
+      projectId: process.env.project_id,
       type: process.env.type,
       private_key_id: process.env.private_key_id,
       private_key: process.env.private_key,
@@ -25,7 +25,7 @@ export class PreauthMiddleware implements NestMiddleware {
 
   async use(req: Request, res: Response, next: Function) {
     const token = req.headers.authorization;
-
+    
     if (token != null && token != '') {
       try {
         const decodedIdToken = await firebase

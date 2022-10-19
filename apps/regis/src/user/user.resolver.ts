@@ -1,9 +1,11 @@
-import { Inject } from '@nestjs/common';
+import { Inject, UseGuards } from '@nestjs/common';
 import { Args, Int, Mutation, Query, Resolver } from '@nestjs/graphql';
+import { AuthGuard } from 'src/auth.guard';
 import { User, UserDelete, UserEdit, UserInput } from './user.model';
 import { UserService } from './user.service';
 
 @Resolver((of) => User)
+@UseGuards(AuthGuard)
 export class UserResolver {
   constructor(private userService: UserService) {}
 
