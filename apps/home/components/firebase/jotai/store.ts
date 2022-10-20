@@ -5,7 +5,7 @@ import { User } from "./type";
 
 export const firebaseReady = atom<boolean>(false);
 firebaseReady.debugLabel = "firebaseReady";
-export const firebaseUserAtom = atom<User | null>(null);
+export const firebaseUserAtom = atom<Partial<User> | null>(null);
 firebaseUserAtom.debugLabel = "firebaseUserAtom";
 export const firebaseToken = atom<string | null>(null);
 

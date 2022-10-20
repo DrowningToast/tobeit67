@@ -2,22 +2,25 @@ import "../styles/globals.scss";
 import type { AppProps } from "next/app";
 import { MantineProvider, Modal } from "@mantine/core";
 import { ApolloProvider } from "@apollo/client";
-import { client } from "../gql/gql-client";
+import { client, getRegisClient } from "../gql/gql-client";
 
 import { useAtom } from "jotai";
 import {
   AuthUpdater,
   firebaseReady,
+  firebaseToken,
   firebaseUserAtom,
 } from "../components/firebase";
 
 function MyApp({ Component, pageProps }: AppProps) {
-  const [ready] = useAtom(firebaseReady);
   const [user] = useAtom(firebaseUserAtom);
+  const [token] = useAtom(firebaseToken);
+
+  console.log(user);
 
   return (
     <>
-      <ApolloProvider client={client}>
+      <ApolloProvider client={getRegisClient()}>
         <MantineProvider
           theme={{
             colors: {
@@ -29,8 +32,8 @@ function MyApp({ Component, pageProps }: AppProps) {
             },
           }}
         >
-          {/* @ts-ignore */}
           <AuthUpdater />
+          {/* @ts-ignore */}
           <Component {...pageProps} />
         </MantineProvider>
       </ApolloProvider>

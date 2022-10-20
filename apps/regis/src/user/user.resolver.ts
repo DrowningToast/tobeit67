@@ -9,13 +9,20 @@ import { UserService } from './user.service';
 export class UserResolver {
   constructor(private userService: UserService) {}
 
+  @Query((returns) => User, { nullable: true })
+  user(
+    @Args({ name: 'user', type: () => UserInput, nullable: true }) user: User,
+  ): Promise<User> {
+    return this.userService.findOne(user);
+  }
+
   @Query((returns) => [User], { nullable: true })
   async users(
     @Args({ name: 'user', type: () => User, nullable: true })
     user: User,
-  ): Promise<User | User[]> {
+  ): Promise<User[]> {
     if (user) {
-      return await this.userService.findOne(user);
+      return this.userService.findByFilter(user);
     } else {
       return await this.userService.findAll();
     }
