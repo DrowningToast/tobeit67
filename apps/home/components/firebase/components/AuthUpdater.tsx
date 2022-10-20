@@ -26,8 +26,11 @@ const AuthUpdater: FC<Props> = ({ callback }) => {
   const [info, setInfo] = useAtom(profileInfoAtom);
 
   useEffect(() => {
+    let _user: User | null = null;
+
     // Setup auth state detector
     onAuthStateChanged(auth, async (user) => {
+      _user = user;
       // Load account data from firebase auth to redux state
       if (user) {
         const token = await getFirebaseToken();
@@ -72,6 +75,7 @@ const AuthUpdater: FC<Props> = ({ callback }) => {
           setInfo(null);
         }
       } else {
+        console.log("setting shit to null lol");
         setProfile(null);
         setInfo(null);
       }
@@ -86,11 +90,11 @@ const AuthUpdater: FC<Props> = ({ callback }) => {
       try {
         console.log("Webworker is refreshing the token");
         const token = await getNewIdToken();
-        //@ts-ignore
         setProfile({
-          ...profile,
+          ..._user,
           token,
         });
+        console.log(profile);
         setToken(token);
       } catch (e) {
         console.error("An error has occured while trying to refresh ID token");

@@ -1,5 +1,4 @@
-import { Inject } from '@nestjs/common';
-import { Args, Int, Mutation, Query, Resolver } from '@nestjs/graphql';
+import { Args, Mutation, Query, Resolver } from '@nestjs/graphql';
 import { User, UserDelete, UserEdit, UserInput } from './user.model';
 import { UserService } from './user.service';
 
@@ -7,13 +6,20 @@ import { UserService } from './user.service';
 export class UserResolver {
   constructor(private userService: UserService) {}
 
+  @Query((returns) => User, { nullable: true })
+  user(
+    @Args({ name: 'user', type: () => UserInput, nullable: true }) user: User,
+  ): Promise<User> {
+    return this.userService.findOne(user);
+  }
+
   @Query((returns) => [User], { nullable: true })
   users(
     @Args({ name: 'user', type: () => User, nullable: true })
     user: User,
-  ): Promise<User | User[]> {
+  ): Promise<User[]> {
     if (user) {
-      return this.userService.findOne(user);
+      return this.userService.findByFilter(user);
     } else {
       return this.userService.findAll();
     }

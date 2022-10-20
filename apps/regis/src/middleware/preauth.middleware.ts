@@ -10,7 +10,7 @@ export class PreauthMiddleware implements NestMiddleware {
 
   constructor() {
     this.defaultApp = firebase.initializeApp({
-      projectId: process.env.projectId,
+      projectId: process.env.project_id,
       type: process.env.type,
       private_key_id: process.env.private_key_id,
       private_key: process.env.private_key,

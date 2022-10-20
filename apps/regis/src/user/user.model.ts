@@ -66,17 +66,17 @@ export class User {
 
 @InputType()
 export class UserInput {
-  @Field()
+  @Field({ nullable: true })
   email: string;
-  @Field()
+  @Field({ nullable: true })
   firstname: string;
-  @Field()
+  @Field({ nullable: true })
   lastname: string;
-  @Field((type) => Grade)
+  @Field((type) => Grade, { nullable: true })
   grade: 'M4' | 'M5' | 'M6' | 'P1' | 'P2' | 'P3' | 'OTHER';
-  @Field()
+  @Field({ nullable: true })
   province: string;
-  @Field()
+  @Field({ nullable: true })
   phoneNum: string;
 }
 

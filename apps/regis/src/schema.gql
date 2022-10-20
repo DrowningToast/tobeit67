@@ -3,6 +3,7 @@
 # ------------------------------------------------------
 
 type Query {
+  user(user: UserInput): Users
   users(user: User): [Users!]
   quizzes(userId: Int): [Quizzes!]
 }
@@ -40,6 +41,15 @@ enum Role {
   STAFF
 }
 
+input UserInput {
+  email: String
+  firstname: String
+  lastname: String
+  grade: Grade
+  province: String
+  phoneNum: String
+}
+
 input User {
   id: Int
   email: String
@@ -74,15 +84,6 @@ type Mutation {
   """Require at least one of the args"""
   remove_user(user: UserDelete!): Users!
   submit_quiz(answer: SubmitQuizInput!): QuizResult!
-}
-
-input UserInput {
-  email: String!
-  firstname: String!
-  lastname: String!
-  grade: Grade!
-  province: String!
-  phoneNum: String!
 }
 
 input UserEdit {
