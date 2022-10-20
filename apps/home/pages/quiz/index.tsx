@@ -48,22 +48,20 @@ const Quiz: NextPage = () => {
   const [airtableData, setAirtableData] =
     useState<AirtableOnlineCamperRecord | null>(null);
 
-  const { data, loading: fecthingUser } = useQuery<fetchUserResponse>(
-    fetchUser(user?.email!),
-    {
-      skip: !user || !ready || !validData,
-    }
-  );
+  const {
+    data,
+    loading: fecthingUser,
+    refetch,
+  } = useQuery<fetchUserResponse>(fetchUser(user?.email!), {
+    skip: !user || !ready || !validData,
+  });
 
-  const [
-    createNewUser,
-    { data: newUserResponse, loading: creatingNewUser, error },
-  ] = useMutation(insertUser, {});
+  const [createNewUser] = useMutation(insertUser, {});
 
   const router = useRouter();
 
   const isLoading = useMemo(() => {
-    return !Boolean(user && validData && airtableData && data?.user);
+    return !Boolean(user && validData && airtableData);
   }, [user, validData, airtableData, data?.user]);
 
   useEffect(() => {
@@ -77,7 +75,6 @@ const Quiz: NextPage = () => {
           ? true
           : false
       );
-
       setAirtableData(records[0].fields);
     };
 
@@ -122,10 +119,12 @@ const Quiz: NextPage = () => {
           phoneNum: airtableData["เบอร์โทรศัพท์ที่สามารถติดต่อได้"],
         },
       });
+
+      refetch();
     };
 
     genNewUser();
-  }, [fecthingUser, data, validData]);
+  }, [airtableData]);
 
   return (
     <section className="relative min-h-screen bg-water-blue">
@@ -148,7 +147,7 @@ const Quiz: NextPage = () => {
               <h1 className="text-xl md:text-4xl font-bold font-noto inline-block w-full text-center">
                 น้องยังเหลือโอกาสในการทำ quiz อีก{" "}
                 <span className="text-glossy-coral">
-                  {data?.user.remainingAttempt}
+                  {data?.user?.remainingAttempt}
                 </span>{" "}
                 ครั้ง
               </h1>
@@ -158,7 +157,7 @@ const Quiz: NextPage = () => {
               <h1 className="text-xl md:text-4xl font-bold font-noto inline-block w-full text-center">
                 ประกาศนียบัตร จะเป็นของชื่อ{" "}
                 <span className="text-blue-300">
-                  {data?.user.firstname} {data?.user.lastname}
+                  {data?.user?.firstname} {data?.user?.lastname}
                 </span>
               </h1>
             </Skeleton>

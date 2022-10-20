@@ -1,20 +1,16 @@
-import { useQuery } from "@apollo/client";
+import { useMutation, useQuery } from "@apollo/client";
 import {
   Affix,
   Button,
-  Drawer,
   LoadingOverlay,
-  Mark,
-  Modal,
   Skeleton,
-  Switch,
   Transition,
 } from "@mantine/core";
 import { useScroll } from "framer-motion";
 import { atom, useAtom } from "jotai";
 import Link from "next/link";
-import { Suspense, useEffect, useMemo, useRef, useState } from "react";
-import { IconArrowUp, IconBook } from "@tabler/icons";
+import { Suspense, useEffect, useMemo, useState } from "react";
+import { IconArrowUp } from "@tabler/icons";
 import { firebaseReady, firebaseUserAtom } from "../../components/firebase";
 import shuffle from "../../components/misc/shuffle";
 import QuizBody from "../../components/quiz/QuizBody";
@@ -23,19 +19,23 @@ import {
   fetchQuizzesResponse,
   fetchUser,
   fetchUserResponse,
+  submitQuizzes,
 } from "../../gql/query";
 import { NavigationProgress, setNavigationProgress } from "@mantine/nprogress";
 import { useWindowScroll } from "@mantine/hooks";
+import QuizConfirm from "../../components/quiz/QuizConfirm";
 
 export const answersAtom = atom<{
-  [id: number]: string;
+  [id: number]: {
+    id: number;
+    answer: string;
+  };
 }>({});
 
 const QuizStart = () => {
   const [fbUser] = useAtom(firebaseUserAtom);
   const [ready] = useAtom(firebaseReady);
 
-  // TODO Shuffle
   const { data: userData } = useQuery<fetchUserResponse>(
     fetchUser(fbUser?.email!),
     {
@@ -47,10 +47,18 @@ const QuizStart = () => {
     skip: !userData,
     onCompleted(data) {
       return {
-        user: shuffle(data.quizzes),
+        quizzes: shuffle(data.quizzes),
       };
     },
   });
+
+  const shuffledQuizzes = useMemo(() => {
+    if (!quizData || quizData?.quizzes?.length <= 1) return quizData;
+
+    console.log(shuffle(Array(...quizData?.quizzes!)));
+
+    return { quizzes: shuffle(Array(...quizData?.quizzes!)) };
+  }, [quizData]);
 
   const isLoading = useMemo(() => {
     return !(userData && fbUser && ready && quizData?.quizzes);
@@ -88,14 +96,14 @@ const QuizStart = () => {
         <h1 className="font-bold md:text-3xl text-xl font-noto text-center">
           ยังสามารถสอบได้อีก{" "}
           <span className="text-glossy-coral">
-            {userData?.user.remainingAttempt}
+            {userData?.user?.remainingAttempt}
           </span>{" "}
           ครั้ง
         </h1>
       </div>
-      <div className="py-6">
+      <div className="py-6 flex flex-col gap-y-16">
         <Suspense fallback={<Skeleton visible={true} />}>
-          {quizData?.quizzes.map((quiz, index) => {
+          {shuffledQuizzes?.quizzes.map((quiz, index) => {
             return (
               <QuizBody
                 key={`quizbody-${index}`}
@@ -120,45 +128,13 @@ const QuizStart = () => {
           ส่งคำตอบ
         </Button>
       </div>
-      <Drawer
-        overlayColor="dark"
-        overlayBlur={3}
-        overlayOpacity={0.6}
-        opened={showDrawer}
-        onClose={() => toggleDrawer(false)}
-        padding="xl"
-        size="lg"
-        position="top"
-      >
-        <h1 className="text-xl md:text-4xl font-bold font-noto">
-          ยืนยันคำตอบสุดท้าย
-        </h1>
-        <div className="flex py-0.5 my-2 items-center gap-x-2">
-          <Switch
-            color="orange"
-            onChange={(event) => setChecked(event.currentTarget.checked)}
-          />
-          <span className="text-lg font-kanit">
-            ข้าพเจ้ายืนยันคำตอบ ได้ตรวจทานว่าได้<Mark>ทำครบทุกข้อแล้ว</Mark>{" "}
-            และข้าพเจ้าเข้าใจว่าสามารถส่งคำตอบได้
-            <Mark>สูงสุด 3 ครั้งต่อคน</Mark>
-            และการส่งครั้งนี้จะเป็นการใช้โควต้าที่ข้าพเจ้านั้นเหลืออยู่
-          </span>
-        </div>
-        <Button
-          disabled={!checked}
-          classNames={{
-            root: "bg-fresh-salmon",
-          }}
-          className="md:text-2xl text-lg font-bold font-noto text-white w-auto my-8"
-          leftIcon={<IconBook size={24} />}
-          onClick={async () => {
-            if (!checked) return;
-          }}
-        >
-          ยืนยันคำตอบ
-        </Button>
-      </Drawer>
+      <QuizConfirm
+        showDrawer={showDrawer}
+        toggleDrawer={toggleDrawer}
+        checked={checked}
+        setChecked={setChecked}
+        userData={userData}
+      />
       <Affix position={{ bottom: 20, right: 20 }}>
         <Transition transition="slide-up" mounted={scroll.y > 200}>
           {(transitionStyles) => (

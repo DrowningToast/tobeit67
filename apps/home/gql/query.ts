@@ -7,6 +7,7 @@ export interface fetchUserResponse {
     lastname: string;
     remainingAttempt: number;
     score: number;
+    id: number;
   };
 }
 
@@ -17,6 +18,7 @@ export const fetchUser = (email: string) => gql`
       firstname
       lastname
       score
+      id
     }
   }
 `;
@@ -75,9 +77,12 @@ export const fecthQuizzes = gql`
   }
 `;
 
-// export const submitQuizzes = gql`
-// mutation {
-
-// }
-
-// `;
+export const submitQuizzes = gql`
+  mutation SubmitQuiz($userId: Float!, $answers: [submitAnswer!]) {
+    submit_quiz(answer: { userId: $userId, answer: $answers }) {
+      score
+      scorePercent
+      remainingAttempt
+    }
+  }
+`;

@@ -27,7 +27,7 @@ const QuizBody: FC<Props> = ({ index, quiz, choices }) => {
       <p className="text-lg md:text-xl my-2 font-noto">{quiz.question}</p>
       {/* Pic */}
       <div className="w-full flex flex-col gap-y-4 realtive my-8 md:px-24">
-        {quiz.ref.length > 0 &&
+        {quiz.ref?.length > 0 &&
           quiz.ref.map((url, _) => {
             return (
               <>
@@ -73,11 +73,16 @@ const QuizBody: FC<Props> = ({ index, quiz, choices }) => {
               onClick={() => {
                 setAnswers({
                   ...selectedAnswers,
-                  [`${quiz.id}`]: `${quizChoice}`,
+                  [`${quiz.id - 1}`]: {
+                    id: quiz.id,
+                    answer: `${quizChoice}`,
+                  },
                 });
               }}
               className={`w-full border-white border-2 rounded-xl md:text-2xl font-semibold text-left px-8 py-2 h-12 flex-start ${
-                quizChoice === selectedAnswers[quiz.id] ? "bg-blue-500" : ""
+                quizChoice === selectedAnswers[quiz.id - 1]?.answer
+                  ? "bg-blue-500"
+                  : ""
               }`}
               key={`quiz-choice-${index}-${_}`}
             >
