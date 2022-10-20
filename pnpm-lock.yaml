@@ -58,6 +58,7 @@ importers:
       '@types/node': ^17.0.45
       '@types/react': 18.0.21
       '@types/react-dom': ^18.0.6
+      '@vercel/og': ^0.0.19
       airtable: ^0.11.5
       airtable-api: workspace:^1.0.0
       autoprefixer: ^10.4.12
@@ -97,6 +98,7 @@ importers:
       '@mantine/rte': 5.5.4_peoatue7sckyfiogasz7flkvpm
       '@svgr/webpack': 6.4.0
       '@tailwindcss/typography': 0.5.7_tailwindcss@3.1.8
+      '@vercel/og': 0.0.19
       airtable: 0.11.5
       airtable-api: link:../../packages/airtable-api
       axios: 0.27.2
@@ -5342,6 +5344,11 @@ packages:
     resolution: {integrity: sha512-Pc/AFTdwZwEKJxFJvlxrSmGe/di+aAOBn60sremrpLo6VI/6cmiUYNNwlI5KNYttg7uypzA3ILPMPgxB2GYZEg==}
     dev: false
 
+  /@resvg/resvg-wasm/2.0.0-alpha.4:
+    resolution: {integrity: sha512-pWIG9a/x1ky8gXKRhPH1OPKpHFoMN1ISLbJ+O+gPXQHIAKhNd5I28RlWf7q576hAOQA9JZTlo3p/M2uyLzJmmw==}
+    engines: {node: '>= 10'}
+    dev: false
+
   /@rushstack/ts-command-line/4.12.4:
     resolution: {integrity: sha512-ckZHEfPiJCmBdWd/syve5zu2TNsPIqbFie3jWzM/izZa6ZOkDwex/K1ww+kJ12hFBnN44lMD7voJvKXajUCEDA==}
     dependencies:
@@ -5407,6 +5414,15 @@ packages:
     dependencies:
       '@sentry/types': 6.19.7
       tslib: 1.14.1
+    dev: false
+
+  /@shuding/opentype.js/1.4.0-beta.0:
+    resolution: {integrity: sha512-3NgmNyH3l/Hv6EvsWJbsvpcpUba6R8IREQ83nH83cyakCw7uM1arZKNfHwv1Wz6jgqrF/j4x5ELvR6PnK9nTcA==}
+    engines: {node: '>= 8.0.0'}
+    hasBin: true
+    dependencies:
+      fflate: 0.7.4
+      string.prototype.codepointat: 0.2.1
     dev: false
 
   /@simov/deep-extend/1.0.0:
@@ -6826,6 +6842,10 @@ packages:
       '@types/yargs-parser': 21.0.0
     dev: true
 
+  /@types/yoga-layout/1.9.2:
+    resolution: {integrity: sha512-S9q47ByT2pPvD65IvrWp7qppVMpk9WGMbVq9wbWZOHg6tnXSD4vyhao6nOSBwwfDdV2p3Kx9evA9vI+XWTfDvw==}
+    dev: false
+
   /@typescript-eslint/eslint-plugin/5.39.0_xyciw6oqjoiiono4dhv3uhn5my:
     resolution: {integrity: sha512-xVfKOkBm5iWMNGKQ2fwX5GVgBuHmZBO1tCRwXmY5oAIsPscfwm2UADDuNB8ZVYCtpQvJK4xpjrK7jEhcJ0zY9A==}
     engines: {node: ^12.22.0 || ^14.17.0 || >=16.0.0}
@@ -6974,6 +6994,15 @@ packages:
       '@ucast/core': 1.10.1
       '@ucast/js': 3.0.2
       '@ucast/mongo': 2.4.2
+    dev: false
+
+  /@vercel/og/0.0.19:
+    resolution: {integrity: sha512-1LrPUlCoe8T+aEI1fGdvJDhwewK1/wpYlQnF+E9ERgJMFCnmWH4FA+NYBkQaJqxUUeHoutIxNZTHQFT39+I+BQ==}
+    engines: {node: '>=16'}
+    dependencies:
+      '@resvg/resvg-wasm': 2.0.0-alpha.4
+      satori: 0.0.42
+      yoga-wasm-web: 0.1.2
     dev: false
 
   /@webassemblyjs/ast/1.11.1:
@@ -9063,6 +9092,14 @@ packages:
     engines: {node: '>=8'}
     dev: false
 
+  /css-background-parser/0.1.0:
+    resolution: {integrity: sha512-2EZLisiZQ+7m4wwur/qiYJRniHX4K5Tc9w93MT3AS0WS1u5kaZ4FKXlOTBhOjc+CgEgPiGY+fX1yWD8UwpEqUA==}
+    dev: false
+
+  /css-box-shadow/1.0.0-3:
+    resolution: {integrity: sha512-9jaqR6e7Ohds+aWwmhe6wILJ99xYQbfmK9QQB9CcMjDbTxPZjwEmUQpU91OG05Xgm8BahT5fW+svbsQGjS/zPg==}
+    dev: false
+
   /css-color-keywords/1.0.0:
     resolution: {integrity: sha512-FyyrDHZKEjXDpNJYvVsV960FiqQyXc/LlYmsxl2BcdMb2WPx0OGRVgTg55rPSyLSNMqP52R9r8geSp7apN3Ofg==}
     engines: {node: '>=4'}
@@ -10475,6 +10512,10 @@ packages:
 
   /fecha/4.2.3:
     resolution: {integrity: sha512-OP2IUU6HeYKJi3i0z4A19kHMQoLVs4Hc+DPqqxI2h/DPZHTm/vjsfC6P0b4jCMy14XizLBqvndQ+UilD7707Jw==}
+    dev: false
+
+  /fflate/0.7.4:
+    resolution: {integrity: sha512-5u2V/CDW15QM1XbbgS+0DfPxVB+jUKhWEKuuFuHncbk3tEEqzmoXL+2KyOFuKGqOnmdIy0/davWF1CkuwtibCw==}
     dev: false
 
   /figures/3.2.0:
@@ -16576,6 +16617,18 @@ packages:
       source-map-js: 1.0.2
     dev: false
 
+  /satori/0.0.42:
+    resolution: {integrity: sha512-ZZaNp2Ya1ACJ4Yf++e9Ccc1Rb6GcKjC9Nhcl4SQFcdM4VqCLfWHR6Iq7AdRCTcJDDuO8u/qGE2Cs+McVoqJenw==}
+    engines: {node: '>=16'}
+    dependencies:
+      '@shuding/opentype.js': 1.4.0-beta.0
+      css-background-parser: 0.1.0
+      css-box-shadow: 1.0.0-3
+      css-to-react-native: 3.0.0
+      postcss-value-parser: 4.2.0
+      yoga-layout-prebuilt: 1.10.0
+    dev: false
+
   /scheduler/0.20.2:
     resolution: {integrity: sha512-2eWfGgAqqWFGqtdMmcL5zCMK1U8KlXv8SQFGglL3CEtd0aDVDWgeF/YoCmvln55m5zSk3J/20hTaSBeSObsQDQ==}
     dependencies:
@@ -17152,6 +17205,10 @@ packages:
       emoji-regex: 8.0.0
       is-fullwidth-code-point: 3.0.0
       strip-ansi: 6.0.1
+
+  /string.prototype.codepointat/0.2.1:
+    resolution: {integrity: sha512-2cBVCj6I4IOvEnjgO/hWqXjqBGsY+zwPmHl12Srk9IXSZ56Jwwmy+66XO5Iut/oQVR7t5ihYdLB0GMa4alEUcg==}
+    dev: false
 
   /string.prototype.trimend/1.0.5:
     resolution: {integrity: sha512-I7RGvmjV4pJ7O3kdf+LXFpVfdNOxtCW/2C8f6jNiW4+PQchwxkCDzlk1/7p+Wl4bqFIZeF47qAHXLuHHWKAxog==}
@@ -18927,6 +18984,17 @@ packages:
   /yocto-queue/1.0.0:
     resolution: {integrity: sha512-9bnSc/HEW2uRy67wc+T8UwauLuPJVn28jb+GtJY16iiKWyvmYJRXVT4UamsAEGQfPohgr2q4Tq0sQbQlxTfi1g==}
     engines: {node: '>=12.20'}
+    dev: false
+
+  /yoga-layout-prebuilt/1.10.0:
+    resolution: {integrity: sha512-YnOmtSbv4MTf7RGJMK0FvZ+KD8OEe/J5BNnR0GHhD8J/XcG/Qvxgszm0Un6FTHWW4uHlTgP0IztiXQnGyIR45g==}
+    engines: {node: '>=8'}
+    dependencies:
+      '@types/yoga-layout': 1.9.2
+    dev: false
+
+  /yoga-wasm-web/0.1.2:
+    resolution: {integrity: sha512-8SkgawHcA0RUbMrnhxbaQkZDBi8rMed8pQHixkFF9w32zGhAwZ9/cOHWlpYfr6RCx42Yp3siV45/jPEkJxsk6w==}
     dev: false
 
   /yup/0.32.11:
