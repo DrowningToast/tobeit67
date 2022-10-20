@@ -63,10 +63,7 @@ export class QuizService {
 
     const { data } = await cmsClient.query({ query });
 
-    console.log(data.quizzes.data[0]);
-
     const finalData = data.quizzes.data.map((data) => {
-      console.log(data.attributes.ref.data);
       return {
         question: data.attributes.question,
         choiceA: data.attributes.choiceA,
@@ -75,6 +72,7 @@ export class QuizService {
         choiceD: data.attributes.choiceD,
         ref: data.attributes.ref.data.map((content) => content.attributes.url),
         id: Number(data.id),
+        correct: getAnswer ? data.attributes.correct : undefined,
       };
     });
 
@@ -112,21 +110,26 @@ export class QuizService {
           if (answer.answer == question.choiceA) {
             totalScore += 1;
           }
+          break;
         case 'B':
           if (answer.answer == question.choiceB) {
             totalScore += 1;
           }
+          break;
         case 'C':
           if (answer.answer == question.choiceC) {
             totalScore += 1;
           }
+          break;
         case 'D':
           if (answer.answer == question.choiceD) {
             totalScore += 1;
           }
+          break;
       }
     });
 
+    console.log(totalScore);
     return totalScore;
   }
 
