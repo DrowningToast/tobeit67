@@ -9,8 +9,17 @@ import Head from "next/head";
 import Navbar from "../components/navbar/Navbar";
 import { ConditionalRedirect, firebaseUserAtom } from "../components/firebase";
 import { useAtom } from "jotai";
+import { NavigationProgress, setNavigationProgress } from "@mantine/nprogress";
+import { useEffect } from "react";
+import { useScroll } from "framer-motion";
 
 const Home: NextPage = () => {
+  const { scrollYProgress } = useScroll();
+  useEffect(() => {
+    scrollYProgress.onChange((event) => {
+      setNavigationProgress(+event.toFixed(2) * 100);
+    });
+  }, []);
   return (
     <>
       <Head>
@@ -36,6 +45,7 @@ const Home: NextPage = () => {
           ],
         }}
       />
+      <NavigationProgress color={"orange"} size={8} />
       <div>
         <Navbar />
         <Hero />

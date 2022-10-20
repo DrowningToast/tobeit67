@@ -75,6 +75,7 @@ type Quizzes {
   choiceB: String
   choiceC: String
   choiceD: String
+  ref: [String!]
 }
 
 type Mutation {

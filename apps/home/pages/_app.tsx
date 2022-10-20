@@ -20,7 +20,7 @@ function MyApp({ Component, pageProps }: AppProps) {
 
   return (
     <>
-      <ApolloProvider client={getRegisClient()}>
+      <ApolloProvider client={getRegisClient(token ?? undefined)}>
         <MantineProvider
           theme={{
             colors: {

@@ -8,9 +8,10 @@ import { firebaseReady, firebaseUserAtom } from "../../components/firebase";
 import QuizNavbar from "../../components/quiz/QuizNavbar";
 import Link from "next/link";
 import { getRegisClient } from "../../gql/gql-client";
-import { fetchUser, insertUser } from "../../gql/query";
+import { fetchUser, fetchUserResponse, insertUser } from "../../gql/query";
 import { gql, useMutation, useQuery } from "@apollo/client";
 import { FieldSet } from "airtable/lib/field_set";
+import fetchAirtableCamperByEmail from "../../components/airtable/airtableQuery";
 
 interface AirtableOnlineCamperRecord {
   Email: string;
@@ -47,17 +48,12 @@ const Quiz: NextPage = () => {
   const [airtableData, setAirtableData] =
     useState<AirtableOnlineCamperRecord | null>(null);
 
-  const { data, loading: fecthingUser } = useQuery<{
-    user: {
-      email: string;
-      firstname: string;
-      lastname: string;
-      remainingAttempt: number;
-      score: number;
-    };
-  }>(fetchUser(user?.email!), {
-    skip: !user || !ready || !validData,
-  });
+  const { data, loading: fecthingUser } = useQuery<fetchUserResponse>(
+    fetchUser(user?.email!),
+    {
+      skip: !user || !ready || !validData,
+    }
+  );
 
   const [
     createNewUser,
@@ -73,41 +69,19 @@ const Quiz: NextPage = () => {
   useEffect(() => {
     if (!user && !ready) return;
 
-    MainBase.table<{
-      Email: string;
-      ชื่อ: string;
-      นามสกุล: string;
-      มัธยมศึกษาชั้นปีที่:
-        | "ม.4"
-        | "ม.5"
-        | "ม.6"
-        | "ปวช. ปี1"
-        | "ปวช. ปี2"
-        | "ปวช. ปี3"
-        | "อื่นๆ";
-      จังหวัด: string;
-      เบอร์โทรศัพท์ที่สามารถติดต่อได้: string;
-    }>("Camper-Register")
-      .select({
-        fields: [
-          "ชื่อ",
-          "Email",
-          "นามสกุล",
-          "มัธยมศึกษาชั้นปีที่",
-          "จังหวัด",
-          "เบอร์โทรศัพท์ที่สามารถติดต่อได้",
-        ],
-        filterByFormula: `Email= "${user?.email}"`,
-      })
-      .all()
-      .then((records) => {
-        setValidData(
-          records.find((record) => record.fields.Email === user?.email)
-            ? true
-            : false
-        );
-        setAirtableData(records[0].fields);
-      });
+    const fecthAirtable = async () => {
+      const records = await fetchAirtableCamperByEmail(user?.email!);
+
+      setValidData(
+        records.find((record) => record.fields.Email === user?.email)
+          ? true
+          : false
+      );
+
+      setAirtableData(records[0].fields);
+    };
+
+    fecthAirtable();
   }, [user]);
 
   // Deal with unknown user
@@ -180,7 +154,7 @@ const Quiz: NextPage = () => {
               </h1>
             </Skeleton>
 
-            <Skeleton visible={isLoading}>
+            <Skeleton animate visible={isLoading}>
               <h1 className="text-xl md:text-4xl font-bold font-noto inline-block w-full text-center">
                 ประกาศนียบัตร จะเป็นของชื่อ{" "}
                 <span className="text-blue-300">
@@ -192,13 +166,15 @@ const Quiz: NextPage = () => {
         </div>
       </div>
       <div className="flex flex-col items-center justify-center md:gap-y-12 gap-y-6">
-        <Link href="/quiz/start" passHref>
-          <a>
-            <button className="bg-glossy-coral px-32 py-6 rounded-full text-3xl font-noto font-bold">
-              เริ่มทำ
-            </button>
-          </a>
-        </Link>
+        <Skeleton visible={isLoading} className="flex justify-center w-auto">
+          <Link href="/quiz/start" passHref>
+            <a>
+              <button className="bg-glossy-coral px-32 py-6 rounded-full text-3xl font-noto font-bold">
+                เริ่มทำ
+              </button>
+            </a>
+          </Link>
+        </Skeleton>
         <Link href="/quiz/end" passHref>
           <a
             target="_blank"

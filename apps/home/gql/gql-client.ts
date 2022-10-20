@@ -16,8 +16,8 @@ export const client = new ApolloClient({
   cache: new InMemoryCache(),
 });
 
-const getFirebaseAuthLink = (token?: string) =>
-  setContext((_, { headers }) => {
+const getFirebaseAuthLink = (token?: string) => {
+  return setContext((_, { headers }) => {
     return {
       headers: {
         ...headers,
@@ -25,6 +25,7 @@ const getFirebaseAuthLink = (token?: string) =>
       },
     };
   });
+};
 
 const regisHTTPLink = createHttpLink({
   uri: regisEndpoint + "/graphql",

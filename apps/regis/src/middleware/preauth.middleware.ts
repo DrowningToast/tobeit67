@@ -25,7 +25,7 @@ export class PreauthMiddleware implements NestMiddleware {
 
   async use(req: Request, res: Response, next: Function) {
     const token = req.headers.authorization;
-    
+
     if (token != null && token != '') {
       try {
         const decodedIdToken = await firebase
@@ -35,7 +35,7 @@ export class PreauthMiddleware implements NestMiddleware {
         next();
       } catch (e) {
         console.error(e);
-        this.accessDenied;
+        this.accessDenied('/graphql', res);
       }
     } else {
       next();

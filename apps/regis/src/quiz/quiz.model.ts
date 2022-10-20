@@ -1,63 +1,73 @@
-import { ArgsType, Field, Float, InputType, Int, ObjectType } from '@nestjs/graphql';
+import {
+  ArgsType,
+  Field,
+  Float,
+  InputType,
+  Int,
+  ObjectType,
+} from '@nestjs/graphql';
 
 @InputType('submitAnswer')
 @ObjectType()
 export class Answer {
   @Field(() => Int)
-  id: number
+  id: number;
 
   @Field(() => String)
-  answer: string
+  answer: string;
 }
 
 @ObjectType('Quizzes', {
   description: 'Quiz',
-  isAbstract: true
+  isAbstract: true,
 })
 @InputType('Quiz', { isAbstract: true })
 export class QuizOutput {
-  @Field(_type => Int, { nullable: true })
+  @Field((_type) => Int, { nullable: true })
   id: number;
 
-  @Field(_type => String, { nullable: true })
+  @Field((_type) => String, { nullable: true })
   question: string;
 
-  @Field(_type => String, { nullable: true })
+  @Field((_type) => String, { nullable: true })
   choiceA: string;
 
-  @Field(_type => String, { nullable: true })
+  @Field((_type) => String, { nullable: true })
   choiceB: string;
 
-  @Field(_type => String, { nullable: true })
+  @Field((_type) => String, { nullable: true })
   choiceC: string;
 
-  @Field(_type => String, { nullable: true })
+  @Field((_type) => String, { nullable: true })
   choiceD: string;
+
+  @Field((_type) => [String], { nullable: true })
+  ref: string[];
 }
 
 @InputType({ isAbstract: true })
 export class SubmitQuizInput {
   @Field()
-  userId: number
+  userId: number;
 
   @Field((_type) => [Answer], { nullable: true })
-  answer: Answer[]
+  answer: Answer[];
 }
 
 @ObjectType('QuizResult', {
   description: 'Quiz Result',
-  isAbstract: true
+  isAbstract: true,
 })
 export class QuizResult {
   @Field((_type) => Int, { nullable: true })
-  userId: number
+  userId: number;
 
   @Field((_type) => Int, { nullable: true })
-  score: number
+  score: number;
 
   @Field((_type) => Float, { nullable: true })
-  scorePercent: number
+  scorePercent: number;
 
-  @Field(_type => Int, { nullable: true })
-  remainingAttempt: number
+  @Field((_type) => Int, { nullable: true })
+  remainingAttempt: number;
 }

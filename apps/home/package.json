@@ -24,6 +24,7 @@
     "@mantine/nprogress": "^5.5.4",
     "@mantine/rte": "^5.5.4",
     "@svgr/webpack": "^6.4.0",
+    "@tabler/icons": "^1.106.0",
     "@tailwindcss/typography": "^0.5.7",
     "airtable": "^0.11.5",
     "airtable-api": "workspace:^1.0.0",
@@ -42,6 +43,7 @@
     "react-markdown": "^8.0.3",
     "sass": "^1.55.0",
     "tabler-icons-react": "^1.55.0",
+    "tailwind-scrollbar-hide": "^1.1.7",
     "tsconfig": "^7.0.0"
   },
   "devDependencies": {

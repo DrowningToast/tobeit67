@@ -21,17 +21,18 @@ module.exports = {
         chonburi: '"Chonburi"',
       },
       backgroundImage: {
-        'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
+        "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
       },
       textColor: {
-        'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
-      }
+        "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
+      },
     },
   },
   plugins: [
-    require('@tailwindcss/typography'),
+    require("@tailwindcss/typography"),
+    require("tailwind-scrollbar-hide"),
   ],
   corePlugins: {
-    preflight: true
-  }
+    preflight: true,
+  },
 };
