@@ -9,7 +9,7 @@ import { QuizService } from './quiz.service';
 export class QuizResolver {
   constructor(private readonly quizService: QuizService) {}
 
-  @Query(() => [QuizOutput], { nullable: true })
+  @Query(() => [QuizOutput])
   async quizzes(
     @Args({ name: 'userId', type: () => Int, nullable: true })
     userId: number,

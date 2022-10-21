@@ -144,7 +144,7 @@ const Quiz: NextPage = () => {
         <div className="w-full flex flex-col gap-y-4 md:gap-y-12">
           <div className="flex gap-y-2 flex-col">
             <Skeleton visible={isLoading}>
-              <h1 className="text-xl md:text-4xl font-bold font-noto inline-block w-full text-center">
+              <h1 className="text-white text-xl md:text-4xl font-bold font-noto inline-block w-full text-center">
                 น้องยังเหลือโอกาสในการทำ quiz อีก{" "}
                 <span className="text-glossy-coral">
                   {data?.user?.remainingAttempt}
@@ -154,7 +154,7 @@ const Quiz: NextPage = () => {
             </Skeleton>
 
             <Skeleton animate visible={isLoading}>
-              <h1 className="text-xl md:text-4xl font-bold font-noto inline-block w-full text-center">
+              <h1 className="text-white text-xl md:text-4xl font-bold font-noto inline-block w-full text-center">
                 ประกาศนียบัตร จะเป็นของชื่อ{" "}
                 <span className="text-blue-300">
                   {data?.user?.firstname} {data?.user?.lastname}
@@ -168,7 +168,7 @@ const Quiz: NextPage = () => {
         <Skeleton visible={isLoading} className="flex justify-center w-auto">
           <Link href="/quiz/start" passHref>
             <a>
-              <button className="bg-glossy-coral px-32 py-6 rounded-full text-3xl font-noto font-bold">
+              <button className="text-white bg-glossy-coral px-32 py-6 rounded-full text-3xl font-noto font-bold">
                 เริ่มทำ
               </button>
             </a>
@@ -177,7 +177,7 @@ const Quiz: NextPage = () => {
         <Link href="/quiz/end" passHref>
           <a
             target="_blank"
-            className="text-base md:text-2xl font-bold font-noto inline-block w-full text-center underline"
+            className="text-base text-white md:text-2xl font-bold font-noto inline-block w-full text-center underline"
           >
             ดูคะแนนสอบครั้งที่แล้ว
           </a>

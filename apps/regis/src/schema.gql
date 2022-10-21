@@ -5,7 +5,7 @@
 type Query {
   user(user: UserInput): Users
   users(user: User): [Users!]
-  quizzes(userId: Int): [Quizzes!]
+  quizzes(userId: Int): [Quizzes!]!
 }
 
 """Camper and Staff user information"""

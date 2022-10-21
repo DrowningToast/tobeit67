@@ -64,8 +64,8 @@ export interface fetchQuizzesResponse {
 }
 
 export const fecthQuizzes = gql`
-  query {
-    quizzes {
+  query getQuiz($userId: Int) {
+    quizzes(userId: $userId) {
       id
       question
       choiceA

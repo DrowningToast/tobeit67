@@ -7,13 +7,14 @@ import { setContext } from '@apollo/client/link/context';
 //     ? process.env.CMS_DEV
 //     : process.env.CMS_PROD;
 
-const endpoint = process.env.CMS_DEV
+const endpoint = process.env.CMS_DEV;
 
 console.log(endpoint);
 
 const httpLink = createHttpLink({ uri: endpoint + '/graphql', fetch });
 
 const authLink = setContext((_, { headers }) => {
+  console.log(process.env.BACKEND_CMS_TOKEN);
   return {
     ...headers,
     headers: {

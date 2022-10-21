@@ -23,7 +23,8 @@
     "setup:env": "cp .env.template .env && pnpm run update:env",
     "update:env": "cp .env apps/regis/.env && cp .env apps/cms/.env && cp .env apps/home/.env",
     "db:migrate": "npx prisma migrate dev --schema apps/regis/prisma/schema.prisma",
-    "db:generate": "npx prisma generate --schema apps/regis/prisma/schema.prisma"
+    "db:generate": "npx prisma generate --schema apps/regis/prisma/schema.prisma",
+    "db:migrate:deploy": "npx prisma migrate deploy --schema apps/regis/prisma/schema.prisma"
   },
   "devDependencies": {
     "prettier": "latest",

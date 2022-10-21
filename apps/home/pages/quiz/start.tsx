@@ -44,7 +44,10 @@ const QuizStart = () => {
   );
 
   const { data: quizData } = useQuery<fetchQuizzesResponse>(fecthQuizzes, {
-    skip: !userData,
+    skip: !userData?.user,
+    variables: {
+      userId: userData?.user.id,
+    },
     onCompleted(data) {
       return {
         quizzes: shuffle(data.quizzes),
