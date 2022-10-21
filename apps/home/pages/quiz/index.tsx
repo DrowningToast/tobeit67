@@ -12,6 +12,7 @@ import { fetchUser, fetchUserResponse, insertUser } from "../../gql/query";
 import { gql, useMutation, useQuery } from "@apollo/client";
 import { FieldSet } from "airtable/lib/field_set";
 import fetchAirtableCamperByEmail from "../../components/airtable/airtableQuery";
+import { NextSeo } from "next-seo";
 
 interface AirtableOnlineCamperRecord {
   Email: string;
@@ -128,6 +129,26 @@ const Quiz: NextPage = () => {
 
   return (
     <section className="relative min-h-screen bg-water-blue">
+      <NextSeo
+        title="ToBeIT'67 | Quiz"
+        description="ToBeIT'67 เสริมความคิด ติดความรู้ ก้าวเข้าสู่ เด็กไอที กิจกรรมที่จะพาน้องๆ ผ่านกิจกรรมการเรียนรู้ผ่านบนโลกออนไลน์และภายในคณะไอที เพื่อเสริมความรู้วิชาการเทคโนโลยีสารสนเทศให้แก่ส้งคม"
+        canonical="https://tobeit.it.kmitl.ac.th"
+        openGraph={{
+          url: "https://tobeit.it.kmitl.ac.th",
+          title: "ค่าย ToBeIT'67",
+          description:
+            "กิจกรรมที่จะพาน้องๆ ผ่านกิจกรรมการเรียนรู้ผ่านบนโลกออนไลน์และภายในคณะไอที เพื่อเสริมความรู้วิชาการเทคโนโลยีสารสนเทศให้แก่สังคม",
+          images: [
+            {
+              url: "/assets/tobe-logo.svg",
+              width: 327,
+              height: 327,
+              alt: "ToBeIT Logo",
+              type: "image/svg",
+            },
+          ],
+        }}
+      />
       <LoadingOverlay
         visible={!validData || !ready || !user || !data}
         overlayBlur={3}

@@ -24,6 +24,7 @@ import {
 import { NavigationProgress, setNavigationProgress } from "@mantine/nprogress";
 import { useWindowScroll } from "@mantine/hooks";
 import QuizConfirm from "../../components/quiz/QuizConfirm";
+import { NextSeo } from "next-seo";
 
 export const answersAtom = atom<{
   [id: number]: {
@@ -81,6 +82,26 @@ const QuizStart = () => {
 
   return (
     <section className="text-white bg-water-blue p-6 pb-24 scrollbar-hide min-h-screen relative">
+      <NextSeo
+        title="ToBeIT'67 | Quiz"
+        description="ToBeIT'67 เสริมความคิด ติดความรู้ ก้าวเข้าสู่ เด็กไอที กิจกรรมที่จะพาน้องๆ ผ่านกิจกรรมการเรียนรู้ผ่านบนโลกออนไลน์และภายในคณะไอที เพื่อเสริมความรู้วิชาการเทคโนโลยีสารสนเทศให้แก่ส้งคม"
+        canonical="https://tobeit.it.kmitl.ac.th"
+        openGraph={{
+          url: "https://tobeit.it.kmitl.ac.th",
+          title: "ค่าย ToBeIT'67",
+          description:
+            "กิจกรรมที่จะพาน้องๆ ผ่านกิจกรรมการเรียนรู้ผ่านบนโลกออนไลน์และภายในคณะไอที เพื่อเสริมความรู้วิชาการเทคโนโลยีสารสนเทศให้แก่สังคม",
+          images: [
+            {
+              url: "/assets/tobe-logo.svg",
+              width: 327,
+              height: 327,
+              alt: "ToBeIT Logo",
+              type: "image/svg",
+            },
+          ],
+        }}
+      />
       <LoadingOverlay visible={isLoading} />
       <NavigationProgress color={"orange"} size={8} />
       <Link passHref href="/">

@@ -7,6 +7,7 @@ export interface fetchUserResponse {
     lastname: string;
     remainingAttempt: number;
     score: number;
+    scorePercent: number;
     id: number;
   };
 }
@@ -18,6 +19,7 @@ export const fetchUser = (email: string) => gql`
       firstname
       lastname
       score
+      scorePercent
       id
     }
   }
