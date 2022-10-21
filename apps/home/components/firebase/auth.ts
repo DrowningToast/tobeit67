@@ -172,12 +172,12 @@ export const SignOut = async () => {
  */
 export const ConditionalRedirect: FC<{
   cb: (
-    fbProfile: User | null,
+    fbProfile: Partial<User> | null,
     ready: boolean
   ) => boolean | undefined | null | string;
   path: string;
 }> = ({ cb, path }) => {
-  const [fbProfile] = useAtom<User | null>(firebaseUserAtom);
+  const [fbProfile] = useAtom(firebaseUserAtom);
   const [ready] = useAtom<boolean>(firebaseReady);
   const router = useRouter();
 

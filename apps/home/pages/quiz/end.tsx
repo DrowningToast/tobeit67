@@ -1,5 +1,5 @@
 const QuizEnd = () => {
-  return <h1>QuizEnd</h1>;
+  return <section className="min-h-screen bg-water-blue"></section>;
 };
 
 export default QuizEnd;

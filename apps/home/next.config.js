@@ -3,14 +3,13 @@ const nextConfig = {
   reactStrictMode: true,
   swcMinify: true,
 
-  output: "standalone",
+  // output: "standalone",
   images: {
     domains: ["localhost", "apitobeit.it.kmitl.ac.th"],
   },
   eslint: {
     ignoreDuringBuilds: true,
   },
-  rewrites: [{}],
 };
 
 module.exports = nextConfig;
