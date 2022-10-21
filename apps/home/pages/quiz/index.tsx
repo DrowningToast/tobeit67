@@ -90,7 +90,7 @@ const Quiz: NextPage = () => {
     } else if (!validData && ready && !user) {
       router.push("/signout");
     }
-  }, [validData, ready]);
+  }, [validData, ready, user]);
 
   // Check if brand new user
   useEffect(() => {

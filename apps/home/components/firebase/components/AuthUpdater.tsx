@@ -75,7 +75,6 @@ const AuthUpdater: FC<Props> = ({ callback }) => {
           setInfo(null);
         }
       } else {
-        console.log("setting shit to null lol");
         setProfile(null);
         setInfo(null);
       }

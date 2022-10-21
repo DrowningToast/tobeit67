@@ -12,10 +12,6 @@
   },
   "pluginOptions": {},
   "attributes": {
-    "question": {
-      "type": "text",
-      "required": true
-    },
     "choiceA": {
       "type": "string",
       "required": true
@@ -44,7 +40,6 @@
     },
     "questionSlug": {
       "type": "uid",
-      "targetField": "question",
       "required": true
     },
     "ref": {
@@ -57,6 +52,10 @@
         "videos",
         "audios"
       ]
+    },
+    "question": {
+      "type": "richtext",
+      "required": true
     }
   }
 }
