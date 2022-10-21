@@ -24,7 +24,7 @@ const RegisHero = () => {
             href={"https://airtable.com/shryx5STWug0e8WsD"}
           >
             <a target={"_blank"}>
-              <button className="text-fresh-salmon border-8 border-white py-4 px-8 md:py-6 md:px-16 text-3xl rounded-full my-4 md:my-8">
+              <button className="text-fresh-salmon border-8 border-white py-4 px-8 md:py-6 md:px-16 text-xl md:text-3xl lg:text-4xl rounded-full my-4 md:my-8">
                 รอบ Online สมัครเลย!
               </button>
             </a>
@@ -40,7 +40,7 @@ const RegisHero = () => {
             target="_blank"
           >
             <a>
-              <button className="text-fresh-salmon bg-white py-4 px-8 md:py-6 md:px-16 text-3xl md:text-4xl rounded-full my-4 md:my-8">
+              <button className="text-fresh-salmon bg-white py-4 px-8 md:py-6 md:px-16 text-xl md:text-3xl lg:text-4xl rounded-full my-4 md:my-8">
                 รอบ Onsite สมัครเลย!
               </button>
             </a>
