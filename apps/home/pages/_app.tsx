@@ -16,8 +16,6 @@ function MyApp({ Component, pageProps }: AppProps) {
   const [user] = useAtom(firebaseUserAtom);
   const [token] = useAtom(firebaseToken);
 
-  console.log(user);
-
   return (
     <>
       <ApolloProvider client={getRegisClient(token ?? undefined)}>

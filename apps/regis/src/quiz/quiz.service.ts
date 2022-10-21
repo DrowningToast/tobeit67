@@ -129,7 +129,6 @@ export class QuizService {
       }
     });
 
-    console.log(totalScore);
     return totalScore;
   }
 

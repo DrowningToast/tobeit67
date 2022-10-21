@@ -59,8 +59,6 @@ const QuizStart = () => {
   const shuffledQuizzes = useMemo(() => {
     if (!quizData || quizData?.quizzes?.length <= 1) return quizData;
 
-    console.log(shuffle(Array(...quizData?.quizzes!)));
-
     return { quizzes: shuffle(Array(...quizData?.quizzes!)) };
   }, [quizData]);
 

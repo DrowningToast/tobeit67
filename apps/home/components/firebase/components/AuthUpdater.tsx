@@ -93,7 +93,6 @@ const AuthUpdater: FC<Props> = ({ callback }) => {
           ..._user,
           token,
         });
-        console.log(profile);
         setToken(token);
       } catch (e) {
         console.error("An error has occured while trying to refresh ID token");
