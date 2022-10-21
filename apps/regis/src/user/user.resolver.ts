@@ -31,7 +31,6 @@ export class UserResolver {
   }
 
   @Mutation((returns) => User)
-  @UseGuards(DevModeGuard)
   async insert_user(
     @Args({ name: 'userInput', type: () => UserInput })
     userInput: UserInput,

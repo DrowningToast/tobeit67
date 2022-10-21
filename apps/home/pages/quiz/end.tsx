@@ -2,6 +2,7 @@ import { useQuery } from "@apollo/client";
 import { useAtom } from "jotai";
 import { NextSeo } from "next-seo";
 import Link from "next/link";
+import { useEffect, useRef, useState } from 'react';
 import { firebaseUserAtom } from "../../components/firebase";
 import {
   fecthQuizzes,
@@ -9,17 +10,49 @@ import {
   fetchUser,
   fetchUserResponse,
 } from "../../gql/query";
+import html2canvas from 'html2canvas'
 
 const QuizEnd = () => {
+  var test = 'hello world'
+
+  const [hideCert, setHideCert] = useState(false)
+
   const [fbUser] = useAtom(firebaseUserAtom);
   const { data } = useQuery<fetchUserResponse>(fetchUser(fbUser?.email!), {
     skip: !fbUser?.email,
+    onCompleted: (data) => {
+      // @ts-ignore-next-line
+      window.firstname = data.user.firstname
+      // @ts-ignore-next-line
+      window.lastname = data.user.lastname
+
+      setTimeout(() => {
+        setHideCert(true)
+      }, 1000)
+    }
   });
   const { data: quizData } = useQuery<fetchQuizzesResponse>(fecthQuizzes, {
     variables: {
       userId: data?.user.id,
     },
   });
+
+  const [certUrl, setCertUrl] = useState('')
+
+  const canvasRef = useRef(null)
+
+  console.log(data);
+
+  useEffect(() => {
+    const genCert = async () => {
+      const canvas = await html2canvas(canvasRef.current as any, { useCORS: true })
+      const image = canvas.toDataURL('image', 1.0)
+
+      setCertUrl(image)
+    }
+
+    genCert()
+  }, [])
 
   return (
     <section className="min-h-screen bg-water-blue px-12 py-16">
@@ -69,6 +102,39 @@ const QuizEnd = () => {
         </h1>
       </div>
       {/* Image goes here */}
+      {hideCert ? (
+        <img src={certUrl} />
+      ) : (
+        <div
+          ref={canvasRef}
+          style={{
+            height: '100%',
+            width: '100%',
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
+            justifyContent: 'center',
+          }}
+          id='cert'
+        >
+          <img
+            src="https://i2.paste.pics/d9f3c0afb281a8305fa97d5aaeb78a57.png"
+            width="2527"
+            height="1785"
+          />
+          <h1 style={{
+            position: 'absolute',
+            fontFamily: '"Noto Sans Thai"',
+            top: '90%',
+            fontSize: 50,
+            zIndex: '200'
+          }}>
+            {/* {window.firstname + " OK2 " + window.lastname} */}
+          </h1>
+        </div>
+
+      )}
+
       {/* Download button goes here */}
     </section>
   );
