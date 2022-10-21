@@ -1,6 +1,7 @@
 import { ConflictException, Inject, UseGuards } from '@nestjs/common';
 import { Args, Int, Mutation, Query, Resolver } from '@nestjs/graphql';
 import { AuthGuard } from 'src/auth.guard';
+import { DevModeGuard } from 'src/dev-mode.guard';
 import { User, UserDelete, UserEdit, UserInput } from './user.model';
 import { UserService } from './user.service';
 
@@ -17,6 +18,7 @@ export class UserResolver {
   }
 
   @Query((returns) => [User], { nullable: true })
+  @UseGuards(DevModeGuard)
   async users(
     @Args({ name: 'user', type: () => User, nullable: true })
     user: User,
@@ -29,6 +31,7 @@ export class UserResolver {
   }
 
   @Mutation((returns) => User)
+  @UseGuards(DevModeGuard)
   async insert_user(
     @Args({ name: 'userInput', type: () => UserInput })
     userInput: UserInput,
@@ -43,6 +46,7 @@ export class UserResolver {
   }
 
   @Mutation((returns) => User)
+  @UseGuards(DevModeGuard)
   async edit_user(
     @Args({ name: 'target', type: () => User }) target: Partial<User>,
     @Args({ name: 'update', type: () => UserEdit }) update: Partial<UserEdit>,
