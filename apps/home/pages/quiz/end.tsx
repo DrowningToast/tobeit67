@@ -2,7 +2,7 @@ import { useQuery } from "@apollo/client";
 import { useAtom } from "jotai";
 import { NextSeo } from "next-seo";
 import Link from "next/link";
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState } from "react";
 import { firebaseUserAtom } from "../../components/firebase";
 import {
   fecthQuizzes,
@@ -10,26 +10,16 @@ import {
   fetchUser,
   fetchUserResponse,
 } from "../../gql/query";
-import html2canvas from 'html2canvas'
+import cert from "../../components/quiz/cert.png";
+import { useRouter } from "next/router";
+import { Skeleton } from "@mantine/core";
 
 const QuizEnd = () => {
-  var test = 'hello world'
-
-  const [hideCert, setHideCert] = useState(false)
+  const [certUrl, setCertUrl] = useState<string | null | undefined>(null);
 
   const [fbUser] = useAtom(firebaseUserAtom);
   const { data } = useQuery<fetchUserResponse>(fetchUser(fbUser?.email!), {
     skip: !fbUser?.email,
-    onCompleted: (data) => {
-      // @ts-ignore-next-line
-      window.firstname = data.user.firstname
-      // @ts-ignore-next-line
-      window.lastname = data.user.lastname
-
-      setTimeout(() => {
-        setHideCert(true)
-      }, 1000)
-    }
   });
   const { data: quizData } = useQuery<fetchQuizzesResponse>(fecthQuizzes, {
     variables: {
@@ -37,22 +27,39 @@ const QuizEnd = () => {
     },
   });
 
-  const [certUrl, setCertUrl] = useState('')
+  const router = useRouter();
 
-  const canvasRef = useRef(null)
-
-  console.log(data);
+  const canvasRef = useRef<HTMLCanvasElement>(null);
 
   useEffect(() => {
+    if (
+      !data?.user.firstname ||
+      !(data.user.scorePercent > +process.env.NEXT_PUBLIC_MIN_THRESHOLD!)
+    )
+      return;
+
     const genCert = async () => {
-      const canvas = await html2canvas(canvasRef.current as any, { useCORS: true })
-      const image = canvas.toDataURL('image', 1.0)
+      let context = canvasRef.current?.getContext("2d");
+      if (!context) return;
 
-      setCertUrl(image)
-    }
+      let drawing = new Image();
+      drawing.src = cert.src;
 
-    genCert()
-  }, [])
+      drawing.onload = () => {
+        context?.drawImage(drawing, 0, 0, 1119, 725);
+        context!.textAlign = "center";
+        context!.font = "48px Noto Sans Thai";
+        context?.fillText(
+          `${data?.user.firstname} ${data?.user.lastname}`,
+          550,
+          310
+        );
+        setCertUrl(canvasRef.current?.toDataURL("image/png"));
+      };
+    };
+
+    genCert();
+  }, [data?.user]);
 
   return (
     <section className="min-h-screen bg-water-blue px-12 py-16">
@@ -97,45 +104,41 @@ const QuizEnd = () => {
           จากคะแนนเต็ม
         </h1>
         <h1>
-          น้องจะต้องได้ขั้นต่ำ <span className="text-glossy-coral">60%</span>{" "}
+          น้องจะต้องได้ขั้นต่ำ{" "}
+          <span className="text-glossy-coral">
+            {(+process.env.NEXT_PUBLIC_MIN_THRESHOLD! * 100).toFixed(0)}%
+          </span>{" "}
           ถึงจะได้รับใบประกาศนียบัตร
         </h1>
       </div>
       {/* Image goes here */}
-      {hideCert ? (
-        <img src={certUrl} />
-      ) : (
-        <div
-          ref={canvasRef}
-          style={{
-            height: '100%',
-            width: '100%',
-            display: 'flex',
-            flexDirection: 'column',
-            alignItems: 'center',
-            justifyContent: 'center',
-          }}
-          id='cert'
-        >
-          <img
-            src="https://i2.paste.pics/d9f3c0afb281a8305fa97d5aaeb78a57.png"
-            width="2527"
-            height="1785"
+      <div className="lg:px-48">
+        <Skeleton visible={Boolean(data?.user)} animate>
+          <canvas
+            width={1119}
+            height={725}
+            ref={canvasRef}
+            color="black"
+            className="w-full h-full"
           />
-          <h1 style={{
-            position: 'absolute',
-            fontFamily: '"Noto Sans Thai"',
-            top: '90%',
-            fontSize: 50,
-            zIndex: '200'
-          }}>
-            {/* {window.firstname + " OK2 " + window.lastname} */}
-          </h1>
-        </div>
-
-      )}
-
+        </Skeleton>
+      </div>
       {/* Download button goes here */}
+      <div className="flex flex-col items-center">
+        <Skeleton
+          className="w-auto my-8 mx-auto inline-block"
+          visible={!certUrl}
+        >
+          <a
+            target={"_blank"}
+            download={"certificate.png"}
+            href={certUrl!}
+            className="text-center underline font-noto md:text-2xl inline-block w-full"
+          >
+            ดาวน์โหลด Certificate
+          </a>
+        </Skeleton>
+      </div>
     </section>
   );
 };

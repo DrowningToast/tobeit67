@@ -69,6 +69,7 @@ importers:
       firebase: ^9.10.0
       framer-motion: ^7.5.2
       graphql: ^16.6.0
+      html-to-image: ^1.10.8
       html2canvas: ^1.4.1
       jotai: ^1.8.1
       next: 12.3.1
@@ -112,6 +113,7 @@ importers:
       firebase: 9.10.0
       framer-motion: 7.5.2_biqbaboplfbrettd7655fr4n2y
       graphql: 16.6.0
+      html-to-image: 1.10.8
       html2canvas: 1.4.1
       jotai: 1.8.4_b6k74wvxdvqypha4emuv7fd2ke
       next: 12.3.1_ru2bdujs5wv7zrmz55pdteej2m
@@ -11701,6 +11703,10 @@ packages:
       param-case: 3.0.4
       relateurl: 0.2.7
       terser: 5.15.1
+    dev: false
+
+  /html-to-image/1.10.8:
+    resolution: {integrity: sha512-t+JyFJwKDCp4ZwBp4iC/wqw0meQDDc77Qs8OFl5P7RGlIP3LQMvwpD7VXxqQfC7/TfC+GKYlFP6WDYfXTmXHfw==}
     dev: false
 
   /html-webpack-plugin/5.5.0_webpack@5.74.0:
