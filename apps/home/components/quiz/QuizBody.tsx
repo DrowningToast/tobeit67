@@ -21,11 +21,11 @@ const QuizBody: FC<Props> = ({ index, quiz, choices }) => {
   }, []);
 
   return (
-    <div key={index} className="px-2 md:px-12">
+    <div key={index} className="px-2 md:px-12 flex flex-col">
       <h1 className="text-black text-2xl md:text-4xl font-noto font-bold text-left">
         Quiz: {index + 1}
       </h1>
-      <div className="prose font-noto my-4 lg:prose-xl">
+      <div className="prose font-noto mt-12 lg:prose-xl mx-auto flex flex-col w-full">
         <ReactMarkdown className="">{quiz.question}</ReactMarkdown>
       </div>
       {/* Pic */}
