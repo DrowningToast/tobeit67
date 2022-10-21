@@ -80,7 +80,7 @@ const QuizStart = () => {
   const [checked, setChecked] = useState(false);
 
   return (
-    <section className="bg-water-blue p-6 pb-24 scrollbar-hide min-h-screen relative">
+    <section className="text-white bg-water-blue p-6 pb-24 scrollbar-hide min-h-screen relative">
       <LoadingOverlay visible={isLoading} />
       <NavigationProgress color={"orange"} size={8} />
       <Link passHref href="/">
