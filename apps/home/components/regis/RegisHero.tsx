@@ -25,7 +25,7 @@ const RegisHero = () => {
           >
             <a target={"_blank"}>
               <button className="text-fresh-salmon border-8 border-white py-4 px-8 md:py-6 md:px-16 text-3xl rounded-full my-4 md:my-8">
-                ลงทะเบียน!
+                รอบ Online สมัครเลย!
               </button>
             </a>
           </Link>
@@ -41,7 +41,7 @@ const RegisHero = () => {
           >
             <a>
               <button className="text-fresh-salmon bg-white py-4 px-8 md:py-6 md:px-16 text-3xl md:text-4xl rounded-full my-4 md:my-8">
-                สมัครเลย!
+                รอบ Onsite สมัครเลย!
               </button>
             </a>
           </Link>

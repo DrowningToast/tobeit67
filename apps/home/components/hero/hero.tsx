@@ -71,9 +71,9 @@ const Hero = () => {
                 repeatDelay: 0.1,
               },
             }}
-            className=" md:py-3 md:mx-14 bg-glossy-coral font-kanit font-bold text-center inline-block w-full md:w-auto py-2 rounded-full shadow-2xl text-white text-lg tracking-widest"
+            className=" md:py-3 lg:mx-14 bg-glossy-coral font-kanit font-bold text-center inline-block w-full md:w-auto py-2 rounded-full shadow-2xl text-white text-lg tracking-widest"
           >
-            <a>ไปลงทะเบียนออนไซต์!</a>
+            <a>ลงทะเบียนรอบออนไซต์!</a>
           </motion.button>
         </Link>
 
@@ -90,18 +90,12 @@ const Hero = () => {
               repeatDelay: 0.1,
             },
           }}
-          className="md:py-3 md:mx-14 bg-glossy-coral font-kanit font-bold text-center inline-block w-full md:w-auto py-2 rounded-full shadow-2xl text-white text-lg tracking-widest"
+          className="md:py-3 lg:mx-14 bg-glossy-coral font-kanit font-bold text-center inline-block w-full md:w-auto py-2 rounded-full shadow-2xl text-white text-lg tracking-widest"
         >
           <a>ไปทำ QUIZ</a>
         </motion.button>
       </div>
 
-      <a
-        href="#onsite"
-        className="md:col-start-2 opacity-70 underline text-white text-center font-noto cursor-pointer"
-      >
-        วิธีลงทะเบียนรอบออนไซต์
-      </a>
       {/* Octopus */}
       <img className="mt-6 z-20 md:hidden" src="/assets/octopus.svg" />
       <img
