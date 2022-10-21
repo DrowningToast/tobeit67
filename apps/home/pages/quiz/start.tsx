@@ -79,7 +79,7 @@ const QuizStart = () => {
   const [checked, setChecked] = useState(false);
 
   return (
-    <section className="text-white bg-water-blue p-6 pb-24 scrollbar-hide min-h-screen relative">
+    <section className="text-white bg-white p-6 pb-24 scrollbar-hide min-h-screen relative">
       <NextSeo
         title="ToBeIT'67 | Quiz"
         description="ToBeIT'67 เสริมความคิด ติดความรู้ ก้าวเข้าสู่ เด็กไอที กิจกรรมที่จะพาน้องๆ ผ่านกิจกรรมการเรียนรู้ผ่านบนโลกออนไลน์และภายในคณะไอที เพื่อเสริมความรู้วิชาการเทคโนโลยีสารสนเทศให้แก่ส้งคม"
@@ -107,7 +107,7 @@ const QuizStart = () => {
           กลับ
         </a>
       </Link>
-      <div className="py-6">
+      <div className="py-6 text-black">
         <h1 className="font-bold md:text-3xl text-xl font-noto text-center">
           น้อง ๆ จะต้องทำให้เสร็จภายในคราวเดียว
         </h1>

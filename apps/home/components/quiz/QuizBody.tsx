@@ -4,6 +4,7 @@ import { FC, memo, Suspense, useEffect, useMemo, useState } from "react";
 import { quiz } from "../../gql/query";
 import { answersAtom } from "../../pages/quiz/start";
 import shuffle from "../misc/shuffle";
+import ReactMarkdown from "react-markdown";
 
 interface Props {
   index: number;
@@ -21,10 +22,12 @@ const QuizBody: FC<Props> = ({ index, quiz, choices }) => {
 
   return (
     <div key={index} className="px-2 md:px-12">
-      <h1 className="text-2xl md:text-4xl font-noto font-bold">
+      <h1 className="text-black text-2xl md:text-4xl font-noto font-bold text-left">
         Quiz: {index + 1}
       </h1>
-      <p className="text-lg md:text-xl my-2 font-noto">{quiz.question}</p>
+      <div className="prose font-noto my-4 lg:prose-xl">
+        <ReactMarkdown className="">{quiz.question}</ReactMarkdown>
+      </div>
       {/* Pic */}
       <div className="w-full flex flex-col gap-y-4 realtive my-8 md:px-24">
         {quiz.ref?.length > 0 &&
@@ -79,10 +82,10 @@ const QuizBody: FC<Props> = ({ index, quiz, choices }) => {
                   },
                 });
               }}
-              className={`w-full border-white border-2 rounded-xl md:text-2xl font-semibold text-left px-8 py-2 h-12 flex-start ${
+              className={`w-full border-glossy-coral border-2 rounded-xl md:text-2xl font-semibold text-left px-8 py-2 h-12 flex-start ${
                 quizChoice === selectedAnswers[quiz.id - 1]?.answer
-                  ? "bg-blue-500"
-                  : ""
+                  ? "bg-blue-500 text-white"
+                  : "text-glossy-coral"
               }`}
               key={`quiz-choice-${index}-${_}`}
             >
