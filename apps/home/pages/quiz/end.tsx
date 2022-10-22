@@ -23,7 +23,7 @@ const QuizEnd = () => {
   });
   const { data: quizData } = useQuery<fetchQuizzesResponse>(fecthQuizzes, {
     variables: {
-      userId: data?.user.id,
+      userId: data?.user?.id,
     },
   });
 
@@ -33,8 +33,8 @@ const QuizEnd = () => {
 
   useEffect(() => {
     if (
-      !data?.user.firstname ||
-      !(data.user.scorePercent > +process.env.NEXT_PUBLIC_MIN_THRESHOLD!)
+      !data?.user?.firstname ||
+      !(data.user?.scorePercent > +process.env.NEXT_PUBLIC_MIN_THRESHOLD!)
     )
       return;
 
@@ -46,6 +46,7 @@ const QuizEnd = () => {
       drawing.src = cert.src;
 
       drawing.onload = () => {
+        console.log("Certificate loaded");
         context?.drawImage(drawing, 0, 0, 1119, 725);
         context!.textAlign = "center";
         context!.font = "48px Noto Sans Thai";
@@ -54,7 +55,7 @@ const QuizEnd = () => {
           550,
           310
         );
-        setCertUrl(canvasRef.current?.toDataURL("image/png"));
+        // setCertUrl(canvasRef.current?.toDataURL("image/png"));
       };
     };
 
@@ -93,7 +94,7 @@ const QuizEnd = () => {
       <div className="w-full flex justify-center items-center gap-y-4 text-white md:text-3xl font-bold font-noto flex-col my-12">
         <h1>
           น้องสอบได้คะแนน{" "}
-          <span className="text-glossy-coral">{data?.user.score}</span>/
+          <span className="text-glossy-coral">{data?.user?.score}</span>/
           {quizData?.quizzes.length} !
         </h1>
         <h1>
@@ -113,7 +114,7 @@ const QuizEnd = () => {
       </div>
       {/* Image goes here */}
       <div className="lg:px-48">
-        <Skeleton visible={Boolean(data?.user)} animate>
+        <Skeleton visible={!data?.user} animate>
           <canvas
             width={1119}
             height={725}
