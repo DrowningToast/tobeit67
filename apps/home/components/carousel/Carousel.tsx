@@ -9,9 +9,6 @@ const carouselPictures = [
     src: "/assets/carousel/IMG_0326.png",
   },
   {
-    src: "/assets/carousel/IMG_7392.png",
-  },
-  {
     src: "/assets/carousel/P6180343.JPG",
   },
   {

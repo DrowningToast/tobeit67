@@ -50,32 +50,27 @@ const Hero = () => {
         alt="clouds svg"
         className="absolute top-6 md:top-0 inset-x-0 md:w-full"
       />
-      <Link
-        passHref
-        target="_blank"
-        href="https://airtable.com/shrbQ9EDBNvCa0Ypr"
-      >
-        <motion.button
-          animate={{
-            scale: [1, 1.025, 1],
-            transition: {
-              type: "spring",
-              repeat: Infinity,
-              repeatDelay: 0.1,
-            },
-          }}
-          className="md:col-start-2 md:py-3 md:mx-14 bg-glossy-coral font-kanit font-bold text-center inline-block w-full md:w-auto py-2 rounded-full shadow-2xl text-white text-lg tracking-widest"
+      <div className="md:col-start-2 flex flex-col gap-y-4">
+        <Link
+          passHref
+          target="_blank"
+          href="https://airtable.com/shrbQ9EDBNvCa0Ypr"
         >
-          <a>ไปลงทะเบียนออนไซต์!</a>
-        </motion.button>
-      </Link>
-
-      <a
-        href="#onsite"
-        className="md:col-start-2 opacity-70 underline text-white text-center font-noto cursor-pointer"
-      >
-        วิธีลงทะเบียนรอบออนไซต์
-      </a>
+          <motion.button
+            animate={{
+              scale: [1, 1.025, 1],
+              transition: {
+                type: "spring",
+                repeat: Infinity,
+                repeatDelay: 0.1,
+              },
+            }}
+            className=" md:py-3 lg:mx-14 bg-glossy-coral font-kanit font-bold text-center inline-block w-full md:w-auto py-2 rounded-full shadow-2xl text-white text-lg tracking-widest"
+          >
+            <a>ลงทะเบียนรอบออนไซต์!</a>
+          </motion.button>
+        </Link>
+      </div>
       {/* Octopus */}
       <img className="mt-6 z-20 md:hidden" src="/assets/octopus.svg" />
       <img
