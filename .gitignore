@@ -48,3 +48,6 @@ firebase-config.json
 # Nginx Proxy
 data
 letsencrypt
+
+# Graphql
+*.gql
