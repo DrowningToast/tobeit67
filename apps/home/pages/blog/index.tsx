@@ -1,6 +1,8 @@
 import { gql } from "@apollo/client";
+import { Pagination } from "@mantine/core";
 import { GetServerSideProps, NextPage } from "next";
 import Link from "next/link";
+import { useRouter } from "next/router";
 import BlogCard from "../../components/card/BlogCard";
 import { client } from "../../gql/gql-client";
 
@@ -75,6 +77,8 @@ const BlogPage: NextPage<Props> = ({ data, totalPages, currentPage }) => {
     }
   }
 
+  const router = useRouter();
+
   return (
     <div className="bg-[#4BB0B1] min-h-screen w-full">
       <div className="container mx-auto flex flex-col items-center justify-center min-h-screen gap-8 py-12">
@@ -89,7 +93,16 @@ const BlogPage: NextPage<Props> = ({ data, totalPages, currentPage }) => {
               ))}
             </div>
             <ul className="font-bold text-white font-chonburi flex flex-row gap-1 items-center">
-              {pagination}
+              <Pagination
+                className="text-white"
+                classNames={{
+                  item: "bg-orange-300",
+                }}
+                total={totalPages}
+                page={currentPage}
+                color="orange"
+                onChange={(page) => router.push(`/blog?page=${page}`)}
+              />
             </ul>
           </>
         ) : (
