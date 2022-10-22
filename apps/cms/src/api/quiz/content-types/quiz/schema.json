@@ -1,0 +1,61 @@
+{
+  "kind": "collectionType",
+  "collectionName": "quizzes",
+  "info": {
+    "singularName": "quiz",
+    "pluralName": "quizzes",
+    "displayName": "quiz",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "choiceA": {
+      "type": "string",
+      "required": true
+    },
+    "choiceB": {
+      "type": "string",
+      "required": true
+    },
+    "choiceC": {
+      "type": "string",
+      "required": true
+    },
+    "choiceD": {
+      "type": "string",
+      "required": true
+    },
+    "correct": {
+      "type": "enumeration",
+      "enum": [
+        "A",
+        "B",
+        "C",
+        "D"
+      ],
+      "required": true
+    },
+    "questionSlug": {
+      "type": "uid",
+      "required": true
+    },
+    "ref": {
+      "type": "media",
+      "multiple": true,
+      "required": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "question": {
+      "type": "richtext",
+      "required": true
+    }
+  }
+}

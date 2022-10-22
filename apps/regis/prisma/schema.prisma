@@ -26,14 +26,16 @@ enum Grade {
 }
 
 model user {
-  id        Int     @id @default(autoincrement())
-  email     String  @unique
-  firstname String
-  lastname  String
-  grade     Grade
-  province  String
-  phoneNum  String
-  role      Role    @default(CAMPER)
-  emailSent Boolean @default(false)
-  onsite    Boolean @default(false)
+  id               Int     @id @default(autoincrement())
+  email            String  @unique
+  firstname        String
+  lastname         String
+  grade            Grade
+  province         String
+  phoneNum         String
+  role             Role    @default(CAMPER)
+  score            Int     @default(0)
+  remainingAttempt Int     @default(3)
+  scorePercent     Float   @default(0)
+  onsite           Boolean @default(false)
 }
