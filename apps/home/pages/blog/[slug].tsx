@@ -1,45 +1,45 @@
-import { GetServerSideProps, NextPage } from 'next'
-import ReactMarkdown from 'react-markdown'
-import { client } from '../../gql/gql-client'
-import { gql } from '@apollo/client'
-import { ChevronLeft } from 'tabler-icons-react'
-import Link from 'next/link'
+import { GetServerSideProps, NextPage } from "next";
+import ReactMarkdown from "react-markdown";
+import { client } from "../../gql/gql-client";
+import { gql } from "@apollo/client";
+import { ChevronLeft } from "tabler-icons-react";
+import Link from "next/link";
 
 type Props = {
-  title: string,
-  description: string,
-  picture: string,
-  author: string,
-  content: string
-}
+  title: string;
+  description: string;
+  picture: string;
+  author: string;
+  content: string;
+};
 
 const BlogSlugPage: NextPage<Props> = (props) => {
-  const { author, content, title } = props
+  const { author, content, title } = props;
 
   return (
-    <div className={'bg-white min-h-screen w-full'}>
+    <div className={"bg-white min-h-screen min-w-fit relative"}>
       <div className="p-4 lg:pt-8 container lg:w-3/5 mx-auto flex flex-col items-start justify-start min-h-screen gap-4">
-        <div className='w-full flex flex-row items-center'>
-          <Link passHref href='/blog'>
+        <div className="w-full flex flex-row items-center">
+          <Link passHref href="/blog">
             <a>
               <ChevronLeft size={38} strokeWidth={1} />
             </a>
           </Link>
-          <div className='max-w-full'>
-            <h3 className='text-2xl font-bold'>{title}</h3>
+          <div className="max-w-full text-glossy-coral font-chonburi">
+            <h3 className="text-2xl font-bold">{title}</h3>
             <h6>โดย {author}</h6>
           </div>
         </div>
-        <hr className='border-black w-full mx-auto' />
-        <div className='prose lg:prose-xl'>
-          <ReactMarkdown>
+        <hr className="border-black w-full mx-auto" />
+        <div className="prose lg:prose-xl font-noto min-w-full whitespace-pre-line flex flex-col items-center relative">
+          <ReactMarkdown className="block w-full mx-full">
             {content}
           </ReactMarkdown>
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
 export const getServerSideProps: GetServerSideProps = async ({ params }) => {
   const query = gql`
@@ -63,31 +63,30 @@ export const getServerSideProps: GetServerSideProps = async ({ params }) => {
     }
   }
 }
-`
+`;
 
   try {
     const { data } = await client.query({
-      query
-    })
+      query,
+    });
 
-    const propsData = data.blog.data.attributes
-
+    const propsData = data.blog.data.attributes;
 
     return {
       props: {
         description: propsData.description,
         title: propsData.title,
         author: propsData.author,
-        content: propsData.content
+        content: propsData.content,
       },
-    }
+    };
   } catch (err) {
     console.log(err);
 
     return {
-      notFound: true
-    }
+      notFound: true,
+    };
   }
-}
+};
 
-export default BlogSlugPage
+export default BlogSlugPage;

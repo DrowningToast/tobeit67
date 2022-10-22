@@ -3,9 +3,7 @@
 # ------------------------------------------------------
 
 type Query {
-  user(user: UserInput): Users
   users(user: User): [Users!]
-  quizzes(userId: Int): [Quizzes!]!
 }
 
 """Camper and Staff user information"""
@@ -20,9 +18,7 @@ type Users {
 
   """CAMPER | STAFF"""
   role: Role
-  score: Int!
-  remainingAttempt: Int!
-  scorePercent: Float!
+  emailSent: Boolean
   onsite: Boolean
 }
 
@@ -41,15 +37,6 @@ enum Role {
   STAFF
 }
 
-input UserInput {
-  email: String
-  firstname: String
-  lastname: String
-  grade: Grade
-  province: String
-  phoneNum: String
-}
-
 input User {
   id: Int
   email: String
@@ -61,21 +48,8 @@ input User {
 
   """CAMPER | STAFF"""
   role: Role
-  score: Int = 0
-  remainingAttempt: Int = 3
-  scorePercent: Float = 0
+  emailSent: Boolean
   onsite: Boolean
-}
-
-"""Quiz"""
-type Quizzes {
-  id: Int
-  question: String
-  choiceA: String
-  choiceB: String
-  choiceC: String
-  choiceD: String
-  ref: [String!]
 }
 
 type Mutation {
@@ -84,7 +58,15 @@ type Mutation {
 
   """Require at least one of the args"""
   remove_user(user: UserDelete!): Users!
-  submit_quiz(answer: SubmitQuizInput!): QuizResult!
+}
+
+input UserInput {
+  email: String!
+  firstname: String!
+  lastname: String!
+  grade: Grade!
+  province: String!
+  phoneNum: String!
 }
 
 input UserEdit {
@@ -101,22 +83,4 @@ input UserEdit {
 input UserDelete {
   id: Int
   email: String!
-}
-
-"""Quiz Result"""
-type QuizResult {
-  userId: Int
-  score: Int
-  scorePercent: Float
-  remainingAttempt: Int
-}
-
-input SubmitQuizInput {
-  userId: Float!
-  answer: [submitAnswer!]
-}
-
-input submitAnswer {
-  id: Int!
-  answer: String!
 }
