@@ -84,7 +84,7 @@ const BlogPage: NextPage<Props> = ({ data, totalPages, currentPage }) => {
         }}
       />
       <div className="container mx-auto flex flex-col items-center justify-center min-h-screen gap-8 py-12">
-        <div className="flex justify-center gap-y-4">
+        <div className="flex justify-center gap-y-4 items-center">
           <Link passHref href="/">
             <a>
               <ChevronLeft size={38} strokeWidth={1} color="white" />
