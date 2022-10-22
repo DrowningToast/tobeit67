@@ -134,7 +134,7 @@ const QuizEnd = () => {
             target={"_blank"}
             download={"certificate.png"}
             href={certUrl!}
-            className="text-center underline font-noto md:text-2xl inline-block w-full"
+            className="text-center underline font-noto md:text-2xl inline-block w-full text-white"
           >
             ดาวน์โหลด Certificate
           </a>
