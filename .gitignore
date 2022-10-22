@@ -44,6 +44,13 @@ yarn-error.log*
 # Firebase
 firebase-service.json
 firebase-config.json
+
+# Nginx Proxy
+data
+letsencrypt
+
+# Graphql
+*.gql
 token.txt
 
 # DB

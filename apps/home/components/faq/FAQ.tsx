@@ -50,10 +50,10 @@ const FAQ = () => {
               key={`faq-${index}`}
               className="text-center font-chonburi flex flex-col gap-y-1 md:gap-y-4"
             >
-              <h5 className="underline md:text-4xl">Q</h5>
-              <p className="font-noto md:text-2xl">{pair.question}</p>
-              <h5 className="underline md:text-4xl">A</h5>
-              <p className="font-noto md:text-2xl">{pair.answer}</p>
+              <h5 className="underline text-lg md:text-4xl">Q</h5>
+              <p className="font-noto text-base md:text-2xl">{pair.question}</p>
+              <h5 className="underline text-lg md:text-4xl">A</h5>
+              <p className="font-noto text-base md:text-2xl">{pair.answer}</p>
             </div>
           );
         })}
