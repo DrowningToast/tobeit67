@@ -91,8 +91,9 @@ const QuizEnd = () => {
       <div className="w-full flex justify-center items-center gap-y-4 text-white md:text-3xl font-bold font-noto flex-col my-12">
         <h1>
           น้องสอบได้คะแนน{" "}
-          <span className="text-glossy-coral">{data?.user?.score}</span>/
-          {quizData?.quizzes.length} !
+          <span className="text-glossy-coral">
+            {data?.user?.score}/{quizData?.quizzes.length} !
+          </span>
         </h1>
         <h1>
           นับว่าเป็น{" "}
@@ -111,7 +112,13 @@ const QuizEnd = () => {
       </div>
       {/* Image goes here */}
       <div className="lg:px-48">
-        <Skeleton visible={!data?.user} animate>
+        <Skeleton
+          visible={
+            !data?.user ||
+            !(data.user?.scorePercent > +process.env.NEXT_PUBLIC_MIN_THRESHOLD!)
+          }
+          animate
+        >
           <canvas
             width={1119}
             height={725}
