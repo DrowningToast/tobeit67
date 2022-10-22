@@ -77,23 +77,25 @@ const Hero = () => {
           </motion.button>
         </Link>
 
-        <motion.button
-          onClick={() => {
-            if (user) return router.push("/quiz");
-            signinWithGooglePopUp(() => router.push("/quiz"));
-          }}
-          animate={{
-            scale: [1, 1.025, 1],
-            transition: {
-              type: "spring",
-              repeat: Infinity,
-              repeatDelay: 0.1,
-            },
-          }}
-          className="md:py-3 lg:mx-14 bg-glossy-coral font-kanit font-bold text-center inline-block w-full md:w-auto py-2 rounded-full shadow-2xl text-white text-lg tracking-widest"
-        >
-          <a>ไปทำ QUIZ</a>
-        </motion.button>
+        {process.env.NEXT_PUBLIC_QUIZ_BUTTON === "enable" && (
+          <motion.button
+            onClick={() => {
+              if (user) return router.push("/quiz");
+              signinWithGooglePopUp(() => router.push("/quiz"));
+            }}
+            animate={{
+              scale: [1, 1.025, 1],
+              transition: {
+                type: "spring",
+                repeat: Infinity,
+                repeatDelay: 0.1,
+              },
+            }}
+            className="md:py-3 lg:mx-14 bg-glossy-coral font-kanit font-bold text-center inline-block w-full md:w-auto py-2 rounded-full shadow-2xl text-white text-lg tracking-widest"
+          >
+            <a>ไปทำ QUIZ</a>
+          </motion.button>
+        )}
       </div>
 
       {/* Octopus */}
