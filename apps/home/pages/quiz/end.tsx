@@ -55,7 +55,7 @@ const QuizEnd = () => {
           550,
           310
         );
-        // setCertUrl(canvasRef.current?.toDataURL("image/png"));
+        setCertUrl(canvasRef.current?.toDataURL("image/png"));
       };
     };
 
