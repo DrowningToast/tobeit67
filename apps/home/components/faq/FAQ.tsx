@@ -1,21 +1,42 @@
+import Link from "next/link";
+
 const pairs = [
   {
-    question: "จะเข้า On-site ได้ยังไง?",
-    answer: "น้องๆ จะต้องเรียนในรอบออนไลน์เพื่อทำควิซและส่งใบสมัคร",
+    question: "โครงการ ToBeIT'67 คืออะไร",
+    answer:
+      "โครงการที่จะทำให้น้องๆ ได้มารู้จักกับคณะไอทีลาดกระบังมากขึ้นผ่านการเรียนรู้เนื้อหาพื้นฐานของไอที ทดลองพัฒนาโปรเจกต์ร่วมกับเพื่อนใหม่ และทำกิจกรรมร่วมกับพี่ๆ จากคณะไอทีลาดกระบัง",
   },
   {
-    question: "กิจกรรมจัดกี่โมง?",
-    answer: "ไลฟ์ออนไลน์ตั้งแต่เวลา 09:00-16:00 น.",
+    question: "โครงการ ToBeIT'67 รอบออนไลน์จัดขึ้นที่ไหน และวันที่เท่าไหร่",
+    answer:
+      "โครงการ ToBeIT'67 รอบออนไลน์จะมีการถ่ายทอดสดที่ Facebook group ToBeIT'67 ในวันที่ 15, 16, 22 และ 23 ตุลาคม 2565",
   },
   {
-    question: "จะมีวีดิโอให้ดูย้อนหลังไหม?",
-    answer: "วีดีโอย้อนหลังจะอยู่ในกลุ่ม Facebook ToBeIT’67",
+    question: "โครงการ ToBeIT'67 รอบออนไซต์จัดขึ้นที่ไหน และวันที่เท่าไหร่",
+    answer:
+      "โครงการ ToBeIT'67 จัดขึ้นที่คณะเทคโนโลยีสารสนเทศ สถาบันเทคโนโลยีพระจอมเกล้าเจ้าคุณทหารลาดกระบัง ในวันที่ 29 - 30 ตุลาคม และ 5 - 6 พฤศจิกายน 2565",
+  },
+  {
+    question: "สามารถสมัครเข้าร่วมโครงการ ToBeIT'67 รอบออนไซต์ได้ที่ไหน",
+    answer: (
+      <span>
+        น้องๆ สามารถสมัครเข้าร่วมโครงการ ToBeIT'67 รอบออนไซต์ได้ที่
+        <Link href="https://airtable.com/shrbQ9EDBNvCa0Ypr" passHref>
+          <a className="underline text-blue-400" target={"_blank"}>
+            ตรงนี้
+          </a>
+        </Link>
+      </span>
+    ),
   },
 ];
 
 const FAQ = () => {
   return (
-    <section className="bg-gradient-to-b from-[#333333] to-[#0C0C0C] py-16 flex flex-col gap-y-8 px-8 pt-32 relative">
+    <section
+      className="bg-gradient-to-b from-[#333333] to-[#0C0C0C] py-16 flex flex-col gap-y-8 px-8 pt-32 relative"
+      id="faq"
+    >
       <img
         src="/assets/wave-faq.svg"
         alt="wave faq svg"

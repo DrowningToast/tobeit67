@@ -9,7 +9,7 @@
   "scripts": {
     "prebuild": "turbo run build",
     "build": "npm i -g pnpm && pnpm config set auto-install-peers true && turbo run build",
-    "dev": "pnpm run compose:dev && turbo run dev --parallel",
+    "dev": "pnpm run update:env && pnpm run compose:dev && turbo run dev --parallel",
     "dev:home": "turbo run dev --filter=home",
     "dev:cms": "turbo run dev --filter=cms",
     "dev:regis": "turbo run dev --filter=regis",
@@ -21,7 +21,7 @@
     "presetup": "cp .env.example .env.template",
     "setup": "pnpm i && pnpm run setup:env && docker compose up -d && pnpm run db:migrate && pnpm run db:generate && pnpm run compose:prod",
     "setup:env": "cp .env.template .env && pnpm run update:env",
-    "update:env": "cp .env apps/regis/.env && cp .env packages/firebase-auth-api/.env && cp .env apps/cms/.env",
+    "update:env": "cp .env apps/regis/.env && cp .env packages/firebase-auth-api/.env && cp .env apps/cms/.env && cp .env apps/home/.env",
     "db:migrate": "npx prisma migrate dev --schema apps/regis/prisma/schema.prisma",
     "db:generate": "npx prisma generate --schema apps/regis/prisma/schema.prisma"
   },

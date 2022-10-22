@@ -6,6 +6,7 @@ import Hero from "../components/hero/hero";
 import RegisHero from "../components/regis/RegisHero";
 import { NextSeo } from "next-seo";
 import Head from "next/head";
+import Navbar from '../components/navbar/Navbar';
 
 const Home: NextPage = () => {
   return (
@@ -21,7 +22,7 @@ const Home: NextPage = () => {
           url: "https://tobeit.it.kmitl.ac.th",
           title: "ค่าย ToBeIT'67",
           description:
-            "กิจกรรมที่จะพาน้องๆ ผ่านกิจกรรมการเรียนรู้ผ่านบนโลกออนไลน์และภายในคณะไอที เพื่อเสริมความรู้วิชาการเทคโนโลยีสารสนเทศให้แก่ส้งคม",
+            "กิจกรรมที่จะพาน้องๆ ผ่านกิจกรรมการเรียนรู้ผ่านบนโลกออนไลน์และภายในคณะไอที เพื่อเสริมความรู้วิชาการเทคโนโลยีสารสนเทศให้แก่สังคม",
           images: [
             {
               url: "/assets/tobe-logo.svg",
@@ -34,6 +35,7 @@ const Home: NextPage = () => {
         }}
       />
       <div>
+        <Navbar />
         <Hero />
         <Middle />
         <RegisHero />
