@@ -12,18 +12,16 @@ const nextConfig = {
   output: "standalone",
   images: {
     domains: [
-      'localhost',
-      'apitobeit.it.kmitl.ac.th'
-    ]
+      "localhost",
+      "apitobeit.it.kmitl.ac.th",
+      "cmstobeit.polalab.space",
+      "apitobeit.polalab.space",
+    ],
   },
   eslint: {
-    ignoreDuringBuilds: true
+    ignoreDuringBuilds: true,
   },
-  rewrites: [
-    {
-      
-    }
-  ]
+  rewrites: [{}],
 };
 
 module.exports = nextConfig;
