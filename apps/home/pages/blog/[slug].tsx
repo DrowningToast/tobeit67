@@ -22,7 +22,7 @@ const BlogSlugPage: NextPage<Props> = (props) => {
         <div className="w-full flex flex-row items-center">
           <Link passHref href="/blog">
             <a>
-              <ChevronLeft size={38} strokeWidth={1} />
+              <ChevronLeft size={38} strokeWidth={1} color="orange" />
             </a>
           </Link>
           <div className="max-w-full text-glossy-coral font-chonburi">
@@ -31,10 +31,8 @@ const BlogSlugPage: NextPage<Props> = (props) => {
           </div>
         </div>
         <hr className="border-black w-full mx-auto" />
-        <div className="prose lg:prose-xl font-noto min-w-full whitespace-pre-line flex flex-col items-center relative">
-          <ReactMarkdown className="block w-full mx-full">
-            {content}
-          </ReactMarkdown>
+        <div className="prose lg:prose-xl font-noto min-w-full flex flex-col items-center relative">
+          <ReactMarkdown className="w-full ">{content}</ReactMarkdown>
         </div>
       </div>
     </div>
