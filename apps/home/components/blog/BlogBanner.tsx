@@ -12,7 +12,7 @@ const BlogBanner = () => {
         เนื้อหาน่าสนใจ
       </h1>
       <Link href="/blog">
-        <button className="inline-block p-2 md:px-12 md:py-6 mx-32 md:w-80 md:mx-auto text-xl md:text-4xl font-chonburi text-glossy-coral bg-white rounded-full shadow-xl">
+        <button className="inline-block p-2 px-6 md:px-12 md:py-6 mx-24 md:w-80 md:mx-auto text-xl md:text-4xl font-chonburi text-glossy-coral bg-white rounded-full shadow-xl">
           อ่านเพิ่มเติม
         </button>
       </Link>
