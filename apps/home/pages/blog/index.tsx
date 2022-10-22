@@ -1,6 +1,7 @@
 import { gql } from "@apollo/client";
 import { Pagination } from "@mantine/core";
 import { GetServerSideProps, NextPage } from "next";
+import { NextSeo } from "next-seo";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import BlogCard from "../../components/card/BlogCard";
@@ -57,30 +58,30 @@ type Props = {
 };
 
 const BlogPage: NextPage<Props> = ({ data, totalPages, currentPage }) => {
-  const pagination: JSX.Element[] = [];
-
-  for (let i = 1; i <= totalPages; i++) {
-    if (i == currentPage) {
-      pagination.push(
-        <li className="underline cursor-pointer px-3 py-1 rounded-full bg-fresh-salmon">
-          {i}
-        </li>
-      );
-    } else {
-      pagination.push(
-        <li className="cursor-pointer">
-          <Link passHref href={`/blog?page=${i}`}>
-            <a>{i}</a>
-          </Link>
-        </li>
-      );
-    }
-  }
-
   const router = useRouter();
 
   return (
     <div className="bg-[#4BB0B1] min-h-screen w-full">
+      <NextSeo
+        title="ToBeIT'67 | Blogs"
+        description="ToBeIT'67 เสริมความคิด ติดความรู้ ก้าวเข้าสู่ เด็กไอที กิจกรรมที่จะพาน้องๆ ผ่านกิจกรรมการเรียนรู้ผ่านบนโลกออนไลน์และภายในคณะไอที เพื่อเสริมความรู้วิชาการเทคโนโลยีสารสนเทศให้แก่ส้งคม"
+        canonical="https://tobeit.it.kmitl.ac.th"
+        openGraph={{
+          url: "https://tobeit.it.kmitl.ac.th",
+          title: "ค่าย ToBeIT'67",
+          description:
+            "กิจกรรมที่จะพาน้องๆ ผ่านกิจกรรมการเรียนรู้ผ่านบนโลกออนไลน์และภายในคณะไอที เพื่อเสริมความรู้วิชาการเทคโนโลยีสารสนเทศให้แก่สังคม",
+          images: [
+            {
+              url: "/assets/tobe-logo.svg",
+              width: 327,
+              height: 327,
+              alt: "ToBeIT Logo",
+              type: "image/svg",
+            },
+          ],
+        }}
+      />
       <div className="container mx-auto flex flex-col items-center justify-center min-h-screen gap-8 py-12">
         <h2 className="font-noto text-3xl md:text-6xl font-bold text-white drop-shadow">
           เนื้อหาเพิ่มเติม

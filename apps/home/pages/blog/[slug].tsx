@@ -4,6 +4,7 @@ import { client } from "../../gql/gql-client";
 import { gql } from "@apollo/client";
 import { ChevronLeft } from "tabler-icons-react";
 import Link from "next/link";
+import { NextSeo } from "next-seo";
 
 type Props = {
   title: string;
@@ -18,6 +19,26 @@ const BlogSlugPage: NextPage<Props> = (props) => {
 
   return (
     <div className={"bg-white min-h-screen min-w-fit relative"}>
+      <NextSeo
+        title={title}
+        description="ToBeIT'67 เสริมความคิด ติดความรู้ ก้าวเข้าสู่ เด็กไอที กิจกรรมที่จะพาน้องๆ ผ่านกิจกรรมการเรียนรู้ผ่านบนโลกออนไลน์และภายในคณะไอที เพื่อเสริมความรู้วิชาการเทคโนโลยีสารสนเทศให้แก่ส้งคม"
+        canonical="https://tobeit.it.kmitl.ac.th"
+        openGraph={{
+          url: "https://tobeit.it.kmitl.ac.th",
+          title: "ค่าย ToBeIT'67",
+          description:
+            "กิจกรรมที่จะพาน้องๆ ผ่านกิจกรรมการเรียนรู้ผ่านบนโลกออนไลน์และภายในคณะไอที เพื่อเสริมความรู้วิชาการเทคโนโลยีสารสนเทศให้แก่สังคม",
+          images: [
+            {
+              url: "/assets/tobe-logo.svg",
+              width: 327,
+              height: 327,
+              alt: "ToBeIT Logo",
+              type: "image/svg",
+            },
+          ],
+        }}
+      />
       <div className="p-4 lg:pt-8 container lg:w-3/5 mx-auto flex flex-col items-start justify-start min-h-screen gap-4">
         <div className="w-full flex flex-row items-center">
           <Link passHref href="/blog">
