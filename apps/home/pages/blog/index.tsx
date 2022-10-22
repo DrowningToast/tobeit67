@@ -4,6 +4,7 @@ import { GetServerSideProps, NextPage } from "next";
 import { NextSeo } from "next-seo";
 import Link from "next/link";
 import { useRouter } from "next/router";
+import { ChevronLeft } from "tabler-icons-react";
 import BlogCard from "../../components/card/BlogCard";
 import { client } from "../../gql/gql-client";
 
@@ -83,9 +84,16 @@ const BlogPage: NextPage<Props> = ({ data, totalPages, currentPage }) => {
         }}
       />
       <div className="container mx-auto flex flex-col items-center justify-center min-h-screen gap-8 py-12">
-        <h2 className="font-noto text-3xl md:text-6xl font-bold text-white drop-shadow">
-          เนื้อหาเพิ่มเติม
-        </h2>
+        <div className="flex justify-center gap-y-4">
+          <Link passHref href="/">
+            <a>
+              <ChevronLeft size={38} strokeWidth={1} color="white" />
+            </a>
+          </Link>
+          <h2 className="font-noto text-3xl md:text-6xl font-bold text-white drop-shadow">
+            เนื้อหาเพิ่มเติม
+          </h2>
+        </div>
         {data ? (
           <>
             <div className="w-full flex flex-col gap-4 items-center">
