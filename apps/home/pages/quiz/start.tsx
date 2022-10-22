@@ -112,10 +112,10 @@ const QuizStart = () => {
         </h1>
         <h1 className="font-bold md:text-3xl text-xl font-noto text-center">
           หากน้อง ๆ ปิดหน้านี้{" "}
-          <span className="text-glossy-coral underline">คำตอบจะหายหมด</span>
+          <span className="text-glossy-coral underline">คำตอบอาจจะหายหมด</span>
         </h1>
         <h1 className="font-bold md:text-3xl text-xl font-noto text-center">
-          ยังสามารถสอบได้อีก{" "}
+          ยังสามารถส่งคำตอบได้อีก{" "}
           <span className="text-glossy-coral">
             {userData?.user?.remainingAttempt}
           </span>{" "}
