@@ -25,7 +25,7 @@ const RegisHero = () => {
           >
             <a target={"_blank"}>
               <button className="text-fresh-salmon border-8 border-white py-4 px-8 md:py-6 md:px-16 text-xl md:text-3xl lg:text-4xl rounded-full my-4 md:my-8">
-                รอบ Online สมัครเลย!
+                รอบ Online
               </button>
             </a>
           </Link>
