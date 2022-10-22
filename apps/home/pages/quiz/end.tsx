@@ -11,7 +11,6 @@ import {
   fetchUserResponse,
 } from "../../gql/query";
 import cert from "../../components/quiz/cert.png";
-import { useRouter } from "next/router";
 import { Skeleton } from "@mantine/core";
 
 const QuizEnd = () => {
@@ -26,8 +25,6 @@ const QuizEnd = () => {
       userId: data?.user?.id,
     },
   });
-
-  const router = useRouter();
 
   const canvasRef = useRef<HTMLCanvasElement>(null);
 
@@ -53,7 +50,7 @@ const QuizEnd = () => {
         context?.fillText(
           `${data?.user.firstname} ${data?.user.lastname}`,
           550,
-          310
+          320
         );
         setCertUrl(canvasRef.current?.toDataURL("image/png"));
       };

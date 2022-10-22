@@ -1,5 +1,4 @@
 import { LoadingOverlay, Skeleton } from "@mantine/core";
-import { MainBase } from "airtable-api";
 import { NextPage } from "next";
 import { useEffect, useMemo, useState } from "react";
 import { useAtom } from "jotai";
@@ -7,10 +6,8 @@ import { useRouter } from "next/router";
 import { firebaseReady, firebaseUserAtom } from "../../components/firebase";
 import QuizNavbar from "../../components/quiz/QuizNavbar";
 import Link from "next/link";
-import { getRegisClient } from "../../gql/gql-client";
 import { fetchUser, fetchUserResponse, insertUser } from "../../gql/query";
-import { gql, useMutation, useQuery } from "@apollo/client";
-import { FieldSet } from "airtable/lib/field_set";
+import { useMutation, useQuery } from "@apollo/client";
 import fetchAirtableCamperByEmail from "../../components/airtable/airtableQuery";
 import { NextSeo } from "next-seo";
 
@@ -195,14 +192,16 @@ const Quiz: NextPage = () => {
             </a>
           </Link>
         </Skeleton>
-        <Link href="/quiz/end" passHref>
-          <a
-            target="_blank"
-            className="text-base text-white md:text-2xl font-bold font-noto inline-block w-full text-center underline"
-          >
-            ดูคะแนนสอบครั้งที่แล้ว
-          </a>
-        </Link>
+        <Skeleton visible={isLoading} className="flex justify-center w-auto">
+          <Link href="/quiz/end" passHref>
+            <a
+              target="_blank"
+              className="text-base text-white md:text-2xl font-bold font-noto inline-block w-full text-center underline"
+            >
+              ดูคะแนนสอบครั้งที่แล้ว
+            </a>
+          </Link>
+        </Skeleton>
       </div>
     </section>
   );

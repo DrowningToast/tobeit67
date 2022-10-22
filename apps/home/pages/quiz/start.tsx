@@ -1,4 +1,4 @@
-import { useMutation, useQuery } from "@apollo/client";
+import { useQuery } from "@apollo/client";
 import {
   Affix,
   Button,
@@ -19,7 +19,6 @@ import {
   fetchQuizzesResponse,
   fetchUser,
   fetchUserResponse,
-  submitQuizzes,
 } from "../../gql/query";
 import { NavigationProgress, setNavigationProgress } from "@mantine/nprogress";
 import { useWindowScroll } from "@mantine/hooks";
