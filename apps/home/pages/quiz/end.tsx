@@ -60,7 +60,7 @@ const QuizEnd = () => {
   }, [data?.user]);
 
   return (
-    <section className="min-h-screen bg-water-blue px-12 py-16">
+    <section className="min-h-screen bg-black px-12 py-16">
       <NextSeo
         title="ToBeIT'67 | Quiz"
         description="ToBeIT'67 เสริมความคิด ติดความรู้ ก้าวเข้าสู่ เด็กไอที กิจกรรมที่จะพาน้องๆ ผ่านกิจกรรมการเรียนรู้ผ่านบนโลกออนไลน์และภายในคณะไอที เพื่อเสริมความรู้วิชาการเทคโนโลยีสารสนเทศให้แก่ส้งคม"
@@ -88,24 +88,37 @@ const QuizEnd = () => {
           </a>
         </Link>
       </div>
-      <div className="w-full flex justify-center items-center gap-y-4 text-white md:text-3xl font-bold font-noto flex-col my-12">
+      <div className="w-full flex justify-center text-center items-center gap-y-4 text-white md:text-3xl font-bold font-noto flex-col my-12">
         <h1>
-          น้องสอบได้คะแนน{" "}
-          <span className="text-glossy-coral">
-            {data?.user?.score}/{quizData?.quizzes.length} !
-          </span>
+          น้องสอบได้คะแนนครั้งที่สูงที่สุดอยู่ที่{" "}
+          <Skeleton
+            className="inline"
+            visible={!quizData?.quizzes || !data?.user?.score}
+          >
+            <span className="text-glossy-coral">
+              {data?.user?.score}/{quizData?.quizzes.length} !
+            </span>
+          </Skeleton>
         </h1>
         <h1>
           นับว่าเป็น{" "}
-          <span className="text-glossy-coral">
-            {data?.user?.scorePercent! * 100}%
-          </span>{" "}
+          <Skeleton
+            visible={Boolean(!data?.user?.scorePercent)}
+            className="inline"
+          >
+            <span className="text-glossy-coral">
+              {data?.user?.scorePercent! * 100}%
+            </span>
+          </Skeleton>{" "}
           จากคะแนนเต็ม
         </h1>
         <h1>
           น้องจะต้องได้ขั้นต่ำ{" "}
           <span className="text-glossy-coral">
-            {(+process.env.NEXT_PUBLIC_MIN_THRESHOLD! * 100).toFixed(0)}%
+            {(+(process.env.NEXT_PUBLIC_MIN_THRESHOLD! ?? 0.8) * 100).toFixed(
+              0
+            )}
+            %
           </span>{" "}
           ถึงจะได้รับใบประกาศนียบัตร
         </h1>
