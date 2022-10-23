@@ -41,7 +41,7 @@ const RegisHero = () => {
           >
             <a>
               <button className="text-fresh-salmon bg-white py-4 px-8 md:py-6 md:px-16 text-xl md:text-3xl lg:text-4xl rounded-full my-4 md:my-8">
-                รสมัครเลย!
+                สมัครเลย!
               </button>
             </a>
           </Link>
