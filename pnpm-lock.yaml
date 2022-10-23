@@ -41,8 +41,6 @@ importers:
     specifiers:
       '@apollo/client': ^3.7.0
       '@babel/core': ^7.0.0
-      '@emotion/react': ^11.10.4
-      '@emotion/styled': ^11.10.4
       '@mantine/carousel': ^5.5.4
       '@mantine/core': ^5.5.4
       '@mantine/dates': ^5.5.4
@@ -86,8 +84,6 @@ importers:
     dependencies:
       '@apollo/client': 3.7.0_gdcq4dv6opitr3wbfwyjmanyra
       '@babel/core': 7.19.3
-      '@emotion/react': 11.10.4_bjroym7kxlcs2vvwnej4p3gzwu
-      '@emotion/styled': 11.10.4_ogudqqhlstsi7uge4lir7ff3ty
       '@mantine/carousel': 5.5.4_jr5hk3qlxrljdeagyy4sst4fqu
       '@mantine/core': 5.5.4_46jyd4tz2lts7aqjdwe2gnr2n4
       '@mantine/dates': 5.5.4_77mcgelljxyonuixz5lsq6z3im
@@ -3021,12 +3017,6 @@ packages:
       '@emotion/memoize': 0.7.4
     dev: false
 
-  /@emotion/is-prop-valid/1.2.0:
-    resolution: {integrity: sha512-3aDpDprjM0AwaxGE09bOPkNxHpBd+kA6jty3RnaEXdweX1DF1U3VQpPYb0g1IStAuK7SVQ1cy+bNBBKp4W3Fjg==}
-    dependencies:
-      '@emotion/memoize': 0.8.0
-    dev: false
-
   /@emotion/memoize/0.7.4:
     resolution: {integrity: sha512-Ja/Vfqe3HpuzRsG1oBtWTHk2PGZ7GR+2Vz5iYGelAw8dx32K0y7PjVuxK6z1nMpZOqAFsRUPCkK1YjJ56qJlgw==}
     dev: false
@@ -3120,31 +3110,6 @@ packages:
 
   /@emotion/sheet/1.2.0:
     resolution: {integrity: sha512-OiTkRgpxescko+M51tZsMq7Puu/KP55wMT8BgpcXVG2hqXc0Vo0mfymJ/Uj24Hp0i083ji/o0aLddh08UEjq8w==}
-    dev: false
-
-  /@emotion/styled/11.10.4_ogudqqhlstsi7uge4lir7ff3ty:
-    resolution: {integrity: sha512-pRl4R8Ez3UXvOPfc2bzIoV8u9P97UedgHS4FPX594ntwEuAMA114wlaHvOK24HB48uqfXiGlYIZYCxVJ1R1ttQ==}
-    peerDependencies:
-      '@babel/core': ^7.0.0
-      '@emotion/react': ^11.0.0-rc.0
-      '@types/react': '*'
-      react: '>=16.8.0'
-    peerDependenciesMeta:
-      '@babel/core':
-        optional: true
-      '@types/react':
-        optional: true
-    dependencies:
-      '@babel/core': 7.19.3
-      '@babel/runtime': 7.19.0
-      '@emotion/babel-plugin': 11.10.2_@babel+core@7.19.3
-      '@emotion/is-prop-valid': 1.2.0
-      '@emotion/react': 11.10.4_bjroym7kxlcs2vvwnej4p3gzwu
-      '@emotion/serialize': 1.1.0
-      '@emotion/use-insertion-effect-with-fallbacks': 1.0.0_react@18.2.0
-      '@emotion/utils': 1.2.0
-      '@types/react': 18.0.21
-      react: 18.2.0
     dev: false
 
   /@emotion/stylis/0.8.5:

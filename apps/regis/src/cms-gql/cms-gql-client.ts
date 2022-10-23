@@ -18,7 +18,10 @@ const defaultOptions: DefaultOptions = {
   },
 };
 
-const endpoint = process.env.CMS_DEV;
+const endpoint =
+  process.env.NODE_ENV === 'production'
+    ? process.env.CMS_PROD
+    : process.env.CMS_DEV;
 
 const httpLink = createHttpLink({ uri: endpoint + '/graphql', fetch });
 
