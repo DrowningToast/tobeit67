@@ -107,7 +107,7 @@ const QuizEnd = () => {
             className="inline"
           >
             <span className="text-glossy-coral">
-              {data?.user?.scorePercent! * 100}%
+              {(data?.user?.scorePercent! * 100).toFixed(1)}%
             </span>
           </Skeleton>{" "}
           จากคะแนนเต็ม
