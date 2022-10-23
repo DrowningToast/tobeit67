@@ -74,8 +74,6 @@ const QuizConfirm: FC<Props> = ({
               formatAnswers.push(value);
             }
 
-            console.log(email);
-
             await submitAnswers({
               variables: {
                 email: email,
