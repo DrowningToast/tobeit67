@@ -39,7 +39,7 @@ export class QuizService {
   async getQuiz(getAnswer: boolean = false): Promise<Quiz[]> {
     const query = gql`
     query {
-      quizzes {
+      quizzes(pagination: {page: 1, pageSize: 100}) {
        data {
         id
         attributes {
@@ -56,8 +56,7 @@ export class QuizService {
               }
             }
           }
-        }
-        
+        } 
       }
     }}
     `;
