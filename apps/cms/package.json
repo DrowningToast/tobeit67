@@ -10,15 +10,7 @@
     "strapi": "strapi"
   },
   "dependencies": {
-    "@fortawesome/react-fontawesome": "^0.2.0",
-    "@strapi/design-system": "^1.2.5",
-    "@strapi/icons": "^1.2.5",
-    "@strapi/plugin-graphql": "^4.4.3",
-    "@strapi/plugin-i18n": "4.4.3",
-    "@strapi/plugin-users-permissions": "4.4.3",
-    "@strapi/strapi": "4.4.3",
-    "pg": "8.6.0",
-    "react-select": "^5.4.0"
+    "@strapi/strapi": "4.4.3"
   },
   "author": {
     "name": "A Strapi developer"
