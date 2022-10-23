@@ -1,10 +1,16 @@
 import { motion, useScroll, useTransform } from "framer-motion";
+import { useAtom } from "jotai";
 import Link from "next/link";
+import { useRouter } from "next/router";
+import { firebaseUserAtom, signinWithGooglePopUp } from "../firebase";
 
 const Hero = () => {
   const { scrollY } = useScroll();
   const dy = useTransform(scrollY, [0, 800], [0, 250]);
   const opacity = useTransform(scrollY, [0, 300], [0.35, 0.8]);
+
+  const [user] = useAtom(firebaseUserAtom);
+  const router = useRouter();
 
   return (
     <section className="overflow-x-hidden overflow-y-hidden bg-gradient-to-t from-[#007577] via-[#007577] to-[#FB8763] w-full flex flex-col md:grid md:grid-cols-2 justify-center gap-y-4 px-8 md:px-32 pt-36 md:pt-52 md:mb-12 relative">
@@ -70,7 +76,28 @@ const Hero = () => {
             <a>ลงทะเบียนรอบออนไซต์!</a>
           </motion.button>
         </Link>
+
+        {process.env.NEXT_PUBLIC_ENABLE_QUIZ_BUTTON === "enable" && (
+          <motion.button
+            onClick={() => {
+              if (user) return router.push("/quiz");
+              signinWithGooglePopUp(() => router.push("/quiz"));
+            }}
+            animate={{
+              scale: [1, 1.025, 1],
+              transition: {
+                type: "spring",
+                repeat: Infinity,
+                repeatDelay: 0.1,
+              },
+            }}
+            className="md:py-3 lg:mx-14 bg-glossy-coral font-kanit font-bold text-center inline-block w-full md:w-auto py-2 rounded-full shadow-2xl text-white text-lg tracking-widest"
+          >
+            <a>ไปทำ QUIZ</a>
+          </motion.button>
+        )}
       </div>
+
       {/* Octopus */}
       <img className="mt-6 z-20 md:hidden" src="/assets/octopus.svg" />
       <img

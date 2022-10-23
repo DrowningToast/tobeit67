@@ -1,6 +1,7 @@
 import {
   ArgsType,
   Field,
+  Float,
   InputType,
   Int,
   ObjectType,
@@ -53,25 +54,29 @@ export class User {
   phoneNum: string;
   @Field((type) => Role, { description: 'CAMPER | STAFF', nullable: true })
   role: 'CAMPER' | 'STAFF';
-  @Field({ nullable: true })
-  emailSent: boolean;
+  @Field((type) => Int, { defaultValue: 0 })
+  score: number;
+  @Field((type) => Int, { defaultValue: 3 })
+  remainingAttempt: number;
+  @Field((type) => Float, { defaultValue: 0 })
+  scorePercent: number;
   @Field({ nullable: true })
   onsite: boolean;
 }
 
 @InputType()
 export class UserInput {
-  @Field()
+  @Field({ nullable: true })
   email: string;
-  @Field()
+  @Field({ nullable: true })
   firstname: string;
-  @Field()
+  @Field({ nullable: true })
   lastname: string;
-  @Field((type) => Grade)
+  @Field((type) => Grade, { nullable: true })
   grade: 'M4' | 'M5' | 'M6' | 'P1' | 'P2' | 'P3' | 'OTHER';
-  @Field()
+  @Field({ nullable: true })
   province: string;
-  @Field()
+  @Field({ nullable: true })
   phoneNum: string;
 }
 

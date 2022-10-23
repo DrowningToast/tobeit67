@@ -4,7 +4,9 @@ import { Profile } from "./type";
 import { User } from "./type";
 
 export const firebaseReady = atom<boolean>(false);
-export const firebaseUserAtom = atom<User | null>(null);
+firebaseReady.debugLabel = "firebaseReady";
+export const firebaseUserAtom = atom<Partial<User> | null>(null);
+firebaseUserAtom.debugLabel = "firebaseUserAtom";
 export const firebaseToken = atom<string | null>(null);
 
 export const profileInfoAtom = atom<Profile | null>(null);

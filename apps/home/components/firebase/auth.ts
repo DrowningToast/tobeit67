@@ -12,7 +12,7 @@ import {
 } from "firebase/auth";
 import { useAtom } from "jotai";
 import { useRouter } from "next/router";
-import { FC, useEffect } from "react";
+import { FC, useEffect, useLayoutEffect } from "react";
 import app from "./app";
 
 export const auth = getAuth(app);
@@ -172,12 +172,12 @@ export const SignOut = async () => {
  */
 export const ConditionalRedirect: FC<{
   cb: (
-    fbProfile: User | null,
+    fbProfile: Partial<User> | null,
     ready: boolean
   ) => boolean | undefined | null | string;
   path: string;
 }> = ({ cb, path }) => {
-  const [fbProfile] = useAtom<User | null>(firebaseUserAtom);
+  const [fbProfile] = useAtom(firebaseUserAtom);
   const [ready] = useAtom<boolean>(firebaseReady);
   const router = useRouter();
 
@@ -232,7 +232,7 @@ let googleProvider: GoogleAuthProvider | null = null;
  * @returns
  */
 export const signinWithGooglePopUp = (
-  middleware?: (user: User) => Promise<void>
+  middleware?: (user: User) => Promise<any>
 ) => {
   if (!googleProvider) {
     googleProvider = new GoogleAuthProvider();

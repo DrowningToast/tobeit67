@@ -1,4 +1,4 @@
-import { onAuthStateChanged } from "firebase/auth";
+import { onAuthStateChanged, User } from "firebase/auth";
 import { useEffect } from "react";
 import { auth, getFirebaseToken, getNewIdToken } from "../auth";
 import {
@@ -11,18 +11,26 @@ import { useAtom } from "jotai";
 import axios, { Axios, AxiosError, AxiosInstance } from "axios";
 import WebworkerLoader from "../webworkers/loader";
 import tokenRefresher from "../webworkers/tokenRefresher";
+import { FC } from "react";
 
 export const axiosAuthInstance: AxiosInstance = axios.create();
 
-const AuthUpdater = () => {
+interface Props {
+  callback?: (user: User | null) => Promise<any>;
+}
+
+const AuthUpdater: FC<Props> = ({ callback }) => {
   const [profile, setProfile] = useAtom(firebaseUserAtom);
   const [ready, setReady] = useAtom(firebaseReady);
   const [token, setToken] = useAtom(firebaseToken);
   const [info, setInfo] = useAtom(profileInfoAtom);
 
   useEffect(() => {
+    let _user: User | null = null;
+
     // Setup auth state detector
     onAuthStateChanged(auth, async (user) => {
+      _user = user;
       // Load account data from firebase auth to redux state
       if (user) {
         const token = await getFirebaseToken();
@@ -70,6 +78,7 @@ const AuthUpdater = () => {
         setProfile(null);
         setInfo(null);
       }
+      if (callback) await callback(user);
       setReady(true);
     });
 
@@ -80,9 +89,8 @@ const AuthUpdater = () => {
       try {
         console.log("Webworker is refreshing the token");
         const token = await getNewIdToken();
-        //@ts-ignore
         setProfile({
-          ...profile,
+          ..._user,
           token,
         });
         setToken(token);

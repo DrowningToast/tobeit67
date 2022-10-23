@@ -3,7 +3,7 @@ import Link from "next/link";
 const RegisHero = () => {
   return (
     <div
-      className="relative bg-gradient-to-b from-[#006B6C] to-[#051D1E] pb-32 md:pb-64"
+      className="relative bg-gradient-to-b from-[#006B6C] to-[#051D1E] pb-32 "
       id="register"
     >
       <img
@@ -41,7 +41,7 @@ const RegisHero = () => {
           >
             <a>
               <button className="text-fresh-salmon bg-white py-4 px-8 md:py-6 md:px-16 text-xl md:text-3xl lg:text-4xl rounded-full my-4 md:my-8">
-                รอบ Onsite สมัครเลย!
+                รสมัครเลย!
               </button>
             </a>
           </Link>

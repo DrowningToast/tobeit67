@@ -51,3 +51,9 @@ letsencrypt
 
 # Graphql
 *.gql
+token.txt
+
+# DB
+database.sqlite
+data/database.sqlite
+apps/regis/src/schema.gql
