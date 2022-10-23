@@ -4,6 +4,7 @@ import {
   NotFoundException,
 } from '@nestjs/common';
 import { gql } from 'apollo-server-express';
+import { DecodedIdToken } from 'firebase-admin/lib/auth/token-verifier';
 import { cmsClient } from 'src/cms-gql/cms-gql-client';
 import { UserService } from 'src/user/user.service';
 import { Answer, QuizResult } from './quiz.model';
@@ -132,15 +133,15 @@ export class QuizService {
     return totalScore;
   }
 
-  async updateScore(userId: number, score: number): Promise<QuizResult> {
-    const user = await this.userService.findOne({ id: userId });
+  async updateScore(email: String, score: number): Promise<QuizResult> {
+    const user = await this.userService.findOne({ email: email as string });
 
     const { data } = await cmsClient.query({ query: updateScoreQuery });
 
     const totalQuestions = data.quizzes.meta.pagination.total as number;
 
     if (!user) {
-      throw new NotFoundException(`User with userId:${userId} not found.`);
+      throw new NotFoundException(`User with email:${email} not found.`);
     }
 
     if (user.remainingAttempt == 0) {

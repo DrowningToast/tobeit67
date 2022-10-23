@@ -149,13 +149,15 @@ const QuizStart = () => {
           ส่งคำตอบ
         </Button>
       </div>
-      <QuizConfirm
-        showDrawer={showDrawer}
-        toggleDrawer={toggleDrawer}
-        checked={checked}
-        setChecked={setChecked}
-        userData={userData}
-      />
+      {userData?.user.email && (
+        <QuizConfirm
+          showDrawer={showDrawer}
+          toggleDrawer={toggleDrawer}
+          checked={checked}
+          setChecked={setChecked}
+          email={userData?.user.email}
+        />
+      )}
       <Affix position={{ bottom: 20, right: 20 }}>
         <Transition transition="slide-up" mounted={scroll.y > 200}>
           {(transitionStyles) => (

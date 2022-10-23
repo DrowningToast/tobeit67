@@ -12,7 +12,7 @@ interface Props {
   toggleDrawer: Dispatch<SetStateAction<boolean>>;
   checked: boolean;
   setChecked: Dispatch<SetStateAction<boolean>>;
-  userData: fetchUserResponse | undefined;
+  email: string | undefined;
 }
 
 const QuizConfirm: FC<Props> = ({
@@ -20,7 +20,7 @@ const QuizConfirm: FC<Props> = ({
   toggleDrawer,
   checked,
   setChecked,
-  userData,
+  email,
 }) => {
   const [selectedAnswers, setAnswers] = useAtom(answersAtom);
 
@@ -74,9 +74,11 @@ const QuizConfirm: FC<Props> = ({
               formatAnswers.push(value);
             }
 
+            console.log(email);
+
             await submitAnswers({
               variables: {
-                userId: userData?.user.id,
+                email: email,
                 answers: formatAnswers,
               },
             });

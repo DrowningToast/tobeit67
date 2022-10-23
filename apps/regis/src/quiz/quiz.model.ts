@@ -48,7 +48,7 @@ export class QuizOutput {
 @InputType({ isAbstract: true })
 export class SubmitQuizInput {
   @Field()
-  userId: number;
+  email: String;
 
   @Field((_type) => [Answer], { nullable: true })
   answer: Answer[];

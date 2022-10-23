@@ -1,8 +1,10 @@
-import { UseGuards } from '@nestjs/common';
-import { Resolver, Query, Args, Mutation, Int } from '@nestjs/graphql';
+import { Request } from 'express';
+import { Headers, Request as Req, UseGuards } from '@nestjs/common';
+import { Resolver, Query, Args, Mutation, Int, Context } from '@nestjs/graphql';
 import { AuthGuard } from 'src/auth.guard';
 import { Answer, QuizOutput, QuizResult, SubmitQuizInput } from './quiz.model';
 import { QuizService } from './quiz.service';
+import { DecodedIdToken } from 'firebase-admin/lib/auth/token-verifier';
 
 @Resolver((_of) => QuizOutput)
 @UseGuards(AuthGuard)
@@ -23,6 +25,6 @@ export class QuizResolver {
   ): Promise<QuizResult> {
     const score = await this.quizService.checkAnswer(submitQuizInput.answer);
 
-    return await this.quizService.updateScore(submitQuizInput.userId, score);
+    return await this.quizService.updateScore(submitQuizInput.email, score);
   }
 }

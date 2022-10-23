@@ -1,11 +1,24 @@
 import fetch from 'cross-fetch';
-import { ApolloClient, createHttpLink, InMemoryCache } from '@apollo/client';
+import {
+  ApolloClient,
+  createHttpLink,
+  DefaultOptions,
+  InMemoryCache,
+} from '@apollo/client';
 import { setContext } from '@apollo/client/link/context';
 
-const endpoint =
-  process.env.NODE_ENV.trim() === 'development'
-    ? process.env.CMS_DEV
-    : process.env.CMS_PROD;
+const defaultOptions: DefaultOptions = {
+  watchQuery: {
+    fetchPolicy: 'no-cache',
+    errorPolicy: 'ignore',
+  },
+  query: {
+    fetchPolicy: 'no-cache',
+    errorPolicy: 'all',
+  },
+};
+
+const endpoint = process.env.CMS_DEV;
 
 const httpLink = createHttpLink({ uri: endpoint + '/graphql', fetch });
 
@@ -19,6 +32,8 @@ const authLink = setContext((_, { headers }) => {
 });
 
 export const cmsClient = new ApolloClient({
+  connectToDevTools: true,
   link: authLink.concat(httpLink),
   cache: new InMemoryCache(),
+  defaultOptions,
 });
