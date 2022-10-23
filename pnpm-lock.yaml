@@ -156,6 +156,7 @@ importers:
       eslint: ^8.0.1
       eslint-config-prettier: ^8.3.0
       eslint-plugin-prettier: ^4.0.0
+      express: ^4.18.2
       find-up: ^6.3.0
       firebase-admin: ^11.0.1
       graphql: ^16.6.0
@@ -186,9 +187,10 @@ importers:
       '@nestjs/graphql': 10.1.3_yczbxz7uov7patm5rbdxgchkla
       '@nestjs/platform-express': 9.1.4_osbqhc5bxkxr7p4xaw5wgzf7bi
       '@prisma/client': 4.4.0_prisma@4.4.0
-      apollo-server-express: 3.10.2_ikriz6xqtzcvohrhb2pcry7o6y
+      apollo-server-express: 3.10.2_5ha345eiak62qiwwva5z4dp6gu
       cross-fetch: 3.1.5
       dotenv: 16.0.3
+      express: 4.18.2
       find-up: 6.3.0
       firebase-admin: 11.0.1_@firebase+app-types@0.7.0
       graphql: 16.6.0
@@ -4735,7 +4737,7 @@ packages:
       '@nestjs/common': 9.1.4_yzt46al3aifnexifjjdb4dxxja
       '@nestjs/core': 9.1.4_os3bpar6zvfsuh6rrdsifrg6hi
       '@nestjs/graphql': 10.1.3_yczbxz7uov7patm5rbdxgchkla
-      apollo-server-express: 3.10.2_ikriz6xqtzcvohrhb2pcry7o6y
+      apollo-server-express: 3.10.2_5ha345eiak62qiwwva5z4dp6gu
       graphql: 16.6.0
       iterall: 1.3.0
       lodash.omit: 4.5.0
@@ -7558,7 +7560,7 @@ packages:
       graphql: 16.6.0
     dev: false
 
-  /apollo-server-express/3.10.2_ikriz6xqtzcvohrhb2pcry7o6y:
+  /apollo-server-express/3.10.2_5ha345eiak62qiwwva5z4dp6gu:
     resolution: {integrity: sha512-TUpnh23qAP3NqMp3/2TxcCpOxhvT64H6teOM5W+t5ncdHZ85aEMDrbfIhNwqkdsya+UyMn9IoBmn25h5TW93ZQ==}
     engines: {node: '>=12.0'}
     peerDependencies:
@@ -7575,7 +7577,7 @@ packages:
       apollo-server-types: 3.6.2_graphql@16.6.0
       body-parser: 1.20.0
       cors: 2.8.5
-      express: 4.18.1
+      express: 4.18.2
       graphql: 16.6.0
       parseurl: 1.3.3
     transitivePeerDependencies:
@@ -8142,6 +8144,26 @@ packages:
       unpipe: 1.0.0
     transitivePeerDependencies:
       - supports-color
+
+  /body-parser/1.20.1:
+    resolution: {integrity: sha512-jWi7abTbYwajOytWCQc37VulmWiRae5RyTpaCyDcS5/lMdtwSz5lOpDE67srw/HYe35f1z3fDQw+3txg7gNtWw==}
+    engines: {node: '>= 0.8', npm: 1.2.8000 || >= 1.4.16}
+    dependencies:
+      bytes: 3.1.2
+      content-type: 1.0.4
+      debug: 2.6.9
+      depd: 2.0.0
+      destroy: 1.2.0
+      http-errors: 2.0.0
+      iconv-lite: 0.4.24
+      on-finished: 2.4.1
+      qs: 6.11.0
+      raw-body: 2.5.1
+      type-is: 1.6.18
+      unpipe: 1.0.0
+    transitivePeerDependencies:
+      - supports-color
+    dev: false
 
   /bonjour-service/1.0.14:
     resolution: {integrity: sha512-HIMbgLnk1Vqvs6B4Wq5ep7mxvj9sGz5d1JJyDNSGNIdA/w2MCz6GTjWTdjqOJV1bEPj+6IkxDvWNFKEBxNt4kQ==}
@@ -10455,6 +10477,45 @@ packages:
       vary: 1.1.2
     transitivePeerDependencies:
       - supports-color
+
+  /express/4.18.2:
+    resolution: {integrity: sha512-5/PsL6iGPdfQ/lKM1UuielYgv3BUoJfz1aUwU9vHZ+J7gyvwdQXFEBIEIaxeGf0GIcreATNyBExtalisDbuMqQ==}
+    engines: {node: '>= 0.10.0'}
+    dependencies:
+      accepts: 1.3.8
+      array-flatten: 1.1.1
+      body-parser: 1.20.1
+      content-disposition: 0.5.4
+      content-type: 1.0.4
+      cookie: 0.5.0
+      cookie-signature: 1.0.6
+      debug: 2.6.9
+      depd: 2.0.0
+      encodeurl: 1.0.2
+      escape-html: 1.0.3
+      etag: 1.8.1
+      finalhandler: 1.2.0
+      fresh: 0.5.2
+      http-errors: 2.0.0
+      merge-descriptors: 1.0.1
+      methods: 1.1.2
+      on-finished: 2.4.1
+      parseurl: 1.3.3
+      path-to-regexp: 0.1.7
+      proxy-addr: 2.0.7
+      qs: 6.11.0
+      range-parser: 1.2.1
+      safe-buffer: 5.2.1
+      send: 0.18.0
+      serve-static: 1.15.0
+      setprototypeof: 1.2.0
+      statuses: 2.0.1
+      type-is: 1.6.18
+      utils-merge: 1.0.1
+      vary: 1.1.2
+    transitivePeerDependencies:
+      - supports-color
+    dev: false
 
   /extend-shallow/2.0.1:
     resolution: {integrity: sha512-zCnTtlxNoAiDc3gqY2aYAWFx7XWWiasuF2K8Me5WbN8otHKTUKBwjPtNpRs/rbUZm7KxWAaNj7P1a/p52GbVug==}
