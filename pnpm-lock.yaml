@@ -164,6 +164,7 @@ importers:
       mongoose: ^6.6.5
       prettier: ^2.3.2
       prisma: ^4.4.0
+      react: ^18.2.0
       reflect-metadata: ^0.1.13
       rimraf: ^3.0.2
       run-script-webpack-plugin: ^0.1.1
@@ -178,7 +179,7 @@ importers:
       webpack: ^5.74.0
       webpack-node-externals: ^3.0.0
     dependencies:
-      '@apollo/client': 3.7.0_graphql@16.6.0
+      '@apollo/client': 3.7.0_onqnqwb3ubg5opvemcqf7c2qhy
       '@nestjs/apollo': 10.1.3_xbwti5zgbfwd2vs6mhnd63jeky
       '@nestjs/axios': 0.1.0_6fl4rox5ofo3yz2h7ukpny327a
       '@nestjs/common': 9.1.4_yzt46al3aifnexifjjdb4dxxja
@@ -196,6 +197,7 @@ importers:
       graphql: 16.6.0
       mongoose: 6.6.5
       prisma: 4.4.0
+      react: 18.2.0
       reflect-metadata: 0.1.13
       rimraf: 3.0.2
       rxjs: 7.5.7
@@ -407,7 +409,7 @@ packages:
       zen-observable-ts: 1.2.5
     dev: false
 
-  /@apollo/client/3.7.0_graphql@16.6.0:
+  /@apollo/client/3.7.0_onqnqwb3ubg5opvemcqf7c2qhy:
     resolution: {integrity: sha512-hp4OvrH1ZIQACRYcIrh/C0WFnY7IM7G6nlTpC8DSTEWxfZQ2kvpvDY0I/hYmCs0oAVrg26g3ANEdOzGWTcYbPg==}
     peerDependencies:
       graphql: ^14.0.0 || ^15.0.0 || ^16.0.0
@@ -434,6 +436,7 @@ packages:
       hoist-non-react-statics: 3.3.2
       optimism: 0.16.1
       prop-types: 15.8.1
+      react: 18.2.0
       response-iterator: 0.2.6
       symbol-observable: 4.0.0
       ts-invariant: 0.10.3

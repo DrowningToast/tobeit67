@@ -87,7 +87,7 @@ services:
       - DATABASE_URL=${DATABASE_URL}
       - POSTGRES_CMS_DB_NAME=${POSTGRES_CMS_DB_NAME}
       - type=${service_account}
-      - project_id=${tobeit67}
+      - project_id=${project_id}
       - private_key_id=${private_key_id}
       - private_key=${private_key}
       - client_email=${client_email}
