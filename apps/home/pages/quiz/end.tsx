@@ -31,7 +31,7 @@ const QuizEnd = () => {
   useEffect(() => {
     if (
       !data?.user?.firstname ||
-      !(data.user?.scorePercent > +process.env.NEXT_PUBLIC_MIN_THRESHOLD!)
+      !(data.user?.scorePercent >= +process.env.NEXT_PUBLIC_MIN_THRESHOLD!)
     )
       return;
 
