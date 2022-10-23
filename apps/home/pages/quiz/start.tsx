@@ -44,7 +44,7 @@ const QuizStart = () => {
   );
 
   const { data: quizData } = useQuery<fetchQuizzesResponse>(fecthQuizzes, {
-    skip: !userData?.user,
+    skip: Boolean(!userData?.user),
     variables: {
       userId: userData?.user.id,
     },
