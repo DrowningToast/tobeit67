@@ -86,7 +86,7 @@ services:
       - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
       - DATABASE_URL=${DATABASE_URL}
       - POSTGRES_CMS_DB_NAME=${POSTGRES_CMS_DB_NAME}
-      - type=${service_account}
+      - type=${type}
       - project_id=${project_id}
       - private_key_id=${private_key_id}
       - private_key=${private_key}
@@ -96,6 +96,7 @@ services:
       - token_uri=${token_uri}
       - auth_provider_x509_cert_url=${auth_provider_x509_cert_url}
       - client_x509_cert_url=${client_x509_cert_url}
+      - BACKEND_CMS_TOKEN=${BACKEND_CMS_TOKEN}
     volumes:
       - ./regis:/etc/regis
     ports:
