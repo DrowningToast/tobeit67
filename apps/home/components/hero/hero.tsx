@@ -77,7 +77,7 @@ const Hero = () => {
           </motion.button>
         </Link>
 
-        {process.env.NEXT_PUBLIC_QUIZ_BUTTON === "enable" && (
+        {process.env.NEXT_PUBLIC_ENABLE_QUIZ_BUTTON === "enable" && (
           <motion.button
             onClick={() => {
               if (user) return router.push("/quiz");
