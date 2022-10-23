@@ -86,9 +86,9 @@ export class QuizService {
       throw new NotFoundException(`User with userId:${userId} not found.`);
     }
 
-    if (user.remainingAttempt == 0) {
-      throw new ForbiddenException('You have no attempt left.');
-    }
+    // if (user.remainingAttempt == 0) {
+    //   throw new ForbiddenException('You have no attempt left.');
+    // }
 
     return await this.getQuiz();
   }
