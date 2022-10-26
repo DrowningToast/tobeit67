@@ -69,7 +69,10 @@ const Quiz: NextPage = () => {
       const records = await fetchAirtableCamperByEmail(user?.email!);
 
       setValidData(
-        records.find((record) => record.fields.Email === user?.email)
+        records.find(
+          (record) =>
+            record.fields.Email.toLowerCase() === user?.email?.toLowerCase()
+        )
           ? true
           : false
       );
