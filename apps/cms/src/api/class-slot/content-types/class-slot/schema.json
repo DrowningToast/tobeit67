@@ -4,7 +4,8 @@
   "info": {
     "singularName": "class-slot",
     "pluralName": "class-slots",
-    "displayName": "ClassSlot"
+    "displayName": "ClassSlot",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -27,11 +28,11 @@
       "targetField": "callsign",
       "required": true
     },
-    "classes": {
+    "class": {
       "type": "relation",
-      "relation": "oneToMany",
+      "relation": "oneToOne",
       "target": "api::class.class",
-      "mappedBy": "class_slot"
+      "inversedBy": "class_slot"
     }
   }
 }

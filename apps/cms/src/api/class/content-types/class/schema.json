@@ -21,12 +21,6 @@
     "teacher": {
       "type": "string"
     },
-    "class_slot": {
-      "type": "relation",
-      "relation": "manyToOne",
-      "target": "api::class-slot.class-slot",
-      "inversedBy": "classes"
-    },
     "classId": {
       "type": "uid"
     },
@@ -49,6 +43,18 @@
       "relation": "manyToOne",
       "target": "api::topic.topic",
       "inversedBy": "classes"
+    },
+    "reservations": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::reservation.reservation",
+      "mappedBy": "class"
+    },
+    "class_slot": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::class-slot.class-slot",
+      "inversedBy": "class"
     }
   }
 }
