@@ -13,16 +13,20 @@
   "pluginOptions": {},
   "attributes": {
     "title": {
-      "type": "string"
+      "type": "string",
+      "required": true
     },
     "description": {
-      "type": "string"
+      "type": "string",
+      "required": true
     },
     "teacher": {
-      "type": "string"
+      "type": "string",
+      "required": true
     },
     "classId": {
-      "type": "uid"
+      "type": "uid",
+      "required": true
     },
     "thumbnail": {
       "type": "media",
@@ -36,7 +40,9 @@
       ]
     },
     "maxStudent": {
-      "type": "biginteger"
+      "type": "biginteger",
+      "required": true,
+      "min": "1"
     },
     "topic": {
       "type": "relation",

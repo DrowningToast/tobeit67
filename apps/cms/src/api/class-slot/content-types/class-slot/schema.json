@@ -18,10 +18,12 @@
       "unique": true
     },
     "start": {
-      "type": "datetime"
+      "type": "datetime",
+      "required": true
     },
     "end": {
-      "type": "datetime"
+      "type": "datetime",
+      "required": true
     },
     "slotId": {
       "type": "uid",
@@ -35,7 +37,14 @@
       "inversedBy": "class_slots"
     },
     "classNumber": {
-      "type": "string"
+      "type": "string",
+      "required": true
+    },
+    "reservations": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::reservation.reservation",
+      "mappedBy": "class_slot"
     }
   }
 }

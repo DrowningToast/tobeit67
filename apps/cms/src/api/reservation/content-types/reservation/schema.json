@@ -4,7 +4,8 @@
   "info": {
     "singularName": "reservation",
     "pluralName": "reservations",
-    "displayName": "Reservation"
+    "displayName": "Reservation",
+    "description": ""
   },
   "options": {
     "draftAndPublish": false
@@ -12,19 +13,30 @@
   "pluginOptions": {},
   "attributes": {
     "email": {
-      "type": "email"
+      "type": "email",
+      "required": true
     },
     "nickname": {
-      "type": "string"
+      "type": "string",
+      "required": true
     },
     "firstname": {
-      "type": "string"
+      "type": "string",
+      "required": true
     },
     "lastname": {
-      "type": "string"
+      "type": "string",
+      "required": true
     },
     "phoneNum": {
-      "type": "string"
+      "type": "string",
+      "required": true
+    },
+    "class_slot": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::class-slot.class-slot",
+      "inversedBy": "reservations"
     }
   }
 }
