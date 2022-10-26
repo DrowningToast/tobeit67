@@ -25,12 +25,6 @@
     },
     "phoneNum": {
       "type": "string"
-    },
-    "class": {
-      "type": "relation",
-      "relation": "manyToOne",
-      "target": "api::class.class",
-      "inversedBy": "reservations"
     }
   }
 }

@@ -30,9 +30,12 @@
     },
     "class": {
       "type": "relation",
-      "relation": "oneToOne",
+      "relation": "manyToOne",
       "target": "api::class.class",
-      "inversedBy": "class_slot"
+      "inversedBy": "class_slots"
+    },
+    "classNumber": {
+      "type": "string"
     }
   }
 }
