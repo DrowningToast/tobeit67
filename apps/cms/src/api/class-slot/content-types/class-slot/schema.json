@@ -18,10 +18,12 @@
       "unique": true
     },
     "start": {
-      "type": "datetime"
+      "type": "datetime",
+      "required": true
     },
     "end": {
-      "type": "datetime"
+      "type": "datetime",
+      "required": true
     },
     "slotId": {
       "type": "uid",
@@ -30,9 +32,23 @@
     },
     "class": {
       "type": "relation",
-      "relation": "oneToOne",
+      "relation": "manyToOne",
       "target": "api::class.class",
-      "inversedBy": "class_slot"
+      "inversedBy": "class_slots"
+    },
+    "classNumber": {
+      "type": "string",
+      "required": true
+    },
+    "reservations": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::reservation.reservation",
+      "mappedBy": "class_slot"
+    },
+    "maxStudents": {
+      "type": "biginteger",
+      "required": true
     }
   }
 }
