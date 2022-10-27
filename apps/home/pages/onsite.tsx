@@ -63,11 +63,6 @@ const OnsitePage = () => {
     if (!data?.classSlots) return [];
     return data?.classSlots.data
       .filter((classSlot) => classSlot.attributes.start === selectedDate) // Filter the class only in the selected time slot
-      .filter(
-        (classSlot) =>
-          classSlot.attributes.reservations.data.length <
-          classSlot.attributes.maxStudents
-      ) // Filter out the full time slot
       .filter((classSlot) => {
         return classSlot.attributes.class.data;
       }) // Filter out class slot with null classes
@@ -90,7 +85,14 @@ const OnsitePage = () => {
     return Boolean(
       availableClasses
         .map((_class) => _class.slot)
-        .find((slot) => slot.attributes.start === selectedDate)
+        .find((slot) =>
+          data?.reservations.data
+            ?.map(
+              (reservation) =>
+                reservation.attributes.class_slot.data.attributes.start
+            )
+            .includes(slot.attributes.start)
+        )
     );
   }, [data?.reservations, availableClasses.length]);
 
@@ -100,9 +102,9 @@ const OnsitePage = () => {
   return (
     <section className="bg-[#FFF0DA] min-h-screen w-full flex flex-col items-center justify-around px-16 py-12 gap-y-4">
       <OnsiteTicket
-        selectedDate={selectedDate}
         fliped={isFliped}
         shownClasses={availableClasses}
+        data={data}
       />
       <div className="grid grid-rows-3 grid-cols-5 gap-y-1 text-2B w-full h-full place-items-center">
         <button
@@ -124,11 +126,28 @@ const OnsitePage = () => {
               disabled={isDisabled}
               className="col-span-5 w-full min-h-fit"
               placeholder="วิชาที่อยากเรียน"
-              // every classes
-              data={availableClasses.map((classObj) => ({
-                label: classObj.class.data?.attributes.title,
-                value: classObj.slot.attributes.callsign,
-              }))}
+              data={availableClasses
+                // remove classes already selected in the different time slot
+                .filter((classObj) => {
+                  return !data?.reservations.data?.find(
+                    (reservation) =>
+                      reservation.attributes.class_slot.data.attributes.class
+                        .data.attributes.title ===
+                      classObj.class.data.attributes.title
+                  );
+                })
+                // filter out full classes
+                .filter((classObj) => {
+                  return (
+                    classObj.slot.attributes.reservations.data.length <
+                    classObj.slot.attributes.maxStudents
+                  );
+                })
+                // remain classes, map out to label and value
+                .map((classObj) => ({
+                  label: classObj.class.data?.attributes.title,
+                  value: classObj.slot.attributes.callsign,
+                }))}
               onChange={(value) => {
                 setConfirmed(
                   availableClasses.find(
