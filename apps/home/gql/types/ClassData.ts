@@ -1,5 +1,8 @@
-export interface ClassData {
+import { reservationResponse } from "./ReservationData";
+
+export interface ReservationData {
   classSlots: ClassSlots;
+  reservations: reservationResponse;
 }
 
 export interface ClassSlots {

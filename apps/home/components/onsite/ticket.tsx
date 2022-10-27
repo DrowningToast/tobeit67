@@ -32,9 +32,8 @@ const OnsiteTicket: FC<{
     classNumber: string;
     slot: ClassSlotsDatum;
   }[];
-}> = ({ fliped, shownClasses }) => {
-  if (shownClasses[0]) console.log(shownClasses[0].slot);
-
+  selectedDate: string | null | undefined;
+}> = ({ fliped, shownClasses, selectedDate }) => {
   return (
     <AnimatePresence mode="wait">
       {!fliped ? (
@@ -64,7 +63,7 @@ const OnsiteTicket: FC<{
             <h1 className="text-5xl font-chonburi text-water-blue uppercase text-center py-2">
               Admit One
             </h1>
-            <div className="justify-self-end text-center text-lg py-2 font-chonburi bg-2B">
+            <div className="justify-self-end text-center text-lg py-2 font-chonburi bg-2B text-sea-serpent  ">
               TOBEIT’67
             </div>
           </div>
@@ -81,24 +80,36 @@ const OnsiteTicket: FC<{
           <div className="row-span-5 grid place-items-center relative px-6 w-full h-full  border-b-4 border-dashed border-2B">
             <div className="absolute inset-2 bg-2B rounded-xl px-4 py-4">
               {/* Display all classes */}
-              {shownClasses?.map((classData, index) => (
-                <div
-                  key={`class-${index}`}
-                  className="grid grid-cols-4 grid-rows-1"
-                >
-                  <span className="col-span-4 text-sm">
-                    {classData.class.data.attributes.teacher} / ห้อง{" "}
-                    {classData.slot.attributes.classNumber}
-                  </span>
-                  <h1 className="col-span-3 font-semibold">
-                    {classData.class.data.attributes.title}
-                  </h1>
-                  <h1 className="text-right">
-                    {classData.slot.attributes.reservations?.data.length}/
-                    {classData.slot.attributes.maxStudents}
-                  </h1>
-                </div>
-              ))}
+              {shownClasses.length ? (
+                shownClasses?.map((classData, index) => (
+                  <div
+                    key={`class-${index}`}
+                    className="grid grid-cols-4 grid-rows-1 text-white"
+                  >
+                    <span className="col-span-4 text-sm font-noto">
+                      {classData.class.data?.attributes.teacher} /{" "}
+                      <span className="text-[#FFE4C4]">
+                        ห้อง {classData.slot.attributes.classNumber}
+                      </span>
+                    </span>
+                    <h1
+                      className={`col-span-3 font-semibold text-noto text-lg ${
+                        classData.slot.attributes.start === selectedDate
+                          ? "text-yellow-400"
+                          : ""
+                      }`}
+                    >
+                      {classData.class.data?.attributes.title}
+                    </h1>
+                    <h1 className="text-right font-kanit">
+                      {classData.slot.attributes.reservations?.data.length}/
+                      {classData.slot.attributes.maxStudents}
+                    </h1>
+                  </div>
+                ))
+              ) : (
+                <h1 className="text-white">Looks empty here. . .</h1>
+              )}
             </div>
           </div>
           <div className="row-span-2 w-full h-full grid place-items-center relative max-h-max">

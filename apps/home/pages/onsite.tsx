@@ -2,23 +2,33 @@ import { useQuery } from "@apollo/client";
 import { Button, Select, ThemeIcon } from "@mantine/core";
 import { AnimatePresence } from "framer-motion";
 import { useAtom } from "jotai";
-import { useEffect, useMemo, useState } from "react";
+import { useMemo, useState } from "react";
 import { firebaseReady, firebaseUserAtom } from "../components/firebase";
 import OnsiteTicket from "../components/onsite/ticket";
-import { getAvailableClasses } from "../gql/query";
-import { ClassData, Classroom, ClassSlotsDatum } from "../gql/types/ClassData";
+import { getReservation } from "../gql/query";
+import {
+  Classroom,
+  ClassSlotsDatum,
+  ReservationData,
+} from "../gql/types/ClassData";
 import { client as cmsClient } from "../gql/gql-client";
-import { IconCheck } from "@tabler/icons";
+import { IconBookmark, IconBookmarkOff } from "@tabler/icons";
 import Link from "next/link";
+import reserveSeat from "../components/onsite/onsiteUtils";
 
 const OnsitePage = () => {
   const [firebaseUser] = useAtom(firebaseUserAtom);
   const [ready] = useAtom(firebaseReady);
   const [isFliped, setFliped] = useState(false);
 
-  const { data, loading } = useQuery<ClassData>(getAvailableClasses, {
+  const { data, loading } = useQuery<ReservationData>(getReservation, {
     client: cmsClient,
+    skip: !firebaseUser?.email,
+    variables: {
+      email: firebaseUser?.email,
+    },
   });
+
   const availableDates = useMemo(() => {
     // [1400,1500]
     if (!data?.classSlots) return [];
@@ -52,7 +62,15 @@ const OnsitePage = () => {
   const availableClasses = useMemo(() => {
     if (!data?.classSlots) return [];
     return data?.classSlots.data
-      .filter((classSlot) => classSlot.attributes.start === selectedDate)
+      .filter((classSlot) => classSlot.attributes.start === selectedDate) // Filter the class only in the selected time slot
+      .filter(
+        (classSlot) =>
+          classSlot.attributes.reservations.data.length <
+          classSlot.attributes.maxStudents
+      ) // Filter out the full time slot
+      .filter((classSlot) => {
+        return classSlot.attributes.class.data;
+      }) // Filter out class slot with null classes
       .map((classSlot) => ({
         class: classSlot.attributes.class,
         classNumber: classSlot.attributes.classNumber,
@@ -67,17 +85,31 @@ const OnsitePage = () => {
   // Confirm timeslot <callsign>
   const [confirmed, setConfirmed] = useState<string | null>();
 
-  // console.log(availableClasses);
+  // Check has the user already reserve a seat for this time slot
+  const isDisabled = useMemo(() => {
+    return Boolean(
+      availableClasses
+        .map((_class) => _class.slot)
+        .find((slot) => slot.attributes.start === selectedDate)
+    );
+  }, [data?.reservations, availableClasses.length]);
 
   // Check if the user is logged in or not and is a valid camper or not
-  useEffect(() => {}, []);
+  // console.log(data?.reservations.data?.[0]);
 
   return (
     <section className="bg-[#FFF0DA] min-h-screen w-full flex flex-col items-center justify-around px-16 py-12 gap-y-4">
-      <OnsiteTicket fliped={isFliped} shownClasses={availableClasses} />
-      <div className="grid grid-rows-3 grid-cols-5 gap-y-2 text-2B w-full h-full place-items-center">
+      <OnsiteTicket
+        selectedDate={selectedDate}
+        fliped={isFliped}
+        shownClasses={availableClasses}
+      />
+      <div className="grid grid-rows-3 grid-cols-5 gap-y-1 text-2B w-full h-full place-items-center">
         <button
-          onClick={() => setFliped(!isFliped)}
+          onClick={() => {
+            setDate(null);
+            setFliped(!isFliped);
+          }}
           className="col-span-5 bg-white rounded-lg py-3 w-full"
         >
           พลิกบัตร
@@ -89,11 +121,12 @@ const OnsitePage = () => {
             </button>
           ) : (
             <Select
+              disabled={isDisabled}
               className="col-span-5 w-full min-h-fit"
               placeholder="วิชาที่อยากเรียน"
               // every classes
               data={availableClasses.map((classObj) => ({
-                label: classObj.class.data.attributes.title,
+                label: classObj.class.data?.attributes.title,
                 value: classObj.slot.attributes.callsign,
               }))}
               onChange={(value) => {
@@ -123,11 +156,29 @@ const OnsitePage = () => {
                   label: date.formated,
                   value: date.date as string,
                 }))}
-                onChange={setDate}
+                onChange={(e) => {
+                  setConfirmed(null);
+                  setDate(e);
+                }}
                 value={selectedDate}
               />
-              <ThemeIcon size={32} color="orange">
-                <IconCheck size={48} />
+
+              <ThemeIcon
+                onClick={() => {
+                  if (!confirmed) return;
+                  reserveSeat(confirmed);
+                }}
+                size={32}
+                className={`${
+                  confirmed ? "cursor-pointer" : "cursor-not-allowed"
+                }`}
+                color={`${confirmed && !isDisabled ? "green" : "red"}`}
+              >
+                {confirmed && !isDisabled ? (
+                  <IconBookmark size={48} />
+                ) : (
+                  <IconBookmarkOff size={48} />
+                )}
               </ThemeIcon>
             </>
           )}
