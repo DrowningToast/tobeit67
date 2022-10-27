@@ -78,6 +78,12 @@ const QuizStart = () => {
   const [checked, setChecked] = useState(false);
 
   return (
+    <section>
+      <h1>The quiz is closed</h1>
+    </section>
+  );
+
+  return (
     <section className="text-white bg-white p-6 pb-24 scrollbar-hide min-h-screen relative">
       <NextSeo
         title="ToBeIT'67 | Quiz"

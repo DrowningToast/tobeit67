@@ -19,12 +19,14 @@ export class QuizResolver {
     return await this.quizService.startQuiz(userId);
   }
 
-  @Mutation((returns) => QuizResult, { name: 'submit_quiz' })
-  async submitQuiz(
-    @Args('answer') submitQuizInput: SubmitQuizInput,
-  ): Promise<QuizResult> {
-    const score = await this.quizService.checkAnswer(submitQuizInput.answer);
+  // Hard removed due to past deadline
 
-    return await this.quizService.updateScore(submitQuizInput.email, score);
-  }
+  // @Mutation((returns) => QuizResult, { name: 'submit_quiz' })
+  // async submitQuiz(
+  //   @Args('answer') submitQuizInput: SubmitQuizInput,
+  // ): Promise<QuizResult> {
+  //   const score = await this.quizService.checkAnswer(submitQuizInput.answer);
+
+  //   return await this.quizService.updateScore(submitQuizInput.email, score);
+  // }
 }
