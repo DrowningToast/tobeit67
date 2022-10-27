@@ -39,11 +39,6 @@
         "audios"
       ]
     },
-    "maxStudent": {
-      "type": "biginteger",
-      "required": true,
-      "min": "1"
-    },
     "topic": {
       "type": "relation",
       "relation": "manyToOne",

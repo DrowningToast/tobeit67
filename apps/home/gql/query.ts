@@ -89,3 +89,44 @@ export const submitQuizzes = gql`
     }
   }
 `;
+
+export const getAvailableClasses = gql`
+  query getTimeSlots {
+    classSlots {
+      data {
+        attributes {
+          callsign
+          start
+          end
+          slotId
+          classNumber
+          class {
+            data {
+              attributes {
+                title
+                description
+                teacher
+                classId
+                thumbnail {
+                  data {
+                    attributes {
+                      url
+                    }
+                  }
+                }
+              }
+            }
+          }
+          maxStudents
+          reservations {
+            data {
+              attributes {
+                nickname
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+`;

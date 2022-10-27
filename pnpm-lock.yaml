@@ -75,6 +75,7 @@ importers:
       react: 18.2.0
       react-dom: 18.2.0
       react-markdown: ^8.0.3
+      react-qr-code: ^2.0.8
       sass: ^1.55.0
       tabler-icons-react: ^1.55.0
       tailwind-scrollbar-hide: ^1.1.7
@@ -113,6 +114,7 @@ importers:
       react: 18.2.0
       react-dom: 18.2.0_react@18.2.0
       react-markdown: 8.0.3_iapumuv4e6jcjznwuxpf4tt22e
+      react-qr-code: 2.0.8_react@18.2.0
       sass: 1.55.0
       tabler-icons-react: 1.55.0_react@18.2.0
       tailwind-scrollbar-hide: 1.1.7
@@ -15686,6 +15688,10 @@ packages:
       request-oauth: 1.0.1
     dev: false
 
+  /qr.js/0.0.0:
+    resolution: {integrity: sha512-c4iYnWb+k2E+vYpRimHqSu575b1/wKl4XFeJGpFmrJQz5I88v9aY2czh7s0w36srfCM1sXgC/xpoJz5dJfq+OQ==}
+    dev: false
+
   /qs/6.10.1:
     resolution: {integrity: sha512-M528Hph6wsSVOBiYUnGf+K/7w0hNshs/duGsNXPUCLH5XAqjEtiPGwNONLV0tBH8NoGb0mvD5JubnUTrujKDTg==}
     engines: {node: '>=0.6'}
@@ -15964,6 +15970,20 @@ packages:
       vfile: 5.3.5
     transitivePeerDependencies:
       - supports-color
+    dev: false
+
+  /react-qr-code/2.0.8_react@18.2.0:
+    resolution: {integrity: sha512-zYO9EAPQU8IIeD6c6uAle7NlKOiVKs8ji9hpbWPTGxO+FLqBN2on+XCXQvnhm91nrRd306RvNXUkUNcXXSfhWA==}
+    peerDependencies:
+      react: ^16.x || ^17.x || ^18.x
+      react-native-svg: '*'
+    peerDependenciesMeta:
+      react-native-svg:
+        optional: true
+    dependencies:
+      prop-types: 15.8.1
+      qr.js: 0.0.0
+      react: 18.2.0
     dev: false
 
   /react-query/3.24.3_sfoxds7t5ydpegc3knd667wn6m:

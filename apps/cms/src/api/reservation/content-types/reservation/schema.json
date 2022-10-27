@@ -37,6 +37,27 @@
       "relation": "manyToOne",
       "target": "api::class-slot.class-slot",
       "inversedBy": "reservations"
+    },
+    "team": {
+      "type": "enumeration",
+      "enum": [
+        "A",
+        "B",
+        "C",
+        "D",
+        "E",
+        "F",
+        "G",
+        "H",
+        "I",
+        "J",
+        "K",
+        "L",
+        "M",
+        "N",
+        "O",
+        "P"
+      ]
     }
   }
 }

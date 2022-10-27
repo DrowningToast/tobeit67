@@ -45,6 +45,10 @@
       "relation": "oneToMany",
       "target": "api::reservation.reservation",
       "mappedBy": "class_slot"
+    },
+    "maxStudents": {
+      "type": "biginteger",
+      "required": true
     }
   }
 }
