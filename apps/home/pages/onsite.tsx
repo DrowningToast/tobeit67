@@ -102,13 +102,13 @@ const OnsitePage = () => {
             setConfirmed(null);
             setFliped(!isFliped);
           }}
-          className="col-span-5 bg-white rounded-lg py-3 w-full"
+          className="col-span-5 bg-white rounded-lg py-3 w-full font-noto font-semibold"
         >
           พลิกบัตร
         </button>
         <AnimatePresence mode="wait">
           {!isFliped ? (
-            <button className="col-span-5 bg-white rounded-lg py-3  w-full">
+            <button className="col-span-5 bg-white rounded-lg py-3 font-noto font-semibold w-full">
               Discord
             </button>
           ) : (
@@ -153,7 +153,9 @@ const OnsitePage = () => {
           {!isFliped ? (
             <Link href="/signout" passHref>
               <a className="col-span-5 bg-white rounded-lg py-3 w-full">
-                <button className="bg=white w-full">Signout</button>
+                <button className="bg=white w-full font-noto font-semibold">
+                  Signout
+                </button>
               </a>
             </Link>
           ) : (
