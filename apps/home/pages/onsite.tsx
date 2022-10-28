@@ -55,7 +55,7 @@ const OnsitePage = () => {
         );
         return router.push("/");
       }
-      return setCamperData(records[0].fields);
+      return setCamperData({ id: records[0].id, ...records[0].fields });
     };
 
     fetchAirtable();
@@ -86,6 +86,8 @@ const OnsitePage = () => {
 
   // Check has the user already reserve a seat for this time slot
   const isDisabled = useIsDisabled(availableClasses, data);
+
+  console.log(availableClasses);
 
   return (
     <section className="bg-[#FFF0DA] min-h-screen w-full flex flex-col items-center justify-around px-16 py-12 gap-y-4">

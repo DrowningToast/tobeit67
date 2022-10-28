@@ -78,7 +78,6 @@ export interface OnsiteCamperRecord {
 // fetch onsite camper by email
 export const fetchAirtableOnsiteCamperByEmail = async (email: string) => {
   const record = await MainBase.table<{
-    id: string;
     email: string;
     firstname: string;
     lastname: string;
@@ -89,7 +88,6 @@ export const fetchAirtableOnsiteCamperByEmail = async (email: string) => {
   }>("Attendance")
     .select({
       fields: [
-        "id",
         "email",
         "firstname",
         "lastname",

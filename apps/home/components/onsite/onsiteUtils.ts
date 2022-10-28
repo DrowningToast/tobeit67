@@ -56,6 +56,8 @@ export const useAvailableDates = (
 ) =>
   useMemo(() => {
     // [1400,1500]
+    console.log(data);
+    console.log(loading);
     if (!data?.classSlots) return [];
     let nonDupeDates = data?.classSlots.data.reduce((prev, current) => {
       if (
@@ -85,5 +87,3 @@ export const useAvailableDates = (
     });
     return nonDupeDates;
   }, [data?.classSlots.data, loading]);
-
-// create a mutation request to regis backend to create a reservation

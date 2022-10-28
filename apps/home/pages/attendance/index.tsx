@@ -1,9 +1,11 @@
 import { NumberInput, Select } from "@mantine/core";
 import { MainBase } from "airtable-api";
 import { useAtom } from "jotai";
+import { useRouter } from "next/router";
 import React, { useEffect, useState } from "react";
 import {
   checkInCamper,
+  fetchAirtaableStaffByEmail,
   fetchAirtableOnsiteCampers,
   OnsiteCamperRecord,
 } from "../../components/airtable/airtableQuery";
@@ -22,6 +24,7 @@ const Attendance: React.FC = () => {
     await checkInCamper(target?.id!, String(selectedDay), suffix);
   };
 
+  const router = useRouter()
   const [firebaseUser] = useAtom(firebaseUserAtom);
   const [ready] = useAtom(firebaseReady);
 
@@ -36,6 +39,12 @@ const Attendance: React.FC = () => {
           return { id: record.id, ...record.fields };
         })
       );
+
+      const staffs = await fetchAirtaableStaffByEmail(firebaseUser?.email!);
+      if (staffs.length <= 0) {
+        alert('Invalid staff email, please double check the target resource')
+        return router.push('/')
+      }
     };
 
     fetchCampers();
