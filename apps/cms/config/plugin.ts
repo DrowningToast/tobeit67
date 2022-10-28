@@ -12,23 +12,4 @@ export default {
       },
     },
   },
-  io: {
-    enabled: true,
-    config: {
-      IOServerOptions: {
-        cors: { origin: "http://localhost:3000", methods: ["GET", "POST"] },
-      },
-      contentTypes: {
-        reservation: "*",
-      },
-      events: [
-        {
-          name: "connection",
-          handler: ({ strapi }, socket) => {
-            strapi.log.info(`[io] new connection with id ${socket.id}`);
-          },
-        },
-      ],
-    },
-  },
 };
