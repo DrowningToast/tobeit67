@@ -51,7 +51,7 @@ const OnsiteTicket: FC<{
           exit="third"
           className=" rounded-xl aspect-[0.49] w-full grid grid-rows-[repeat(7,_minmax(0,_1fr))] overflow-hidden max-w-[360px]"
         >
-          <div className="row-span-5 grid place-items-center relative px-6 w-full h-full  border-b-4 border-dashed border-2B bg-white rounded-xl shadow-lg">
+          <div className="row-span-5 grid place-items-center relative px-6 w-full h-full border-b-4 border-dashed border-2B bg-white rounded-xl">
             <div className="z-10 py-6 flex flex-col h-full w-full">
               <h1 className="uppercase border-b-4 border-2B text-2B text-center text-4xl w-full inline-block font-chonburi pb-2">
                 Onsite
@@ -65,7 +65,7 @@ const OnsiteTicket: FC<{
             </div>
             <div className="absolute inset-y-0 inset-x-10 bg-gradient-to-b from-[#4BC7CF] to-white"></div>
           </div>
-          <div className="row-span-2 w-full flex flex-col h-full justify-end flex-grow bg-white rounded-xl shadow-lg">
+          <div className="row-span-2 w-full flex flex-col h-full justify-end flex-grow bg-white rounded-xl shadow-xl">
             <h1 className="text-5xl font-chonburi text-water-blue uppercase text-center py-2">
               Admit One
             </h1>
@@ -83,7 +83,7 @@ const OnsiteTicket: FC<{
           exit="third"
           className="shadow-lg aspect-[0.49] w-full grid grid-rows-[repeat(7,_minmax(0,_1fr))] overflow-hidden max-w-[360px]"
         >
-          <div className="row-span-5 grid place-items-center relative px-6 w-full h-ful border-b-4 border-dashed border-2B bg-white rounded-xl shadow-lg">
+          <div className="row-span-5 grid place-items-center relative px-6 w-full h-ful border-b-4 border-dashed border-2B bg-white rounded-xl ">
             <div className="absolute inset-2 bg-2B rounded-xl px-4 py-4 flex flex-col gap-y-4 ">
               {/* Display all classes */}
               {shownClasses.length ? (

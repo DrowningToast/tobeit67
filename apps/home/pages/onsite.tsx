@@ -31,6 +31,7 @@ const OnsitePage = () => {
   const { data, loading } = useQuery<ReservationData>(getReservation, {
     client: cmsClient,
     skip: !firebaseUser?.email,
+    pollInterval: 15000,
     variables: {
       email: firebaseUser?.email,
     },
@@ -100,6 +101,7 @@ const OnsitePage = () => {
           onClick={() => {
             setDate(null);
             setConfirmed(null);
+
             setFliped(!isFliped);
           }}
           className="col-span-5 bg-white rounded-lg py-3 w-full font-noto font-semibold"
@@ -178,6 +180,7 @@ const OnsitePage = () => {
                 onClick={async () => {
                   await create();
                   alert("ลงทะเบียนเรียบร้อยแล้ว");
+                  router.reload();
                 }}
                 size={32}
                 className={`${
