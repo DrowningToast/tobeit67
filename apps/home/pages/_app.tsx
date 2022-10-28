@@ -2,12 +2,11 @@ import "../styles/globals.scss";
 import type { AppProps } from "next/app";
 import { MantineProvider, Modal } from "@mantine/core";
 import { ApolloProvider } from "@apollo/client";
-import { client, getRegisClient } from "../gql/gql-client";
+import { getRegisClient } from "../gql/gql-client";
 
 import { useAtom } from "jotai";
 import {
   AuthUpdater,
-  firebaseReady,
   firebaseToken,
   firebaseUserAtom,
 } from "../components/firebase";
@@ -15,6 +14,8 @@ import {
 function MyApp({ Component, pageProps }: AppProps) {
   const [user] = useAtom(firebaseUserAtom);
   const [token] = useAtom(firebaseToken);
+
+  console.log(user);
 
   return (
     <>

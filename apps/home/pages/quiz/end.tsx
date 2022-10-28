@@ -43,7 +43,6 @@ const QuizEnd = () => {
       drawing.src = cert.src;
 
       drawing.onload = () => {
-        console.log("Certificate loaded");
         context?.drawImage(drawing, 0, 0, 1119, 725);
         context!.textAlign = "center";
         context!.font = "48px Noto Sans Thai";

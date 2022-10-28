@@ -13,22 +13,20 @@
   "pluginOptions": {},
   "attributes": {
     "title": {
-      "type": "string"
+      "type": "string",
+      "required": true
     },
     "description": {
-      "type": "string"
+      "type": "string",
+      "required": true
     },
     "teacher": {
-      "type": "string"
-    },
-    "class_slot": {
-      "type": "relation",
-      "relation": "manyToOne",
-      "target": "api::class-slot.class-slot",
-      "inversedBy": "classes"
+      "type": "string",
+      "required": true
     },
     "classId": {
-      "type": "uid"
+      "type": "uid",
+      "required": true
     },
     "thumbnail": {
       "type": "media",
@@ -41,14 +39,17 @@
         "audios"
       ]
     },
-    "maxStudent": {
-      "type": "biginteger"
-    },
     "topic": {
       "type": "relation",
       "relation": "manyToOne",
       "target": "api::topic.topic",
       "inversedBy": "classes"
+    },
+    "class_slots": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::class-slot.class-slot",
+      "mappedBy": "class"
     }
   }
 }

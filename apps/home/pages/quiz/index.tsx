@@ -8,7 +8,7 @@ import QuizNavbar from "../../components/quiz/QuizNavbar";
 import Link from "next/link";
 import { fetchUser, fetchUserResponse, insertUser } from "../../gql/query";
 import { useMutation, useQuery } from "@apollo/client";
-import fetchAirtableCamperByEmail from "../../components/airtable/airtableQuery";
+import { fetchAirtableCamperByEmail } from "../../components/airtable/airtableQuery";
 import { NextSeo } from "next-seo";
 
 interface AirtableOnlineCamperRecord {

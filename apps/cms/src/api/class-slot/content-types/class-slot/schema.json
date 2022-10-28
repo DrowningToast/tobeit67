@@ -4,7 +4,8 @@
   "info": {
     "singularName": "class-slot",
     "pluralName": "class-slots",
-    "displayName": "ClassSlot"
+    "displayName": "ClassSlot",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -17,21 +18,37 @@
       "unique": true
     },
     "start": {
-      "type": "datetime"
+      "type": "datetime",
+      "required": true
     },
     "end": {
-      "type": "datetime"
+      "type": "datetime",
+      "required": true
     },
     "slotId": {
       "type": "uid",
       "targetField": "callsign",
       "required": true
     },
-    "classes": {
+    "class": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::class.class",
+      "inversedBy": "class_slots"
+    },
+    "classNumber": {
+      "type": "string",
+      "required": true
+    },
+    "reservations": {
       "type": "relation",
       "relation": "oneToMany",
-      "target": "api::class.class",
+      "target": "api::reservation.reservation",
       "mappedBy": "class_slot"
+    },
+    "maxStudents": {
+      "type": "biginteger",
+      "required": true
     }
   }
 }
