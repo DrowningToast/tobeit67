@@ -1,8 +1,8 @@
-import { reservationResponse } from './ReservationData';
+import { ReservationResponse } from './ReservationData';
 
 export interface ReservationData {
   classSlots: ClassSlots;
-  reservations: reservationResponse;
+  reservations: ReservationResponse;
 }
 
 export interface ClassSlots {

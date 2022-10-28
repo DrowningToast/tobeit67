@@ -1,4 +1,4 @@
-import { FC } from "react";
+import { FC, memo } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import QRCode from "react-qr-code";
 import {
@@ -6,6 +6,7 @@ import {
   ClassSlotsDatum,
   ReservationData,
 } from "../../gql/types/ClassData";
+import { OnsiteCamperRecord } from "../airtable/airtableQuery";
 
 const variant = {
   first: {
@@ -37,7 +38,8 @@ const OnsiteTicket: FC<{
     slot: ClassSlotsDatum;
   }[];
   data: ReservationData | undefined;
-}> = ({ fliped, shownClasses, data }) => {
+  camperData: OnsiteCamperRecord | undefined | null;
+}> = ({ fliped, shownClasses, data, camperData }) => {
   return (
     <AnimatePresence mode="wait">
       {!fliped ? (
@@ -138,7 +140,10 @@ const OnsiteTicket: FC<{
             </div>
           </div>
           <div className="row-span-2 w-full h-full grid place-items-center relative max-h-max">
-            <QRCode value="A1" size={96} />
+            <QRCode
+              value={`${camperData?.team}0${camperData?.tid}`}
+              size={96}
+            />
           </div>
         </motion.main>
       )}
@@ -146,4 +151,4 @@ const OnsiteTicket: FC<{
   );
 };
 
-export default OnsiteTicket;
+export default memo(OnsiteTicket);

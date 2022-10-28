@@ -1,7 +1,7 @@
 import { gql } from 'apollo-server-express';
 
 export const getReservation = gql`
-  query getReservation($email: string) {
+  query getReservation($email: String!) {
     reservations(filters: { email: { eq: $email } }) {
       data {
         attributes {
@@ -62,8 +62,9 @@ export const createReservation = gql`
     $firstname: String!
     $lastname: String!
     $nickname: String!
-    $classId: String!
-    $team: String!
+    $classId: ID!
+    $team: ENUM_RESERVATION_TEAM!
+    $phoneNum: String!
   ) {
     createReservation(
       data: {

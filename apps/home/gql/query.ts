@@ -246,3 +246,28 @@ export const getReservation = gql`
     }
   }
 `;
+
+// create a reservation mutation via regis backend
+export const createReservation = gql`
+  mutation createReservation(
+    $callsign: String!
+    $nickname: String!
+    $email: String!
+    $firstname: String!
+    $lastname: String!
+    $phoneNum: String!
+    $team: String!
+  ) {
+    create_reservation(
+      reservation: {
+        callsign: $callsign
+        email: $email
+        firstname: $firstname
+        lastname: $lastname
+        nickname: $nickname
+        phoneNum: $phoneNum
+        team: $team
+      }
+    )
+  }
+`;

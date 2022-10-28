@@ -1,4 +1,4 @@
-import { UseGuards } from '@nestjs/common';
+import { InternalServerErrorException, UseGuards } from '@nestjs/common';
 import { Args, Mutation, Resolver } from '@nestjs/graphql';
 import { AuthGuard } from 'src/auth.guard';
 import { ReservationInput } from './reservation.model';
@@ -15,6 +15,11 @@ export class ReservationResolver {
   async createReservation(
     @Args('reservation') reservation: ReservationInput,
   ): Promise<boolean> {
-    return await this.reservationService.create_reservation(reservation);
+    try {
+      return await this.reservationService.create_reservation(reservation);
+    } catch (e) {
+      console.log(e);
+      throw new InternalServerErrorException(e);
+    }
   }
 }
