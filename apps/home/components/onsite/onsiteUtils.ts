@@ -56,8 +56,7 @@ export const useAvailableDates = (
 ) =>
   useMemo(() => {
     // [1400,1500]
-    console.log(data);
-    console.log(loading);
+
     if (!data?.classSlots) return [];
     let nonDupeDates = data?.classSlots.data.reduce((prev, current) => {
       if (
