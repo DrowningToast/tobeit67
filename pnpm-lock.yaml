@@ -62,6 +62,7 @@ importers:
       '@types/node': ^17.0.45
       '@types/react': 18.0.21
       '@types/react-dom': ^18.0.6
+      '@types/react-qr-reader': ^2.1.4
       '@vercel/og': ^0.0.19
       airtable: ^0.11.5
       airtable-api: workspace:^1.0.0
@@ -104,6 +105,7 @@ importers:
       '@svgr/webpack': 6.4.0
       '@tabler/icons': 1.106.0_biqbaboplfbrettd7655fr4n2y
       '@tailwindcss/typography': 0.5.7_tailwindcss@3.1.8
+      '@types/react-qr-reader': 2.1.4
       '@vercel/og': 0.0.19
       airtable: 0.11.5
       airtable-api: link:../../packages/airtable-api
@@ -6726,6 +6728,12 @@ packages:
     dependencies:
       '@types/react': 18.0.21
     dev: true
+
+  /@types/react-qr-reader/2.1.4:
+    resolution: {integrity: sha512-2Hq+UNfsO2TVqxbFlOE0gGhQr/+C4wdgNDaaLV8K93mK/Z7Vw2D3YbMlnJAaSzM45fUtYJs0vc48wV04+OEkiA==}
+    dependencies:
+      '@types/react': 18.0.21
+    dev: false
 
   /@types/react-redux/7.1.24:
     resolution: {integrity: sha512-7FkurKcS1k0FHZEtdbbgN8Oc6b+stGSfZYjQGicofJ0j4U0qIn/jaSvnP2pLwZKiai3/17xqqxkkrxTgN8UNbQ==}

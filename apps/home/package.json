@@ -23,6 +23,7 @@
     "@svgr/webpack": "^6.4.0",
     "@tabler/icons": "^1.106.0",
     "@tailwindcss/typography": "^0.5.7",
+    "@types/react-qr-reader": "^2.1.4",
     "@vercel/og": "^0.0.19",
     "airtable": "^0.11.5",
     "airtable-api": "workspace:^1.0.0",
