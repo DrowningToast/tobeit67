@@ -65,6 +65,7 @@ export const fetchAirtableCamperById = async (id: string) => {
 };
 
 export interface OnsiteCamperRecord {
+  id: string;
   email: string;
   firstname: string;
   lastname: string;
@@ -77,6 +78,35 @@ export interface OnsiteCamperRecord {
 // fetch onsite camper by email
 export const fetchAirtableOnsiteCamperByEmail = async (email: string) => {
   const record = await MainBase.table<{
+    id: string;
+    email: string;
+    firstname: string;
+    lastname: string;
+    nickname: string;
+    phoneNum: string;
+    team: string;
+    tid: number;
+  }>("Attendance")
+    .select({
+      fields: [
+        "id",
+        "email",
+        "firstname",
+        "lastname",
+        "nickname",
+        "phoneNum",
+        "team",
+        "tid",
+      ],
+      filterByFormula: `email="${email}"`,
+    })
+    .all();
+  return record;
+};
+
+// fetch all onsite campers
+export const fetchAirtableOnsiteCampers = async () => {
+  const records = await MainBase.table<{
     email: string;
     firstname: string;
     lastname: string;
@@ -95,8 +125,35 @@ export const fetchAirtableOnsiteCamperByEmail = async (email: string) => {
         "team",
         "tid",
       ],
+    })
+    .all();
+  return records;
+};
+
+export const fetchAirtaableStaffByEmail = async (email: string) => {
+  const record = await MainBase.table<{
+    email: string;
+  }>("Staff")
+    .select({
+      fields: ["email"],
       filterByFormula: `email="${email}"`,
     })
     .all();
+  return record;
+};
+
+export const checkInCamper = async (
+  id: string,
+  day: string,
+  suffix: "in" | "out"
+) => {
+  const record = await MainBase.table("Attendance").update([
+    {
+      id,
+      fields: {
+        [`day${day}_${suffix}`]: "true",
+      },
+    },
+  ]);
   return record;
 };

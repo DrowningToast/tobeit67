@@ -57,10 +57,10 @@ const OnsiteTicket: FC<{
                 Onsite
               </h1>
               <h2 className="text-2B text-center font-chonburi text-lg mt-2 font-bold">
-                ศุภธัช สุวัฒโน
+                {camperData?.firstname} {camperData?.lastname}
               </h2>
               <h2 className="absolute bottom-4 inset-x-0 text-2B text-center font-chonburi text-sm mt-2 font-semibold justify-self-end">
-                Team A | ApacheAnchovy
+                Team {camperData?.team}
               </h2>
             </div>
             <div className="absolute inset-y-0 inset-x-10 bg-gradient-to-b from-[#4BC7CF] to-white"></div>

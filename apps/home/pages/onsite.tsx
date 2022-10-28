@@ -39,6 +39,10 @@ const OnsitePage = () => {
   // Camper data from airtable, and check if the camper data is valid or not
   const [camperData, setCamperData] = useState<OnsiteCamperRecord | null>(null);
   useEffect(() => {
+    if (!firebaseUser?.email && ready) {
+      router.push("/");
+      return;
+    }
     if (!firebaseUser?.email || !ready) return;
 
     const fetchAirtable = async () => {
