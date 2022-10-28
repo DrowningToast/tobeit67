@@ -72,7 +72,7 @@ const QuizBody: FC<Props> = ({ index, quiz, choices }) => {
       <div className="flex flex-col gap-y-4">
         {shuffleChoices.map((quizChoice, _) => {
           return (
-            <Button
+            <button
               onClick={() => {
                 setAnswers({
                   ...selectedAnswers,
@@ -82,7 +82,7 @@ const QuizBody: FC<Props> = ({ index, quiz, choices }) => {
                   },
                 });
               }}
-              className={`w-full border-glossy-coral border-2 rounded-xl md:text-2xl font-semibold text-left px-8 py-2 h-12 flex-start ${
+              className={`hover:bg-blue-100 w-full border-glossy-coral border-2 rounded-xl md:text-2xl font-semibold text-left px-8 py-2 h-auto flex-start ${
                 quizChoice === selectedAnswers[quiz.id - 1]?.answer
                   ? "bg-blue-500 text-white"
                   : "text-glossy-coral"
@@ -90,7 +90,7 @@ const QuizBody: FC<Props> = ({ index, quiz, choices }) => {
               key={`quiz-choice-${index}-${_}`}
             >
               {String.fromCharCode(65 + _)}: {quizChoice}
-            </Button>
+            </button>
           );
         })}
       </div>

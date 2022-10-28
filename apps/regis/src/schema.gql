@@ -85,6 +85,7 @@ type Mutation {
   """Require at least one of the args"""
   remove_user(user: UserDelete!): Users!
   submit_quiz(answer: SubmitQuizInput!): QuizResult!
+  create_reservation(reservation: ReservationInput!): Boolean!
 }
 
 input UserEdit {
@@ -112,11 +113,21 @@ type QuizResult {
 }
 
 input SubmitQuizInput {
-  userId: Float!
+  email: String!
   answer: [submitAnswer!]
 }
 
 input submitAnswer {
   id: Int!
   answer: String!
+}
+
+input ReservationInput {
+  callsign: String!
+  email: String!
+  firstname: String!
+  lastname: String!
+  nickname: String!
+  phoneNum: String!
+  team: String!
 }

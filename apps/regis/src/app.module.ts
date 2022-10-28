@@ -15,6 +15,7 @@ import { ConfigModule } from '@nestjs/config'
 import { join } from 'path';
 import { UserModule } from './user/user.module';
 import { QuizModule } from './quiz/quiz.module';
+import { ReservationModule } from './reservation/reservation.module';
 
 @Module({
   imports: [
@@ -31,6 +32,7 @@ import { QuizModule } from './quiz/quiz.module';
     UserModule,
     QuizModule,
     HttpModule,
+    ReservationModule,
   ],
   controllers: [AppController],
   providers: [AppService],
