@@ -37,7 +37,6 @@ export class QuizService {
   constructor(private readonly userService: UserService) {}
 
   async getQuiz(getAnswer: boolean = false): Promise<Quiz[]> {
-    console.log('bruh');
     const query = gql`
     query {
       quizzes(pagination: {page: 1, pageSize: 100}) {

@@ -47,7 +47,7 @@ const OnsiteTicket: FC<{
           initial="first"
           animate="second"
           exit="third"
-          className="shadow-lg rounded-xl bg-white aspect-[0.49] w-full grid grid-rows-[repeat(7,_minmax(0,_1fr))] overflow-hidden"
+          className="shadow-lg rounded-xl bg-white aspect-[0.49] w-full grid grid-rows-[repeat(7,_minmax(0,_1fr))] overflow-hidden max-w-[360px]"
         >
           <div className="row-span-5 grid place-items-center relative px-6 w-full h-full  border-b-4 border-dashed border-2B ">
             <div className="z-10 py-6 flex flex-col h-full w-full">
@@ -79,7 +79,7 @@ const OnsiteTicket: FC<{
           initial="first"
           animate="second"
           exit="third"
-          className="shadow-lg rounded-xl bg-white aspect-[0.49] w-full grid grid-rows-[repeat(7,_minmax(0,_1fr))] overflow-hidden"
+          className="shadow-lg rounded-xl bg-white aspect-[0.49] w-full grid grid-rows-[repeat(7,_minmax(0,_1fr))] overflow-hidden max-w-[360px]"
         >
           <div className="row-span-5 grid place-items-center relative px-6 w-full h-ful border-b-4 border-dashed border-2B">
             <div className="absolute inset-2 bg-2B rounded-xl px-4 py-4 flex flex-col gap-y-4 ">

@@ -106,7 +106,7 @@ const OnsitePage = () => {
         shownClasses={availableClasses}
         data={data}
       />
-      <div className="grid grid-rows-3 grid-cols-5 gap-y-1 text-2B w-full h-full place-items-center">
+      <div className="grid grid-rows-3 grid-cols-5 gap-y-1 text-2B w-full h-full place-items-center max-w-[360px]">
         <button
           onClick={() => {
             setDate(null);
