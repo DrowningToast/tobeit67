@@ -71,6 +71,7 @@ const QuizConfirm: FC<Props> = ({
 
             const formatAnswers = [];
             for (const [key, value] of Object.entries(selectedAnswers)) {
+              //@ts-ignore
               formatAnswers.push(value);
             }
 
