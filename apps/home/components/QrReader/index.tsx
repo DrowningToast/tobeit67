@@ -1,5 +1,5 @@
 import React from "react";
-import { QrReader as Reader } from "react-qr-reader";
+// import { QrReader as Reader } from "react-qr-reader";
 
 type Props = {
   onResult: (text: string) => void;
@@ -8,7 +8,7 @@ type Props = {
 const QrReader: React.FC<Props> = ({ onResult }) => {
   return (
     <div className="w-64 h-64 aspect-square">
-      <Reader
+      {/* <Reader
         onResult={(result, error) => {
           if (!!result) {
             onResult(result.getText());
@@ -20,7 +20,7 @@ const QrReader: React.FC<Props> = ({ onResult }) => {
         }}
         videoContainerStyle={{ width: "100%" }}
         constraints={{ width: 512, height: 512 }}
-      />
+      /> */}
     </div>
   );
 };
