@@ -54,7 +54,7 @@ const OnsitePage = () => {
         alert(
           "Email not found, please contact your nearest staff for more information"
         );
-        return router.push("/");
+        return router.push("/signout");
       }
       return setCamperData({ id: records[0].id, ...records[0].fields });
     };
