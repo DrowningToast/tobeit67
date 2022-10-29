@@ -141,12 +141,12 @@ const OnsiteTicket: FC<{
             </div>
           </div>
           <div className="row-span-2 w-full h-full grid place-items-center relative max-h-max bg-white rounded-xl shadow-lg">
-            <QRCodeCanvas
+            {/* <QRCodeCanvas
               id="qrCode"
               value={`${camperData?.team}0${camperData?.tid}`}
               size={96}
               level={"H"}
-            />
+            /> */}
           </div>
         </motion.main>
       )}
