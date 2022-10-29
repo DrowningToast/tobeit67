@@ -67,7 +67,7 @@ const OnsiteTicket: FC<{
             <div className="absolute inset-y-0 inset-x-10 bg-gradient-to-b from-[#4BC7CF] to-white"></div>
           </div>
           <div className="row-span-2 w-full flex flex-col h-full justify-end flex-grow bg-white rounded-xl shadow-xl">
-            <h1 className="text-5xl font-chonburi text-water-blue uppercase text-center py-2">
+            <h1 className="text-4xl font-chonburi text-water-blue uppercase text-center py-2">
               Admit One
             </h1>
             <div className="justify-self-end text-center text-lg py-2 font-chonburi bg-2B text-sea-serpent  ">

@@ -145,6 +145,7 @@ export const checkInCamper = async (
   day: string,
   suffix: "in" | "out"
 ) => {
+  console.log(day);
   const record = await MainBase.table("Attendance").update([
     {
       id,
