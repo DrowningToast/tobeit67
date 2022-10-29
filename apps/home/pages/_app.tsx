@@ -11,8 +11,6 @@ import {
   firebaseUserAtom,
 } from "../components/firebase";
 
-declare module "qrcode.react";
-
 function MyApp({ Component, pageProps }: AppProps) {
   const [user] = useAtom(firebaseUserAtom);
   const [token] = useAtom(firebaseToken);
