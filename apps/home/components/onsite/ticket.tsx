@@ -6,6 +6,7 @@ import {
   ReservationData,
 } from "../../gql/types/ClassData";
 import { OnsiteCamperRecord } from "../airtable/airtableQuery";
+//@ts-ignore
 import { QRCodeCanvas } from "qrcode.react";
 
 const variant = {
