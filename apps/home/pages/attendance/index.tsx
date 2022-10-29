@@ -10,7 +10,7 @@ import {
   OnsiteCamperRecord,
 } from "../../components/airtable/airtableQuery";
 import { firebaseReady, firebaseUserAtom } from "../../components/firebase";
-import QrReader from "../../components/QrReader";
+// import QrReader from "../../components/QrReader";
 
 const Attendance: React.FC = () => {
   const checkIn = async (text: string) => {
@@ -57,7 +57,7 @@ const Attendance: React.FC = () => {
   return (
     <>
       <main className="min-h-screen w-full grid place-items-center bg-gray-600">
-        <QrReader onResult={checkIn} />
+        {/* <QrReader onResult={checkIn} /> */}
         <NumberInput
           onChange={(e) => setDay(e ?? 1)}
           defaultValue={1}
