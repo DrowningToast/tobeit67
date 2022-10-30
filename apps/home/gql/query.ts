@@ -133,7 +133,10 @@ export const getAvailableClasses = gql`
 
 export const getSelfReservation = gql`
   query getSelfReservation($email: String) {
-    reservations(filters: { email: { eq: $email } }) {
+    reservations(
+      filters: { email: { eq: $email } }
+      pagination: { pageSize: 1000 }
+    ) {
       data {
         attributes {
           class_slot {
@@ -199,7 +202,7 @@ export const getReservation = gql`
             }
           }
           maxStudents
-          reservations {
+          reservations(pagination: { pageSize: 1000 }) {
             data {
               attributes {
                 nickname
