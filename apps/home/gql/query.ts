@@ -118,7 +118,7 @@ export const getAvailableClasses = gql`
             }
           }
           maxStudents
-          reservations {
+          reservations(pagination: { pageSize: 1000 }) {
             data {
               attributes {
                 nickname
