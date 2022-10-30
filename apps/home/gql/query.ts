@@ -226,7 +226,7 @@ export const getReservation = gql`
                 end
                 slotId
                 classNumber
-                reservations {
+                reservations(pagination: { pageSize: 1000 }) {
                   data {
                     attributes {
                       nickname
