@@ -33,7 +33,8 @@ export const useIsDisabled = (
     classNumber: string;
     slot: ClassSlotsDatum;
   }[],
-  data: ReservationData | undefined
+  data: ReservationData | undefined,
+  selectedDate: string | null | undefined
 ) =>
   useMemo(() => {
     return Boolean(
@@ -48,7 +49,7 @@ export const useIsDisabled = (
             .includes(slot.attributes.start)
         )
     );
-  }, [data?.reservations, availableClasses.length]);
+  }, [data?.reservations, availableClasses.length, selectedDate]);
 
 export const useAvailableDates = (
   data: ReservationData | undefined,
