@@ -209,7 +209,10 @@ export const getReservation = gql`
         }
       }
     }
-    reservations(filters: { email: { eq: $email } }) {
+    reservations(
+      filters: { email: { eq: $email } }
+      pagination: { pageSize: 1000 }
+    ) {
       data {
         attributes {
           class_slot {
