@@ -79,8 +79,8 @@ const Hero = () => {
 
         <motion.button
           onClick={() => {
-            if (user) return router.push("/onsite");
-            signinWithGooglePopUp(() => router.push("/onsite"));
+            if (user) return router.push("/quiz/end");
+            signinWithGooglePopUp(() => router.push("/quiz/end"));
           }}
           animate={{
             scale: [1, 1.025, 1],
@@ -92,7 +92,7 @@ const Hero = () => {
           }}
           className="md:py-3 lg:mx-14 bg-glossy-coral font-kanit font-bold text-center inline-block w-full md:w-auto py-2 rounded-full shadow-2xl text-white text-lg tracking-widest"
         >
-          <a>ดูบัตรรอบออนไซต์</a>
+          <a>Certificate</a>
         </motion.button>
       </div>
 
