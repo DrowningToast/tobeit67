@@ -3,7 +3,7 @@ import { useAtom } from "jotai";
 import { NextSeo } from "next-seo";
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
-import { firebaseUserAtom } from "../../components/firebase";
+import { firebaseReady, firebaseUserAtom } from "../../components/firebase";
 import {
   fecthQuizzes,
   fetchQuizzesResponse,
@@ -12,6 +12,7 @@ import {
 } from "../../gql/query";
 import cert from "../../components/quiz/cert.png";
 import { Skeleton } from "@mantine/core";
+import { useRouter } from "next/router";
 
 const QuizEnd = () => {
   const [certUrl, setCertUrl] = useState<string | null | undefined>(null);
@@ -57,6 +58,22 @@ const QuizEnd = () => {
 
     genCert();
   }, [data?.user]);
+
+  const [user] = useAtom(firebaseUserAtom);
+  const [ready] = useAtom(firebaseReady);
+  const [validData, setValidData] = useState(true);
+
+  const router = useRouter();
+
+  // Deal with unknown user
+  useEffect(() => {
+    if (!validData && ready && user) {
+      alert("ไม่พบชื่อในระบบ กรุณาลงทะเบียนรอบออนไลน์ก่อน");
+      router.push("/signout");
+    } else if (!validData && ready && !user) {
+      router.push("/signout");
+    }
+  }, [validData, ready, user]);
 
   return (
     <section className="min-h-screen bg-black px-12 py-16">
