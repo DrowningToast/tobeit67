@@ -57,7 +57,7 @@ const Hero = () => {
         className="absolute top-6 md:top-0 inset-x-0 md:w-full"
       />
       <div className="md:col-start-2 flex flex-col gap-y-4">
-        <Link
+        {/* <Link
           passHref
           target="_blank"
           href="https://airtable.com/shrbQ9EDBNvCa0Ypr"
@@ -75,9 +75,9 @@ const Hero = () => {
           >
             <a>ลงทะเบียนรอบออนไซต์!</a>
           </motion.button>
-        </Link>
+        </Link> */}
 
-        <motion.button
+        {/* <motion.button
           onClick={() => {
             if (user) return router.push("/quiz/end");
             signinWithGooglePopUp(() => router.push("/quiz/end"));
@@ -93,7 +93,7 @@ const Hero = () => {
           className="md:py-3 lg:mx-14 bg-glossy-coral font-kanit font-bold text-center inline-block w-full md:w-auto py-2 rounded-full shadow-2xl text-white text-lg tracking-widest"
         >
           <a>Certificate</a>
-        </motion.button>
+        </motion.button> */}
       </div>
 
       {/* Octopus */}
